@@ -12,8 +12,12 @@ evaluate-gate:
 test-race:
 	go test ./... -race -count=1
 
+FUZZTIME_SHORT ?= 5s
+
 test-fuzz:
-	go test ./internal/match/ -fuzz=Fuzz -fuzztime=10s -count=1
+	go test ./internal/match/ -fuzz=FuzzEngine_NoFalsePositiveOnCurrencyMismatch -fuzztime=$(FUZZTIME_SHORT) -count=1
+	go test ./internal/match/ -fuzz=FuzzMerchantResolver_Bounded -fuzztime=$(FUZZTIME_SHORT) -count=1
+	go test ./internal/synth/ -fuzz=FuzzGenerator_NoiseBounds -fuzztime=$(FUZZTIME_SHORT) -count=1
 
 test-cover:
 	go test ./... -coverprofile=coverage.out -count=1

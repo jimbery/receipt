@@ -21,8 +21,11 @@ jobs:
           go-version-file: go.mod
           cache: true
 
-      - name: Fuzz matching engine (5m)
-        run: go test ./internal/match/ -fuzz=Fuzz -fuzztime=5m -count=1
+      - name: Fuzz matching engine — currency mismatch (5m)
+        run: go test ./internal/match/ -fuzz=FuzzEngine_NoFalsePositiveOnCurrencyMismatch -fuzztime=5m -count=1
+
+      - name: Fuzz merchant resolver (2m)
+        run: go test ./internal/match/ -fuzz=FuzzMerchantResolver_Bounded -fuzztime=2m -count=1
 
       - name: Fuzz generator noise bounds (2m)
         run: go test ./internal/synth/ -fuzz=FuzzGenerator_NoiseBounds -fuzztime=2m -count=1
