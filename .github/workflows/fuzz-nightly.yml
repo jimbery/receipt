@@ -27,5 +27,11 @@ jobs:
       - name: Fuzz merchant resolver (2m)
         run: go test ./internal/match/ -fuzz=FuzzMerchantResolver_Bounded -fuzztime=2m -count=1
 
+      - name: Fuzz Jaro-Winkler similarity (1m)
+        run: go test ./internal/match/similarity/ -fuzz=FuzzJaroWinkler_Bounded -fuzztime=1m -count=1
+
+      - name: Fuzz token-set similarity (1m)
+        run: go test ./internal/match/similarity/ -fuzz=FuzzTokenSetRatio_Bounded -fuzztime=1m -count=1
+
       - name: Fuzz generator noise bounds (2m)
         run: go test ./internal/synth/ -fuzz=FuzzGenerator_NoiseBounds -fuzztime=2m -count=1

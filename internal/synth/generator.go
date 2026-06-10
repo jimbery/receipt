@@ -69,7 +69,7 @@ const (
 const TxnSpacingHours = 37
 
 // GenerateSuite builds ~n labelled pairs: matchable populations plus adversarial
-// classes that scale proportionally with n (ambiguous and near-duplicate ~7.5% each).
+// classes that scale proportionally with n (ambiguous 2%, near-duplicate 5%, refund 2%).
 func (g *Generator) GenerateSuite(n int) []Scenario {
 	if n < 20 {
 		n = 20

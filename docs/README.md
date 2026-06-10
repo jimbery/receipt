@@ -60,5 +60,5 @@ Create an ADR when a decision:
 
 | Milestone | Status | Gate metric |
 |---|---|---|
-| [Phase 0 — Matching engine](milestones/phase-00-matching-engine/MILESTONE.md) | Draft | Precision / FMR on synthetic data |
+| [Phase 0 — Matching engine](milestones/phase-00-matching-engine/MILESTONE.md) | Done | Precision / FMR on synthetic data |
 | [Track A — Customer discovery](milestones/track-a-customer-discovery/MILESTONE.md) | Draft | Willingness-to-pay evidence |

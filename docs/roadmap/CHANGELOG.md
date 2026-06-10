@@ -52,3 +52,16 @@ Record material changes to strategy, gates, or sequencing here.
 - Permanent `density_stress` scenario class (10 pairs in gate; tested to n=200)
 
 **Milestones affected:** phase-00-matching-engine
+
+---
+
+## 2026-06-10 — Phase 0 complete (validation v3)
+
+**Trigger:** Independent validation v3 PASS @ `2bcc071`; close residuals 1–2.
+
+**Changes:**
+- Fuzz targets on `JaroWinkler` and `TokenSetRatio` (`similarity/fuzz_test.go`); wired in `make test-fuzz` and nightly workflow
+- ADR-001 generator amendment corrected: ambiguous population **2%** (matches code)
+- Phase 0 milestone status → **Done**; v3 report filed in `docs/validation/`
+
+**Milestones affected:** phase-00-matching-engine

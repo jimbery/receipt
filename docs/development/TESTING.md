@@ -249,3 +249,4 @@ If an independent reviewer cold-clones the branch and re-runs `make evaluate-gat
 | Determinism (200×) | `TestResolver_Determinism200Iterations`, `TestEngine_Determinism_Ambiguous200Iterations` |
 | Noise bounds | `FuzzGenerator_NoiseBounds` |
 | Gate thresholds at 10⁴ | CI `make evaluate-gate` |
+| Jaro-Winkler / token-set ∈ [0,1] | `FuzzJaroWinkler_Bounded`, `FuzzTokenSetRatio_Bounded` |
