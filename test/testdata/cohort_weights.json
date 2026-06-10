@@ -1,0 +1,11 @@
+{
+  "description": "MTD cohort merchant mix — populate from Track A interviews",
+  "weights": [
+    { "merchant": "Screwfix", "weight": 0.18 },
+    { "merchant": "Toolstation", "weight": 0.12 },
+    { "merchant": "B&Q", "weight": 0.10 },
+    { "merchant": "Amazon", "weight": 0.15 },
+    { "merchant": "Shell", "weight": 0.08 },
+    { "merchant": "BP", "weight": 0.05 }
+  ]
+}

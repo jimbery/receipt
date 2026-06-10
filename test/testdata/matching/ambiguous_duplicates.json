@@ -1,0 +1,44 @@
+{
+  "name": "ambiguous_duplicates",
+  "transactions": [
+    {
+      "id": "t1",
+      "merchant": "SHELL FUEL",
+      "amount_minor": 8000,
+      "currency": "GBP",
+      "occurred_at": "2026-06-01T10:00:00Z"
+    },
+    {
+      "id": "t2",
+      "merchant": "SHELL FUEL",
+      "amount_minor": 8000,
+      "currency": "GBP",
+      "occurred_at": "2026-06-01T10:05:00Z"
+    }
+  ],
+  "receipts": [
+    {
+      "id": "r1",
+      "supplier": "Shell",
+      "amount_minor": 8000,
+      "currency": "GBP",
+      "issued_at": "2026-06-01T10:00:00Z",
+      "itemised": false
+    },
+    {
+      "id": "r2",
+      "supplier": "Shell",
+      "amount_minor": 8000,
+      "currency": "GBP",
+      "issued_at": "2026-06-01T10:05:00Z",
+      "itemised": false
+    }
+  ],
+  "labels": [
+    { "transaction_id": "t1", "receipt_id": "r1" },
+    { "transaction_id": "t2", "receipt_id": "r2" }
+  ],
+  "expect_match": true,
+  "expect_precision_min": 1.0,
+  "expect_fmr_max": 0.0
+}

@@ -1,0 +1,28 @@
+{
+  "name": "tip_tolerance",
+  "transactions": [
+    {
+      "id": "t1",
+      "merchant": "SCREWFIX",
+      "amount_minor": 10000,
+      "currency": "GBP",
+      "occurred_at": "2026-03-15T14:30:00Z"
+    }
+  ],
+  "receipts": [
+    {
+      "id": "r1",
+      "supplier": "Screwfix",
+      "amount_minor": 9990,
+      "currency": "GBP",
+      "issued_at": "2026-03-15T14:15:00Z",
+      "itemised": true
+    }
+  ],
+  "labels": [
+    { "transaction_id": "t1", "receipt_id": "r1" }
+  ],
+  "expect_match": true,
+  "expect_precision_min": 1.0,
+  "expect_fmr_max": 0.0
+}

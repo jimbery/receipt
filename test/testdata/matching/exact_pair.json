@@ -1,0 +1,28 @@
+{
+  "name": "exact_pair",
+  "transactions": [
+    {
+      "id": "t1",
+      "merchant": "TESCO STORES 3344 LONDN",
+      "amount_minor": 4523,
+      "currency": "GBP",
+      "occurred_at": "2026-03-15T14:30:00Z"
+    }
+  ],
+  "receipts": [
+    {
+      "id": "r1",
+      "supplier": "Tesco",
+      "amount_minor": 4523,
+      "currency": "GBP",
+      "issued_at": "2026-03-15T16:30:00Z",
+      "itemised": true
+    }
+  ],
+  "labels": [
+    { "transaction_id": "t1", "receipt_id": "r1" }
+  ],
+  "expect_match": true,
+  "expect_precision_min": 1.0,
+  "expect_fmr_max": 0.0
+}

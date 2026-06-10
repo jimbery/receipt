@@ -1,0 +1,43 @@
+{
+  "name": "ambiguous_same_time",
+  "transactions": [
+    {
+      "id": "t1",
+      "merchant": "BP CONNECT",
+      "amount_minor": 5000,
+      "currency": "GBP",
+      "occurred_at": "2026-06-01T10:00:00Z"
+    },
+    {
+      "id": "t2",
+      "merchant": "BP CONNECT",
+      "amount_minor": 5000,
+      "currency": "GBP",
+      "occurred_at": "2026-06-01T10:00:00Z"
+    }
+  ],
+  "receipts": [
+    {
+      "id": "r1",
+      "supplier": "BP",
+      "amount_minor": 5000,
+      "currency": "GBP",
+      "issued_at": "2026-06-01T10:00:00Z",
+      "itemised": false
+    },
+    {
+      "id": "r2",
+      "supplier": "BP",
+      "amount_minor": 5000,
+      "currency": "GBP",
+      "issued_at": "2026-06-01T10:00:00Z",
+      "itemised": false
+    }
+  ],
+  "labels": [
+    { "transaction_id": "t1", "receipt_id": "r1" },
+    { "transaction_id": "t2", "receipt_id": "r2" }
+  ],
+  "expect_conflict": true,
+  "expect_fmr_max": 0.0
+}
