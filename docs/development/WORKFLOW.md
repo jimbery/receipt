@@ -58,6 +58,8 @@ Record results in the milestone doc **Gate review** section from the committed J
 
 An independent reviewer should be able to cold-clone the branch, run `make evaluate-gate`, and reach the same pass/fail verdict.
 
+**Validator reports:** store the full text in [`docs/validation/`](../validation/README.md) (versioned filename, never overwrite). Record ratification responses alongside when the validator issues conditional pass decisions.
+
 ### 6. Close or pivot
 
 - **Pass** → milestone status **Done**; update roadmap changelog if scope shifted

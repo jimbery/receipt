@@ -8,11 +8,7 @@ import (
 	"github.com/jimbery/receipt/internal/model"
 )
 
-const (
-	minAmbiguityCandidates   = 2
-	signalDistinguishEpsilon = 0.01
-	temporalDistinguishSecs  = 120.0
-)
+const minAmbiguityCandidates = 2
 
 type scoredCandidate struct {
 	TransactionID string
@@ -103,7 +99,7 @@ func detectAmbiguity(cfg Config, candidates []scoredCandidate, keyFn groupKey) m
 			return compareCandidates(group[i], group[j])
 		})
 		if group[0].Confidence-group[1].Confidence <= cfg.AmbiguityMargin &&
-			!candidatesDistinguishable(group[0], group[1]) {
+			!candidatesDistinguishable(cfg, group[0], group[1]) {
 			conflicted[k] = struct{}{}
 		}
 	}
@@ -112,14 +108,14 @@ func detectAmbiguity(cfg Config, candidates []scoredCandidate, keyFn groupKey) m
 
 // candidatesDistinguishable reports whether two candidates differ on a primary signal
 // enough to resolve without emitting a conflict (e.g. near-duplicate temporal separation).
-func candidatesDistinguishable(a, b scoredCandidate) bool {
-	if math.Abs(a.Signals["amount"]-b.Signals["amount"]) > signalDistinguishEpsilon {
+func candidatesDistinguishable(cfg Config, a, b scoredCandidate) bool {
+	if math.Abs(a.Signals["amount"]-b.Signals["amount"]) > cfg.DistinguishAmountEpsilon {
 		return true
 	}
-	if math.Abs(a.Signals["merchant"]-b.Signals["merchant"]) > signalDistinguishEpsilon {
+	if math.Abs(a.Signals["merchant"]-b.Signals["merchant"]) > cfg.DistinguishMerchantEpsilon {
 		return true
 	}
-	if math.Abs(a.Signals["temporal_delta_secs"]-b.Signals["temporal_delta_secs"]) > temporalDistinguishSecs {
+	if math.Abs(a.Signals["temporal_delta_secs"]-b.Signals["temporal_delta_secs"]) > cfg.DistinguishTemporalSecs {
 		return true
 	}
 	return false

@@ -211,7 +211,9 @@ Every generated record must carry a **scenario class** label. `VerifyNoiseBounds
 Before marking gate review, confirm:
 
 - [ ] Every fixture row in the milestone outcome table has a scenario + `Expectations` in code
-- [ ] No `signalIndistinguishable`-style narrowing unless accepted via ADR amendment
+- [ ] Signal distinguishability thresholds in `Config` (ADR-001 amendment 2026-06-10) — not hard-coded
+- [ ] `density_stress` scenario passes (zero FMR, all conflict) at n=10/50/200
+- [ ] Generator adversarial populations scale with n (ambiguous/near-duplicate ~7.5% each)
 - [ ] Duplicate receipts, split-tender, refund refusal, fuel pre-auth covered (Phase 0 table)
 - [ ] `MerchantResolver` has table tests **and** a fuzz target
 - [ ] Amount bands (tip, partial capture, fuel pre-auth, FX, cashback) have known-value tests
@@ -231,7 +233,7 @@ If an independent reviewer cold-clones the branch and re-runs `make evaluate-gat
 
 1. Tune `match.Config` first (ADR D4 — config is data). Record rationale in [roadmap CHANGELOG](../roadmap/CHANGELOG.md) **before** re-running.
 2. If structural (resolution, indexing, conflict semantics) — fix engine; do not shrink the dataset.
-3. Attach a short validation note if an external review was done ([example](../milestones/phase-00-matching-engine/validation-report.md)).
+3. File the full validator report in [docs/validation/](../validation/README.md) (verbatim; versioned filename). Add a ratification response if decisions require sign-off.
 
 ---
 

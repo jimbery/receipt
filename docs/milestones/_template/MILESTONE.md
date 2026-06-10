@@ -111,6 +111,8 @@ _Fill when status = Gate review. Complete [TESTING.md § Formal gate protocol](.
 
 **Machine-readable report:** [gate-results.json](gate-results.json)
 
+**Independent validation:** file verbatim reports in [docs/validation/](../../validation/README.md); link from this milestone when gate review completes.
+
 ## Risks
 
 | Risk | Mitigation | Phase ref |

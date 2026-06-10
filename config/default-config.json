@@ -15,6 +15,9 @@
   "MinConfidence": 0.82,
   "AmbiguityMargin": 0.02,
   "MinMerchantForCandidate": 0.55,
+  "DistinguishAmountEpsilon": 0.01,
+  "DistinguishMerchantEpsilon": 0.01,
+  "DistinguishTemporalSecs": 120,
   "WeightAmount": 0.42,
   "WeightTemporal": 0.23,
   "WeightMerchant": 0.3,
@@ -24,6 +27,6 @@
     "ocr": 1,
     "pos": 1
   },
-  "_hash_sha256": "926558a057ca018e94e8c742c66d268a19fc997af8616657b54ad68fef4e288c",
+  "_hash_sha256": "9b36c6504d7fb524be330b0ed4a0fcbdb2e19b4af898c768b16c7cc45c21a12e",
   "_note": "Committed Phase 0 default config. Hash from match.DefaultConfig().Hash()."
 }

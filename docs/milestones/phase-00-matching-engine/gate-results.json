@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
-  "timestamp": "2026-06-10T13:45:46.596458Z",
+  "timestamp": "2026-06-10T14:00:55.462343Z",
   "seed": 42,
-  "config_hash": "926558a057ca018e94e8c742c66d268a19fc997af8616657b54ad68fef4e288c",
+  "config_hash": "9b36c6504d7fb524be330b0ed4a0fcbdb2e19b4af898c768b16c7cc45c21a12e",
   "dataset_scale": 10000,
-  "engine_version": "phase-0.1",
+  "engine_version": "phase-0.2",
   "thresholds": {
     "max_fmr": 0.005,
     "min_recall": 0.85,
@@ -23,12 +23,12 @@
   "overall": {
     "class": "",
     "precision": 1,
-    "recall": 0.9993014669194691,
+    "recall": 0.9783161966812582,
     "false_match_rate": 0,
-    "conflict_rate": 0.0014961101137043686,
+    "conflict_rate": 0.04258926790345103,
     "conflict_correctness": 1,
-    "matched": 10014,
-    "conflicts": 15,
+    "matched": 9610,
+    "conflicts": 427,
     "outcome_violations": 0,
     "pass": false
   },
@@ -214,13 +214,25 @@
       "pass": true
     },
     {
+      "class": "density_stress",
+      "precision": 0,
+      "recall": 0,
+      "false_match_rate": 0,
+      "conflict_rate": 2,
+      "conflict_correctness": 1,
+      "matched": 0,
+      "conflicts": 20,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
       "class": "generated_tip",
       "precision": 1,
       "recall": 1,
       "false_match_rate": 0,
       "conflict_rate": 0,
       "conflict_correctness": 1,
-      "matched": 2500,
+      "matched": 2275,
       "conflicts": 0,
       "outcome_violations": 0,
       "pass": true
@@ -232,7 +244,7 @@
       "false_match_rate": 0,
       "conflict_rate": 0,
       "conflict_correctness": 1,
-      "matched": 2500,
+      "matched": 2275,
       "conflicts": 0,
       "outcome_violations": 0,
       "pass": true
@@ -244,7 +256,7 @@
       "false_match_rate": 0,
       "conflict_rate": 0,
       "conflict_correctness": 1,
-      "matched": 2500,
+      "matched": 2275,
       "conflicts": 0,
       "outcome_violations": 0,
       "pass": true
@@ -256,7 +268,7 @@
       "false_match_rate": 0,
       "conflict_rate": 0,
       "conflict_correctness": 1,
-      "matched": 2500,
+      "matched": 2275,
       "conflicts": 0,
       "outcome_violations": 0,
       "pass": true
@@ -269,7 +281,7 @@
       "conflict_rate": 2,
       "conflict_correctness": 1,
       "matched": 0,
-      "conflicts": 8,
+      "conflicts": 400,
       "outcome_violations": 0,
       "pass": true
     },
@@ -280,7 +292,7 @@
       "false_match_rate": 0,
       "conflict_rate": 0,
       "conflict_correctness": 1,
-      "matched": 4,
+      "matched": 500,
       "conflicts": 0,
       "outcome_violations": 0,
       "pass": true

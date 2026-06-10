@@ -122,6 +122,7 @@ func EvaluateScenario(engine *match.Engine, s synth.Scenario, t GateThresholds) 
 func expectsHighConflicts(class synth.Class) bool {
 	return class == synth.ClassAmbiguous ||
 		class == synth.ClassDuplicateReceipt ||
+		class == synth.ClassDensityStress ||
 		class == synth.ClassGeneratedAmbiguous
 }
 

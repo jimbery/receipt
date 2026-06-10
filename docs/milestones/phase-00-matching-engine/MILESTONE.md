@@ -1,6 +1,6 @@
 # Phase 0 — Matching Engine Core
 
-**Status:** Gate passed (remediated)  
+**Status:** Gate passed (ratified post validation v2)  
 **Owner:**  
 **Governing ADR:** [ADR-001 Matching engine core](../../adr/0001-record-architecture-decisions.md)  
 **Roadmap ref:** [ROADMAP.md § Phase 0](../../roadmap/ROADMAP.md)  
@@ -121,15 +121,15 @@ Precision dominates: if tuning trades FMR for recall, FMR wins.
 | Metric | Threshold | Result | Date |
 |---|---|---|---|
 | FMR | ≤ 0.5% | 0.000 | 2026-06-10 |
-| Overall recall | ≥ 85% | 99.9% | 2026-06-10 |
+| Overall recall | ≥ 85% | 97.8% | 2026-06-10 |
 | Hard-class recall | ≥ 70% | 100% (excl. ambiguous) | 2026-06-10 |
 | Conflict correctness | ≥ 90% | 100% | 2026-06-10 |
-| Conflict rate | ≤ 5% | 0.15% | 2026-06-10 |
+| Conflict rate | ≤ 5% | 4.3% | 2026-06-10 |
 | Determinism | 100% | pass (200-iter probe) | 2026-06-10 |
 
-**Decision:** Pass (remediated after independent validation — see [validation-report.md](validation-report.md))
+**Decision:** Pass — Decisions 1–2 ratified in [ADR-001](../../adr/0001-record-architecture-decisions.md) amendments and [CHANGELOG](../../roadmap/CHANGELOG.md). Independent reviews: [docs/validation/](../../validation/README.md).
 
-Formal gate: n=10⁴ pairs, seed=42, config hash `926558a0…e288c`.  
+Formal gate: n=10⁴ pairs, seed=42, engine `phase-0.2`, config hash `9b36c650…1a12e`.  
 Full machine-readable report: [gate-results.json](gate-results.json)
 
 ---

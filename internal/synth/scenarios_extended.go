@@ -15,6 +15,7 @@ const (
 	ClassFuelPreAuth         Class = "fuel_preauth"
 	ClassSplitTenderRefusal  Class = "split_tender_refusal"
 	ClassRefundRefusal       Class = "refund_refusal"
+	ClassDensityStress       Class = "density_stress"
 	ClassGenerated           Class = "generated"
 	ClassGeneratedTip        Class = "generated_tip"
 	ClassGeneratedSettlement Class = "generated_settlement"
@@ -37,8 +38,23 @@ func AllExtended() []Scenario {
 		fuelPreAuth(),
 		splitTenderRefusal(),
 		refundRefusal(),
+		DensityStress(10),
 	)
 	return out
+}
+
+// DensityStress builds identical-merchant, identical-amount pairs at close temporal
+// spacing — the regime that produced high FMR in b25c990. Permanent gate class:
+// engine must emit conflict (zero false matches), not silent resolution.
+func DensityStress(n int) Scenario {
+	if n < 2 {
+		n = 2
+	}
+	ts := model.NewTimestamp(scenarioBase().Add(500*time.Hour), 0)
+	return buildIdenticalCluster(n, identicalClusterSpec{
+		Name: "density_stress", Class: ClassDensityStress, IDPrefix: "ds",
+		Merchant: "SCREWFIX 1234 LON", Supplier: "Screwfix", MCC: "5251", Amount: 5000, TS: ts,
+	})
 }
 
 func duplicateReceipt() Scenario {

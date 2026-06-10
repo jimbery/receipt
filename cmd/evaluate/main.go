@@ -12,7 +12,7 @@ import (
 	"github.com/jimbery/receipt/internal/synth"
 )
 
-const engineVersion = "phase-0.1"
+const engineVersion = "phase-0.2"
 
 func main() {
 	var (

@@ -53,13 +53,33 @@ var cohortMerchants = []struct {
 	{"BP", "BP CONNECT 991", "5541"},
 }
 
-// GenerateSuite builds n pairs split across noise-profile scenario classes.
+// Population fractions for adversarial classes (ratified — see docs/roadmap/CHANGELOG.md).
+const (
+	ambiguousPopulationFraction     = 0.02 // 2% — txn+receipt conflict entries ≈2×; sized for ≤5% overall rate
+	nearDuplicatePopulationFraction = 0.05 // 5% — diagonal match, near-zero conflicts
+	refundPopulationFraction        = 0.02
+	minAmbiguousClusterSize         = 4
+	minNearDuplicateClusterSize     = 4
+	minRefundPopulationSize         = 2
+)
+
+// TxnSpacingHours is the hour step between generated transactions. Prime spacing
+// (37h) breaks periodic aliasing with 48h settlement lag without compressing a
+// sole-trader year into one dense week. Ratified in ADR-001 amendment / CHANGELOG.
+const TxnSpacingHours = 37
+
+// GenerateSuite builds ~n labelled pairs: matchable populations plus adversarial
+// classes that scale proportionally with n (ambiguous and near-duplicate ~7.5% each).
 func (g *Generator) GenerateSuite(n int) []Scenario {
-	if n < 4 {
-		n = 4
+	if n < 20 {
+		n = 20
 	}
-	q := n / 4
-	rem := n % 4
+	ambCount := scaledPopulation(n, ambiguousPopulationFraction, minAmbiguousClusterSize)
+	ndCount := scaledPopulation(n, nearDuplicatePopulationFraction, minNearDuplicateClusterSize)
+	refundCount := scaledPopulation(n, refundPopulationFraction, minRefundPopulationSize)
+	matchable := max(n-ambCount-ndCount-refundCount, 4)
+	q := matchable / 4
+	rem := matchable % 4
 	counts := []int{q, q, q, q}
 	for i := range rem {
 		counts[i]++
@@ -69,10 +89,18 @@ func (g *Generator) GenerateSuite(n int) []Scenario {
 		g.Generate(counts[1], settlementProfile()),
 		g.Generate(counts[2], mangledProfile()),
 		g.Generate(counts[3], fxProfile()),
-		g.generateAmbiguousCluster(4),
-		g.generateNearDuplicates(4),
-		g.generateRefunds(2),
+		g.generateAmbiguousCluster(ambCount),
+		g.generateNearDuplicates(ndCount),
+		g.generateRefunds(refundCount),
 	}
+}
+
+func scaledPopulation(n int, fraction float64, minSize int) int {
+	size := int(float64(n) * fraction)
+	if size < minSize {
+		return minSize
+	}
+	return size
 }
 
 func tipProfile() NoiseProfile {
@@ -118,8 +146,7 @@ func (g *Generator) Generate(n int, profile NoiseProfile) Scenario {
 		// Space amounts >25% apart so tolerance bands cannot cross-match distinct pairs.
 		amount := 100000 + int64(i)*30000
 
-		// Prime hour spacing avoids settlement-lag periodic collisions at scale.
-		txnTime := base.Add(time.Duration(i) * 37 * time.Hour)
+		txnTime := base.Add(time.Duration(i) * TxnSpacingHours * time.Hour)
 		if profile.TimezoneShiftSec != 0 {
 			txnTime = txnTime.Add(time.Duration(profile.TimezoneShiftSec) * time.Second)
 		}
@@ -167,33 +194,10 @@ func (g *Generator) Generate(n int, profile NoiseProfile) Scenario {
 
 func (g *Generator) generateAmbiguousCluster(n int) Scenario {
 	ts := model.NewTimestamp(scenarioBase().Add(200*time.Hour), 0)
-	s := Scenario{
-		Name:  "generated_ambiguous",
-		Class: ClassGeneratedAmbiguous,
-		Expectations: model.Expectations{
-			GenuinelyAmbiguousTxnIDs:     make([]string, 0, n),
-			GenuinelyAmbiguousReceiptIDs: make([]string, 0, n),
-			TransactionOutcomes:          make(map[string]model.Outcome),
-			ReceiptOutcomes:              make(map[string]model.Outcome),
-		},
-	}
-	for i := range n {
-		tid := fmt.Sprintf("g-amb-t-%d", i)
-		rid := fmt.Sprintf("g-amb-r-%d", i)
-		s.Transactions = append(s.Transactions, model.Transaction{
-			ID: tid, Merchant: "BP CONNECT", MCC: "5541",
-			Amount: model.NewMoney(5000, "GBP"), OccurredAt: ts,
-		})
-		s.Receipts = append(s.Receipts, model.Receipt{
-			ID: rid, Supplier: "BP", Total: model.NewMoney(5000, "GBP"), IssuedAt: ts,
-		})
-		s.Labels = append(s.Labels, model.LabelledPair{TransactionID: tid, ReceiptID: rid})
-		s.Expectations.GenuinelyAmbiguousTxnIDs = append(s.Expectations.GenuinelyAmbiguousTxnIDs, tid)
-		s.Expectations.GenuinelyAmbiguousReceiptIDs = append(s.Expectations.GenuinelyAmbiguousReceiptIDs, rid)
-		s.Expectations.TransactionOutcomes[tid] = model.OutcomeConflict
-		s.Expectations.ReceiptOutcomes[rid] = model.OutcomeConflict
-	}
-	return s
+	return buildIdenticalCluster(n, identicalClusterSpec{
+		Name: "generated_ambiguous", Class: ClassGeneratedAmbiguous, IDPrefix: "g-amb",
+		Merchant: "BP CONNECT", Supplier: "BP", MCC: "5541", Amount: 5000, TS: ts,
+	})
 }
 
 func (g *Generator) generateNearDuplicates(n int) Scenario {
