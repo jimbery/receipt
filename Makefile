@@ -6,6 +6,9 @@ test:
 evaluate:
 	go run ./cmd/evaluate
 
+evaluate-gate:
+	go run ./cmd/evaluate -generated 100 -seed 42 -json docs/milestones/phase-00-matching-engine/gate-results.json
+
 test-race:
 	go test ./... -race -count=1
 

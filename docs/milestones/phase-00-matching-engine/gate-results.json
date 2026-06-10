@@ -1,0 +1,189 @@
+{
+  "timestamp": "2026-06-10T13:23:04.143433Z",
+  "thresholds": {
+    "max_fmr": 0.005,
+    "min_recall": 0.85,
+    "min_hard_class_recall": 0.7,
+    "min_conflict_correctness": 0.9,
+    "require_determinism": true,
+    "hard_scenario_classes": [
+      "ambiguous",
+      "near_duplicate",
+      "merchant_mangling",
+      "timezone_shift",
+      "settlement_delay"
+    ]
+  },
+  "overall": {
+    "class": "",
+    "precision": 1,
+    "recall": 0.9821428571428571,
+    "false_match_rate": 0,
+    "conflict_rate": 0,
+    "conflict_correctness": 1,
+    "matched": 0,
+    "conflicts": 0,
+    "outcome_violations": 0,
+    "pass": false
+  },
+  "per_class": [
+    {
+      "class": "exact",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 1,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "tip_adjusted",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 1,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "timezone_shift",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 1,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "near_duplicate",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 2,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "settlement_delay",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 1,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "ambiguous",
+      "precision": 0,
+      "recall": 0,
+      "false_match_rate": 0,
+      "conflict_rate": 2,
+      "conflict_correctness": 1,
+      "matched": 0,
+      "conflicts": 4,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "exact_ref",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 1,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "duplicate_receipt",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 1,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "unmatched_txn",
+      "precision": 0,
+      "recall": 0,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 0,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "unmatched_receipt",
+      "precision": 0,
+      "recall": 0,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 0,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "merchant_mangling",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 1,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "partial_capture",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 1,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    },
+    {
+      "class": "generated",
+      "precision": 1,
+      "recall": 1,
+      "false_match_rate": 0,
+      "conflict_rate": 0,
+      "conflict_correctness": 1,
+      "matched": 100,
+      "conflicts": 0,
+      "outcome_violations": 0,
+      "pass": true
+    }
+  ],
+  "deterministic": true,
+  "passed": true
+}

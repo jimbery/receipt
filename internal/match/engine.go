@@ -14,18 +14,23 @@ const (
 // Engine is a deterministic, source-agnostic matching pipeline (ADR-001).
 type Engine struct {
 	cfg      Config
-	merchant MerchantComparer
+	merchant MerchantResolver
 }
 
 func NewEngine(cfg Config) *Engine {
-	return &Engine{cfg: cfg, merchant: BasicMerchantComparer{}}
+	return &Engine{cfg: cfg, merchant: BasicMerchantResolver{}}
 }
 
-func NewEngineWithComparer(cfg Config, merchant MerchantComparer) *Engine {
+func NewEngineWithResolver(cfg Config, merchant MerchantResolver) *Engine {
 	if merchant == nil {
-		merchant = BasicMerchantComparer{}
+		merchant = BasicMerchantResolver{}
 	}
 	return &Engine{cfg: cfg, merchant: merchant}
+}
+
+// NewEngineWithComparer is deprecated; use NewEngineWithResolver.
+func NewEngineWithComparer(cfg Config, merchant MerchantComparer) *Engine {
+	return NewEngineWithResolver(cfg, merchant)
 }
 
 func (e *Engine) Config() Config {

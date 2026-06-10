@@ -22,11 +22,14 @@ type scoredCandidate struct {
 
 func resolve(cfg Config, candidates []scoredCandidate) model.MatchResult {
 	sort.Slice(candidates, func(i, j int) bool {
-		return candidates[i].Confidence > candidates[j].Confidence
+		if candidates[i].Confidence != candidates[j].Confidence {
+			return candidates[i].Confidence > candidates[j].Confidence
+		}
+		return candidates[i].ReceiptID < candidates[j].ReceiptID
 	})
 
-	conflictedTxn := detectAmbiguity(cfg, candidates, byTransaction)
 	conflictedReceipt := detectAmbiguity(cfg, candidates, byReceipt)
+	conflictedTxn := detectTxnAmbiguity(cfg, candidates, conflictedReceipt)
 
 	usedTxn := make(map[string]struct{})
 	usedReceipt := make(map[string]struct{})
@@ -84,8 +87,7 @@ func resolve(cfg Config, candidates []scoredCandidate) model.MatchResult {
 
 type groupKey func(scoredCandidate) string
 
-func byTransaction(c scoredCandidate) string { return c.TransactionID }
-func byReceipt(c scoredCandidate) string     { return c.ReceiptID }
+func byReceipt(c scoredCandidate) string { return c.ReceiptID }
 
 func detectAmbiguity(cfg Config, candidates []scoredCandidate, keyFn groupKey) map[string]struct{} {
 	byKey := make(map[string][]scoredCandidate)
@@ -108,6 +110,47 @@ func detectAmbiguity(cfg Config, candidates []scoredCandidate, keyFn groupKey) m
 		if group[0].Confidence-group[1].Confidence <= cfg.AmbiguityMargin &&
 			signalIndistinguishable(group[0], group[1]) {
 			conflicted[k] = struct{}{}
+		}
+	}
+	return conflicted
+}
+
+// detectTxnAmbiguity flags transaction conflicts only when receipt-side competition
+// also exists — duplicate receipts for one transaction tiebreak deterministically.
+func detectTxnAmbiguity(
+	cfg Config,
+	candidates []scoredCandidate,
+	conflictedReceipt map[string]struct{},
+) map[string]struct{} {
+	byTxn := make(map[string][]scoredCandidate)
+	for _, c := range candidates {
+		if c.Confidence < cfg.MinConfidence {
+			continue
+		}
+		byTxn[c.TransactionID] = append(byTxn[c.TransactionID], c)
+	}
+
+	conflicted := make(map[string]struct{})
+	for txnID, group := range byTxn {
+		if len(group) < minAmbiguityCandidates {
+			continue
+		}
+		sort.Slice(group, func(i, j int) bool {
+			return group[i].Confidence > group[j].Confidence
+		})
+		if group[0].Confidence-group[1].Confidence > cfg.AmbiguityMargin ||
+			!signalIndistinguishable(group[0], group[1]) {
+			continue
+		}
+		receiptContested := false
+		for _, c := range group[:2] {
+			if _, ok := conflictedReceipt[c.ReceiptID]; ok {
+				receiptContested = true
+				break
+			}
+		}
+		if receiptContested {
+			conflicted[txnID] = struct{}{}
 		}
 	}
 	return conflicted
