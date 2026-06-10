@@ -7,12 +7,22 @@ import (
 )
 
 const (
-	ClassDuplicateReceipt Class = "duplicate_receipt"
-	ClassUnmatchedTxn     Class = "unmatched_txn"
-	ClassUnmatchedReceipt Class = "unmatched_receipt"
-	ClassMerchantMangling Class = "merchant_mangling"
-	ClassPartialCapture   Class = "partial_capture"
-	ClassGenerated        Class = "generated"
+	ClassDuplicateReceipt    Class = "duplicate_receipt"
+	ClassUnmatchedTxn        Class = "unmatched_txn"
+	ClassUnmatchedReceipt    Class = "unmatched_receipt"
+	ClassMerchantMangling    Class = "merchant_mangling"
+	ClassPartialCapture      Class = "partial_capture"
+	ClassFuelPreAuth         Class = "fuel_preauth"
+	ClassSplitTenderRefusal  Class = "split_tender_refusal"
+	ClassRefundRefusal       Class = "refund_refusal"
+	ClassGenerated           Class = "generated"
+	ClassGeneratedTip        Class = "generated_tip"
+	ClassGeneratedSettlement Class = "generated_settlement"
+	ClassGeneratedMangled    Class = "generated_mangled"
+	ClassGeneratedFX         Class = "generated_fx"
+	ClassGeneratedAmbiguous  Class = "generated_ambiguous"
+	ClassGeneratedNearDup    Class = "generated_near_duplicate"
+	ClassGeneratedRefund     Class = "generated_refund"
 )
 
 // AllExtended returns hand-built scenarios plus extended outcome-class fixtures (M0.3).
@@ -24,6 +34,9 @@ func AllExtended() []Scenario {
 		unmatchedReceipt(),
 		merchantMangling(),
 		partialCapture(),
+		fuelPreAuth(),
+		splitTenderRefusal(),
+		refundRefusal(),
 	)
 	return out
 }
@@ -43,9 +56,11 @@ func duplicateReceipt() Scenario {
 		},
 		Labels: []model.LabelledPair{{TransactionID: "t-dup", ReceiptID: "r-dup-1"}},
 		Expectations: model.Expectations{
-			TransactionOutcomes: map[string]model.Outcome{"t-dup": model.OutcomeMatched},
+			GenuinelyAmbiguousTxnIDs:     []string{"t-dup"},
+			GenuinelyAmbiguousReceiptIDs: []string{"r-dup-1", "r-dup-2"},
+			TransactionOutcomes:          map[string]model.Outcome{"t-dup": model.OutcomeConflict},
 			ReceiptOutcomes: map[string]model.Outcome{
-				"r-dup-2": model.OutcomeUnmatched,
+				"r-dup-1": model.OutcomeConflict, "r-dup-2": model.OutcomeConflict,
 			},
 		},
 	}
@@ -118,6 +133,65 @@ func partialCapture() Scenario {
 		Expectations: model.Expectations{
 			TransactionOutcomes: map[string]model.Outcome{"t-part": model.OutcomeMatched},
 			ReceiptOutcomes:     map[string]model.Outcome{"r-part": model.OutcomeMatched},
+		},
+	}
+}
+
+func fuelPreAuth() Scenario {
+	ts := model.NewTimestamp(scenarioBase(), 0)
+	return Scenario{
+		Name:  "fuel_preauth",
+		Class: ClassFuelPreAuth,
+		Transactions: []model.Transaction{{
+			ID: "t-fuel", Merchant: "SHELL FUEL", MCC: "5541",
+			Amount: model.NewMoney(10000, "GBP"), OccurredAt: ts,
+		}},
+		Receipts: []model.Receipt{{
+			ID: "r-fuel", Supplier: "Shell", Total: model.NewMoney(8500, "GBP"),
+			IssuedAt: model.NewTimestamp(scenarioBase().Add(10*time.Minute), 0),
+		}},
+		Labels: []model.LabelledPair{{TransactionID: "t-fuel", ReceiptID: "r-fuel"}},
+		Expectations: model.Expectations{
+			TransactionOutcomes: map[string]model.Outcome{"t-fuel": model.OutcomeMatched},
+			ReceiptOutcomes:     map[string]model.Outcome{"r-fuel": model.OutcomeMatched},
+		},
+	}
+}
+
+func splitTenderRefusal() Scenario {
+	ts := model.NewTimestamp(scenarioBase(), 0)
+	return Scenario{
+		Name:  "split_tender_refusal",
+		Class: ClassSplitTenderRefusal,
+		Transactions: []model.Transaction{{
+			ID: "t-split", Merchant: "SCREWFIX", MCC: "5251",
+			Amount: model.NewMoney(10000, "GBP"), OccurredAt: ts,
+		}},
+		Receipts: []model.Receipt{{
+			ID: "r-split", Supplier: "Screwfix", Total: model.NewMoney(5000, "GBP"), IssuedAt: ts,
+		}},
+		Expectations: model.Expectations{
+			TransactionOutcomes: map[string]model.Outcome{"t-split": model.OutcomeUnmatched},
+			ReceiptOutcomes:     map[string]model.Outcome{"r-split": model.OutcomeUnmatched},
+		},
+	}
+}
+
+func refundRefusal() Scenario {
+	ts := model.NewTimestamp(scenarioBase(), 0)
+	return Scenario{
+		Name:  "refund_refusal",
+		Class: ClassRefundRefusal,
+		Transactions: []model.Transaction{{
+			ID: "t-refund", Merchant: "AMAZON UK", MCC: "5399",
+			Amount: model.NewMoney(4500, "GBP"), OccurredAt: ts,
+		}},
+		Receipts: []model.Receipt{{
+			ID: "r-refund", Supplier: "Amazon", Total: model.NewMoney(-4500, "GBP"), IssuedAt: ts,
+		}},
+		Expectations: model.Expectations{
+			TransactionOutcomes: map[string]model.Outcome{"t-refund": model.OutcomeUnmatched},
+			ReceiptOutcomes:     map[string]model.Outcome{"r-refund": model.OutcomeUnmatched},
 		},
 	}
 }

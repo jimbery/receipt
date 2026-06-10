@@ -88,7 +88,18 @@ From roadmap. If met, stop and update [roadmap CHANGELOG](../../roadmap/CHANGELO
 
 ## Gate review
 
-_Fill when status = Gate review._
+_Fill when status = Gate review. Complete [TESTING.md § Formal gate protocol](../../development/TESTING.md#formal-gate-protocol) first._
+
+### Pre-merge gate checklist
+
+- [ ] All thresholds defined **before** first `make evaluate-gate` run (never adjusted post-hoc)
+- [ ] Every acceptance criterion has a corresponding automated test (not CLI-only)
+- [ ] Formal gate run at **protocol scale** (Phase 0: n≥10⁴ via `make evaluate-gate`)
+- [ ] Spot-check at n=200 and n=2000 — pass must not be a sample-size artifact
+- [ ] `gate-results.json` committed from that run (seed, config hash, scale, schema version populated)
+- [ ] `config/default-config.json` hash matches report
+- [ ] Determinism: full output equality tested (including conflict order), not counts only
+- [ ] No fixture/spec downgrades to green tests without ADR
 
 | Metric | Threshold | Result | Date |
 |---|---|---|---|
@@ -97,6 +108,8 @@ _Fill when status = Gate review._
 **Decision:** Pass / Pivot / Kill
 
 **Notes:**
+
+**Machine-readable report:** [gate-results.json](gate-results.json)
 
 ## Risks
 

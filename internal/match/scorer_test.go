@@ -22,7 +22,7 @@ func TestAmountSimilarity_Bands(t *testing.T) {
 	}{
 		{"exact", 5000, 5000, 1.0},
 		{"tip", 5000, 4990, 0.9},
-		{"outside", 5000, 4800, 0},
+		{"outside", 5000, 2500, 0},
 	}
 
 	engine := match.NewEngine(cfg)

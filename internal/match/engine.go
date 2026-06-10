@@ -101,39 +101,6 @@ func (e *Engine) scoreCandidates(
 	return scored
 }
 
-func (e *Engine) generateCandidates(
-	transactions []model.Transaction,
-	receipts []model.Receipt,
-	skipTxn, skipReceipt map[string]struct{},
-) []candidate {
-	var out []candidate
-	for _, txn := range transactions {
-		if _, skip := skipTxn[txn.ID]; skip {
-			continue
-		}
-		for _, rec := range receipts {
-			if _, skip := skipReceipt[rec.ID]; skip {
-				continue
-			}
-			if !e.withinTemporalWindow(txn.OccurredAt.UTC, rec.IssuedAt.UTC) {
-				continue
-			}
-			if txn.Amount.Currency != rec.Total.Currency {
-				continue
-			}
-			if !txn.Amount.WithinTolerance(
-				rec.Total,
-				e.cfg.AbsAmountTolerance*candidateAbsToleranceMultiplier,
-				e.cfg.RelAmountTolerance*candidateRelToleranceMultiplier,
-			) {
-				continue
-			}
-			out = append(out, candidate{Transaction: txn, Receipt: rec})
-		}
-	}
-	return out
-}
-
 func (e *Engine) withinTemporalWindow(txnTime, receiptTime time.Time) bool {
 	if receiptTime.Before(txnTime) {
 		return txnTime.Sub(receiptTime) <= e.cfg.MaxReceiptLead

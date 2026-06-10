@@ -12,6 +12,8 @@ import (
 	"github.com/jimbery/receipt/internal/synth"
 )
 
+const engineVersion = "phase-0.1"
+
 func main() {
 	var (
 		seed      = flag.Int64("seed", 42, "RNG seed for generated dataset")
@@ -27,17 +29,16 @@ func main() {
 
 	if *generated > 0 {
 		gen := synth.NewGenerator(*seed)
-		ds := gen.Generate(*generated, synth.NoiseProfile{
-			SettlementLagHours: 2,
-			TipMinor:           10,
-			MerchantPrefix:     "SQ *",
-			StoreNumberSuffix:  " 99",
-		})
-		scenarios = append(scenarios, ds.Scenario())
+		scenarios = append(scenarios, gen.GenerateSuite(*generated)...)
 	}
 
 	thresholds := harness.DefaultGateThresholds()
-	report := harness.RunGate(engine, scenarios, thresholds)
+	report := harness.RunGateWithOptions(engine, scenarios, thresholds, harness.GateRunOptions{
+		Seed:          *seed,
+		ConfigHash:    cfg.Hash(),
+		DatasetScale:  *generated,
+		EngineVersion: engineVersion,
+	})
 
 	if *compare {
 		tight := cfg
@@ -71,7 +72,7 @@ func main() {
 func printSummary(out *os.File, report harness.GateReport) {
 	w := tabwriter.NewWriter(out, 0, 0, 2, ' ', 0)
 	mustWrite(func() error {
-		_, err := fmt.Fprintln(w, "CLASS\tRECALL\tFMR\tCONFLICT_OK\tOUTCOME_OK\tPASS")
+		_, err := fmt.Fprintln(w, "CLASS\tRECALL\tFMR\tCONFLICT_RATE\tCONFLICT_OK\tOUTCOME_OK\tPASS")
 		return err
 	})
 	defer func() {
@@ -84,16 +85,20 @@ func printSummary(out *os.File, report harness.GateReport) {
 	for _, cm := range report.PerClass {
 		outcomeOK := cm.OutcomeViolations == 0
 		mustWrite(func() error {
-			_, err := fmt.Fprintf(w, "%s\t%.3f\t%.3f\t%.3f\t%v\t%v\n",
-				cm.Class, cm.Recall, cm.FalseMatchRate, cm.ConflictCorrectness, outcomeOK, cm.Pass)
+			_, err := fmt.Fprintf(w, "%s\t%.3f\t%.3f\t%.3f\t%.3f\t%v\t%v\n",
+				cm.Class, cm.Recall, cm.FalseMatchRate, cm.ConflictRate,
+				cm.ConflictCorrectness, outcomeOK, cm.Pass)
 			return err
 		})
 	}
 
 	mustWrite(func() error {
-		_, err := fmt.Fprintf(out, "\nOVERALL recall=%.3f fmr=%.3f conflict_ok=%.3f deterministic=%v passed=%v\n",
-			report.Overall.Recall, report.Overall.FalseMatchRate,
-			report.Overall.ConflictCorrectness, report.Deterministic, report.Passed)
+		_, err := fmt.Fprintf(out,
+			"\nOVERALL recall=%.3f fmr=%.3f conflict_rate=%.3f conflict_ok=%.3f deterministic=%v passed=%v\n"+
+				"seed=%d config_hash=%s scale=%d engine=%s schema=%s\n",
+			report.Overall.Recall, report.Overall.FalseMatchRate, report.Overall.ConflictRate,
+			report.Overall.ConflictCorrectness, report.Deterministic, report.Passed,
+			report.Seed, report.ConfigHash, report.DatasetScale, report.EngineVersion, report.SchemaVersion)
 		return err
 	})
 }

@@ -2,14 +2,16 @@ package match
 
 import (
 	"fmt"
+	"math"
 	"sort"
 
 	"github.com/jimbery/receipt/internal/model"
 )
 
 const (
-	minAmbiguityCandidates = 2
-	signalMatchEpsilon     = 0.01
+	minAmbiguityCandidates   = 2
+	signalDistinguishEpsilon = 0.01
+	temporalDistinguishSecs  = 120.0
 )
 
 type scoredCandidate struct {
@@ -20,38 +22,30 @@ type scoredCandidate struct {
 	Method        model.MatchMethod
 }
 
+func compareCandidates(a, b scoredCandidate) bool {
+	if a.Confidence != b.Confidence {
+		return a.Confidence > b.Confidence
+	}
+	if a.TransactionID != b.TransactionID {
+		return a.TransactionID < b.TransactionID
+	}
+	return a.ReceiptID < b.ReceiptID
+}
+
 func resolve(cfg Config, candidates []scoredCandidate) model.MatchResult {
 	sort.Slice(candidates, func(i, j int) bool {
-		if candidates[i].Confidence != candidates[j].Confidence {
-			return candidates[i].Confidence > candidates[j].Confidence
-		}
-		return candidates[i].ReceiptID < candidates[j].ReceiptID
+		return compareCandidates(candidates[i], candidates[j])
 	})
 
+	conflictedTxn := detectAmbiguity(cfg, candidates, byTransaction)
 	conflictedReceipt := detectAmbiguity(cfg, candidates, byReceipt)
-	conflictedTxn := detectTxnAmbiguity(cfg, candidates, conflictedReceipt)
+	expandReceiptConflicts(candidates, conflictedTxn, conflictedReceipt)
+
+	conflicts := buildConflicts(candidates, conflictedTxn, conflictedReceipt)
 
 	usedTxn := make(map[string]struct{})
 	usedReceipt := make(map[string]struct{})
 	var matches []model.Match
-	var conflicts []model.Conflict
-
-	for id := range conflictedTxn {
-		conflicts = append(conflicts, model.Conflict{
-			TransactionID: id,
-			CompetingIDs:  competingReceipts(candidates, id),
-			TopConfidence: topConfidenceForTxn(candidates, id),
-			Reason:        "ambiguous transaction candidates within margin",
-		})
-	}
-	for id := range conflictedReceipt {
-		conflicts = append(conflicts, model.Conflict{
-			ReceiptID:     id,
-			CompetingIDs:  competingTransactions(candidates, id),
-			TopConfidence: topConfidenceForReceipt(candidates, id),
-			Reason:        "ambiguous receipt candidates within margin",
-		})
-	}
 
 	for _, c := range candidates {
 		if c.Confidence < cfg.MinConfidence {
@@ -87,7 +81,8 @@ func resolve(cfg Config, candidates []scoredCandidate) model.MatchResult {
 
 type groupKey func(scoredCandidate) string
 
-func byReceipt(c scoredCandidate) string { return c.ReceiptID }
+func byTransaction(c scoredCandidate) string { return c.TransactionID }
+func byReceipt(c scoredCandidate) string     { return c.ReceiptID }
 
 func detectAmbiguity(cfg Config, candidates []scoredCandidate, keyFn groupKey) map[string]struct{} {
 	byKey := make(map[string][]scoredCandidate)
@@ -105,55 +100,87 @@ func detectAmbiguity(cfg Config, candidates []scoredCandidate, keyFn groupKey) m
 			continue
 		}
 		sort.Slice(group, func(i, j int) bool {
-			return group[i].Confidence > group[j].Confidence
+			return compareCandidates(group[i], group[j])
 		})
 		if group[0].Confidence-group[1].Confidence <= cfg.AmbiguityMargin &&
-			signalIndistinguishable(group[0], group[1]) {
+			!candidatesDistinguishable(group[0], group[1]) {
 			conflicted[k] = struct{}{}
 		}
 	}
 	return conflicted
 }
 
-// detectTxnAmbiguity flags transaction conflicts only when receipt-side competition
-// also exists — duplicate receipts for one transaction tiebreak deterministically.
-func detectTxnAmbiguity(
-	cfg Config,
-	candidates []scoredCandidate,
-	conflictedReceipt map[string]struct{},
-) map[string]struct{} {
-	byTxn := make(map[string][]scoredCandidate)
-	for _, c := range candidates {
-		if c.Confidence < cfg.MinConfidence {
-			continue
-		}
-		byTxn[c.TransactionID] = append(byTxn[c.TransactionID], c)
+// candidatesDistinguishable reports whether two candidates differ on a primary signal
+// enough to resolve without emitting a conflict (e.g. near-duplicate temporal separation).
+func candidatesDistinguishable(a, b scoredCandidate) bool {
+	if math.Abs(a.Signals["amount"]-b.Signals["amount"]) > signalDistinguishEpsilon {
+		return true
 	}
+	if math.Abs(a.Signals["merchant"]-b.Signals["merchant"]) > signalDistinguishEpsilon {
+		return true
+	}
+	if math.Abs(a.Signals["temporal_delta_secs"]-b.Signals["temporal_delta_secs"]) > temporalDistinguishSecs {
+		return true
+	}
+	return false
+}
 
-	conflicted := make(map[string]struct{})
-	for txnID, group := range byTxn {
-		if len(group) < minAmbiguityCandidates {
-			continue
-		}
-		sort.Slice(group, func(i, j int) bool {
-			return group[i].Confidence > group[j].Confidence
-		})
-		if group[0].Confidence-group[1].Confidence > cfg.AmbiguityMargin ||
-			!signalIndistinguishable(group[0], group[1]) {
-			continue
-		}
-		receiptContested := false
-		for _, c := range group[:2] {
-			if _, ok := conflictedReceipt[c.ReceiptID]; ok {
-				receiptContested = true
-				break
+// expandReceiptConflicts marks receipts tied to an ambiguous transaction as conflicted
+// (e.g. duplicate receipts forwarded for the same card transaction).
+func expandReceiptConflicts(
+	candidates []scoredCandidate,
+	conflictedTxn map[string]struct{},
+	conflictedReceipt map[string]struct{},
+) {
+	for txnID := range conflictedTxn {
+		seen := make(map[string]struct{})
+		for _, c := range candidates {
+			if c.TransactionID != txnID {
+				continue
 			}
+			seen[c.ReceiptID] = struct{}{}
 		}
-		if receiptContested {
-			conflicted[txnID] = struct{}{}
+		if len(seen) < minAmbiguityCandidates {
+			continue
+		}
+		for rid := range seen {
+			conflictedReceipt[rid] = struct{}{}
 		}
 	}
-	return conflicted
+}
+
+func buildConflicts(
+	candidates []scoredCandidate,
+	conflictedTxn, conflictedReceipt map[string]struct{},
+) []model.Conflict {
+	var txnIDs, receiptIDs []string
+	for id := range conflictedTxn {
+		txnIDs = append(txnIDs, id)
+	}
+	for id := range conflictedReceipt {
+		receiptIDs = append(receiptIDs, id)
+	}
+	sort.Strings(txnIDs)
+	sort.Strings(receiptIDs)
+
+	conflicts := make([]model.Conflict, 0, len(txnIDs)+len(receiptIDs))
+	for _, id := range txnIDs {
+		conflicts = append(conflicts, model.Conflict{
+			TransactionID: id,
+			CompetingIDs:  competingReceipts(candidates, id),
+			TopConfidence: topConfidenceForTxn(candidates, id),
+			Reason:        "ambiguous transaction candidates within margin",
+		})
+	}
+	for _, id := range receiptIDs {
+		conflicts = append(conflicts, model.Conflict{
+			ReceiptID:     id,
+			CompetingIDs:  competingTransactions(candidates, id),
+			TopConfidence: topConfidenceForReceipt(candidates, id),
+			Reason:        "ambiguous receipt candidates within margin",
+		})
+	}
+	return conflicts
 }
 
 func competingReceipts(candidates []scoredCandidate, txnID string) []string {
@@ -183,6 +210,7 @@ func competing(
 			out = append(out, fmt.Sprintf("%s:%.3f", id(c), c.Confidence))
 		}
 	}
+	sort.Strings(out)
 	return out
 }
 
@@ -192,25 +220,6 @@ func topConfidenceForTxn(candidates []scoredCandidate, txnID string) float64 {
 
 func topConfidenceForReceipt(candidates []scoredCandidate, receiptID string) float64 {
 	return topConfidence(candidates, func(c scoredCandidate) bool { return c.ReceiptID == receiptID })
-}
-
-// signalIndistinguishable returns true when candidates tie on amount, merchant,
-// and temporal proximity (ADR D2: surface true ties only).
-func signalIndistinguishable(a, b scoredCandidate) bool {
-	for _, key := range []string{"amount", "merchant"} {
-		if diff := abs(a.Signals[key] - b.Signals[key]); diff > signalMatchEpsilon {
-			return false
-		}
-	}
-	const minDeltaSeparation = 60.0 // seconds
-	return abs(a.Signals["temporal_delta_secs"]-b.Signals["temporal_delta_secs"]) < minDeltaSeparation
-}
-
-func abs(x float64) float64 {
-	if x < 0 {
-		return -x
-	}
-	return x
 }
 
 func topConfidence(candidates []scoredCandidate, match func(scoredCandidate) bool) float64 {

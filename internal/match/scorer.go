@@ -1,7 +1,6 @@
 package match
 
 import (
-	"math"
 	"time"
 
 	"github.com/jimbery/receipt/internal/model"
@@ -17,7 +16,7 @@ type candidate struct {
 func (e *Engine) scoreCandidate(c candidate) (float64, map[string]float64) {
 	cfg := e.cfg
 
-	amountScore := amountSimilarity(cfg, c.Transaction.Amount, c.Receipt.Total)
+	amountScore := amountSimilarity(cfg, c.Transaction.Amount, c.Receipt.Total) // bands in amount.go
 	temporalScore, temporalDelta := temporalSimilarity(cfg, c.Transaction.OccurredAt.UTC, c.Receipt.IssuedAt.UTC)
 	merchantScore := e.merchant.Similarity(
 		c.Transaction.Merchant,
@@ -47,28 +46,6 @@ func (e *Engine) scoreCandidate(c candidate) (float64, map[string]float64) {
 	}
 
 	return confidence, signals
-}
-
-func amountSimilarity(cfg Config, txn, receipt model.Money) float64 {
-	if txn.Currency != receipt.Currency {
-		return 0
-	}
-	if txn.Equal(receipt) {
-		return 1
-	}
-	if txn.WithinTolerance(receipt, cfg.AbsAmountTolerance, cfg.RelAmountTolerance) {
-		diff, _ := txn.AbsDiff(receipt)
-		larger := max(txn.Amount, receipt.Amount)
-		if larger == 0 {
-			return 1
-		}
-		maxDiff := float64(cfg.AbsAmountTolerance)
-		if rel := cfg.RelAmountTolerance * float64(larger); rel > maxDiff {
-			maxDiff = rel
-		}
-		return math.Max(0, 1-float64(diff)/maxDiff*0.25)
-	}
-	return 0
 }
 
 func temporalSimilarity(cfg Config, txnTime, receiptTime time.Time) (float64, float64) {

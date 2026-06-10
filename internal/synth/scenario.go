@@ -27,6 +27,7 @@ type Scenario struct {
 	Receipts     []model.Receipt
 	Labels       []model.LabelledPair
 	Expectations model.Expectations
+	NoiseBounds  []NoiseBound
 }
 
 func scenarioBase() time.Time {

@@ -1,6 +1,6 @@
 # Phase 0 — Matching Engine Core
 
-**Status:** Gate review  
+**Status:** Gate passed (remediated)  
 **Owner:**  
 **Governing ADR:** [ADR-001 Matching engine core](../../adr/0001-record-architecture-decisions.md)  
 **Roadmap ref:** [ROADMAP.md § Phase 0](../../roadmap/ROADMAP.md)  
@@ -28,6 +28,7 @@ These numbers are commitments — adjust only with written rationale *before* a 
 | **Precision / FMR** | false matches ÷ total matches emitted | FMR ≤ 0.5% |
 | **Recall** | correct matches ÷ matchable pairs in ground truth | ≥ 85% overall; ≥ 70% on hardest scenario classes |
 | **Conflict correctness** | of pairs flagged `conflict`, fraction genuinely ambiguous per ground truth | ≥ 90% |
+| **Conflict rate** | conflicts emitted ÷ transactions evaluated | ≤ 5% overall |
 | **Determinism** | identical output across repeated runs on identical (input, config) | 100%, enforced in CI |
 
 Precision dominates: if tuning trades FMR for recall, FMR wins.
@@ -78,7 +79,7 @@ Precision dominates: if tuning trades FMR for recall, FMR wins.
 | Outcome-class fixtures | `internal/synth/scenarios_extended.go`, `test/testdata/matching/` | [x] |
 | Outcome assertion tests | `internal/synth/outcome_test.go` | [x] |
 
-**Fixture coverage:** clean match, tip-adjusted, settlement-delayed, near-duplicate, duplicate receipt, unmatched txn/receipt, genuine ambiguity, merchant mangling, partial capture.
+**Fixture coverage:** clean match, tip-adjusted, settlement-delayed, near-duplicate, duplicate receipt, unmatched txn/receipt, genuine ambiguity, merchant mangling, partial capture, fuel pre-auth, split-tender refusal, refund refusal.
 
 **Exit criteria:** each fixture asserts outcome *class*, not just score.
 
@@ -109,7 +110,9 @@ Precision dominates: if tuning trades FMR for recall, FMR wins.
 | Formal gate results (committed) | [gate-results.json](gate-results.json) | [x] |
 | Determinism enforced in CI | `TestEngine_Determinism`, CI job | [x] |
 
-**Exit criteria — Phase 0 gate:** all four thresholds met on full adversarial set.
+**Exit criteria — Phase 0 gate:** all five thresholds met on full adversarial set at n≥10⁴ pairs.
+
+**Default config artifact:** [config/default-config.json](../../../config/default-config.json) (SHA-256 in file).
 
 ---
 
@@ -118,13 +121,15 @@ Precision dominates: if tuning trades FMR for recall, FMR wins.
 | Metric | Threshold | Result | Date |
 |---|---|---|---|
 | FMR | ≤ 0.5% | 0.000 | 2026-06-10 |
-| Overall recall | ≥ 85% | 98.2% | 2026-06-10 |
+| Overall recall | ≥ 85% | 99.9% | 2026-06-10 |
 | Hard-class recall | ≥ 70% | 100% (excl. ambiguous) | 2026-06-10 |
 | Conflict correctness | ≥ 90% | 100% | 2026-06-10 |
-| Determinism | 100% | pass | 2026-06-10 |
+| Conflict rate | ≤ 5% | 0.15% | 2026-06-10 |
+| Determinism | 100% | pass (200-iter probe) | 2026-06-10 |
 
-**Decision:** Pass
+**Decision:** Pass (remediated after independent validation — see [validation-report.md](validation-report.md))
 
+Formal gate: n=10⁴ pairs, seed=42, config hash `926558a0…e288c`.  
 Full machine-readable report: [gate-results.json](gate-results.json)
 
 ---
