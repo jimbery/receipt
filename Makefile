@@ -17,6 +17,8 @@ FUZZTIME_SHORT ?= 5s
 test-fuzz:
 	go test ./internal/match/ -fuzz=FuzzEngine_NoFalsePositiveOnCurrencyMismatch -fuzztime=$(FUZZTIME_SHORT) -count=1
 	go test ./internal/match/ -fuzz=FuzzMerchantResolver_Bounded -fuzztime=$(FUZZTIME_SHORT) -count=1
+	go test ./internal/match/similarity/ -fuzz=FuzzJaroWinkler_Bounded -fuzztime=$(FUZZTIME_SHORT) -count=1
+	go test ./internal/match/similarity/ -fuzz=FuzzTokenSetRatio_Bounded -fuzztime=$(FUZZTIME_SHORT) -count=1
 	go test ./internal/synth/ -fuzz=FuzzGenerator_NoiseBounds -fuzztime=$(FUZZTIME_SHORT) -count=1
 
 test-cover:

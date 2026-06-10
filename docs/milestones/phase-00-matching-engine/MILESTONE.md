@@ -1,6 +1,6 @@
 # Phase 0 — Matching Engine Core
 
-**Status:** Gate passed (ratified post validation v2)  
+**Status:** Done  
 **Owner:**  
 **Governing ADR:** [ADR-001 Matching engine core](../../adr/0001-record-architecture-decisions.md)  
 **Roadmap ref:** [ROADMAP.md § Phase 0](../../roadmap/ROADMAP.md)  
@@ -62,7 +62,7 @@ Precision dominates: if tuning trades FMR for recall, FMR wins.
 | `MerchantResolver` interface + basic normaliser | `internal/match/merchant.go` | [x] |
 | Jaro-Winkler + token-set similarity | `internal/match/similarity/` | [x] |
 | Scorer table + property tests | `internal/match/scorer_test.go` | [x] |
-| Fuzz: normaliser / similarity | `internal/match/similarity/` | [x] |
+| Fuzz: normaliser / similarity | `merchant_test.go`, `similarity/fuzz_test.go` | [x] |
 
 **Exit criteria:** per-scorer table tests; scores ∈ [0,1]; monotonic temporal decay; fuzz clean.
 
@@ -127,7 +127,7 @@ Precision dominates: if tuning trades FMR for recall, FMR wins.
 | Conflict rate | ≤ 5% | 4.3% | 2026-06-10 |
 | Determinism | 100% | pass (200-iter probe) | 2026-06-10 |
 
-**Decision:** Pass — Decisions 1–2 ratified in [ADR-001](../../adr/0001-record-architecture-decisions.md) amendments and [CHANGELOG](../../roadmap/CHANGELOG.md). Independent reviews: [docs/validation/](../../validation/README.md).
+**Decision:** Pass — independently reproduced in [validation v3](../../validation/phase-00/2026-06-10-v3-2bcc071.md) @ `2bcc071`. Decisions 1–2 ratified in [ADR-001](../../adr/0001-record-architecture-decisions.md) and [CHANGELOG](../../roadmap/CHANGELOG.md).
 
 Formal gate: n=10⁴ pairs, seed=42, engine `phase-0.2`, config hash `9b36c650…1a12e`.  
 Full machine-readable report: [gate-results.json](gate-results.json)

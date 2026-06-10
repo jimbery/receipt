@@ -27,7 +27,7 @@ cp -r docs/milestones/_template docs/milestones/phase-XX-short-name
 | Milestone | Status |
 |---|---|
 | [Track A — Customer discovery](track-a-customer-discovery/MILESTONE.md) | Draft |
-| [Phase 0 — Matching engine](phase-00-matching-engine/MILESTONE.md) | Draft |
+| [Phase 0 — Matching engine](phase-00-matching-engine/MILESTONE.md) | Done |
 | [Phase 1 — Email ingestion](phase-01-email-ingestion/MILESTONE.md) | Draft |
 | [Phase 2 — Open Banking](phase-02-open-banking/MILESTONE.md) | Draft |
 | [Phase 3 — Merchant normalisation](phase-03-merchant-normalisation/MILESTONE.md) | Draft |
