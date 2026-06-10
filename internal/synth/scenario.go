@@ -3,7 +3,6 @@ package synth
 import (
 	"time"
 
-	"github.com/jimbery/receipt/internal/harness"
 	"github.com/jimbery/receipt/internal/model"
 )
 
@@ -26,7 +25,9 @@ type Scenario struct {
 	Class        Class
 	Transactions []model.Transaction
 	Receipts     []model.Receipt
-	Labels       []harness.LabelledPair
+	Labels       []model.LabelledPair
+	Expectations model.Expectations
+	NoiseBounds  []NoiseBound
 }
 
 func scenarioBase() time.Time {
@@ -60,7 +61,11 @@ func exact() Scenario {
 			IssuedAt:  model.NewTimestamp(scenarioBase().Add(2*time.Hour), 0),
 			LineItems: []model.LineItem{{Description: "groceries", NetAmount: model.NewMoney(4523, "GBP")}},
 		}},
-		Labels: []harness.LabelledPair{{TransactionID: "t-exact", ReceiptID: "r-exact"}},
+		Labels: []model.LabelledPair{{TransactionID: "t-exact", ReceiptID: "r-exact"}},
+		Expectations: model.Expectations{
+			TransactionOutcomes: map[string]model.Outcome{"t-exact": model.OutcomeMatched},
+			ReceiptOutcomes:     map[string]model.Outcome{"r-exact": model.OutcomeMatched},
+		},
 	}
 }
 
@@ -77,7 +82,7 @@ func tipAdjusted() Scenario {
 			ID: "r-tip", Supplier: "Screwfix", Total: model.NewMoney(9990, "GBP"),
 			IssuedAt: model.NewTimestamp(scenarioBase().Add(-15*time.Minute), 0),
 		}},
-		Labels: []harness.LabelledPair{{TransactionID: "t-tip", ReceiptID: "r-tip"}},
+		Labels: []model.LabelledPair{{TransactionID: "t-tip", ReceiptID: "r-tip"}},
 	}
 }
 
@@ -97,7 +102,7 @@ func timezoneShift() Scenario {
 			ID: "r-tz", Supplier: "Amazon", Total: model.NewMoney(2499, "GBP"),
 			IssuedAt: model.NewTimestamp(localTxn.UTC().Add(30*time.Minute), 0),
 		}},
-		Labels: []harness.LabelledPair{{TransactionID: "t-tz", ReceiptID: "r-tz"}},
+		Labels: []model.LabelledPair{{TransactionID: "t-tz", ReceiptID: "r-tz"}},
 	}
 }
 
@@ -127,7 +132,7 @@ func nearDuplicate() Scenario {
 			{ID: "r-nd1", Supplier: "Shell", Total: model.NewMoney(8000, "GBP"), IssuedAt: model.NewTimestamp(t1, 0)},
 			{ID: "r-nd2", Supplier: "Shell", Total: model.NewMoney(8000, "GBP"), IssuedAt: model.NewTimestamp(t2, 0)},
 		},
-		Labels: []harness.LabelledPair{
+		Labels: []model.LabelledPair{
 			{TransactionID: "t-nd1", ReceiptID: "r-nd1"},
 			{TransactionID: "t-nd2", ReceiptID: "r-nd2"},
 		},
@@ -149,7 +154,7 @@ func settlementDelay() Scenario {
 			ID: "r-settle", Supplier: "Toolstation", Total: model.NewMoney(6750, "GBP"),
 			IssuedAt: model.NewTimestamp(auth.Add(10*time.Minute), 0),
 		}},
-		Labels: []harness.LabelledPair{{TransactionID: "t-settle", ReceiptID: "r-settle"}},
+		Labels: []model.LabelledPair{{TransactionID: "t-settle", ReceiptID: "r-settle"}},
 	}
 }
 
@@ -167,9 +172,19 @@ func ambiguous() Scenario {
 			{ID: "r-a1", Supplier: "BP", Total: model.NewMoney(5000, "GBP"), IssuedAt: ts},
 			{ID: "r-a2", Supplier: "BP", Total: model.NewMoney(5000, "GBP"), IssuedAt: ts},
 		},
-		Labels: []harness.LabelledPair{
+		Labels: []model.LabelledPair{
 			{TransactionID: "t-a1", ReceiptID: "r-a1"},
 			{TransactionID: "t-a2", ReceiptID: "r-a2"},
+		},
+		Expectations: model.Expectations{
+			GenuinelyAmbiguousTxnIDs:     []string{"t-a1", "t-a2"},
+			GenuinelyAmbiguousReceiptIDs: []string{"r-a1", "r-a2"},
+			TransactionOutcomes: map[string]model.Outcome{
+				"t-a1": model.OutcomeConflict, "t-a2": model.OutcomeConflict,
+			},
+			ReceiptOutcomes: map[string]model.Outcome{
+				"r-a1": model.OutcomeConflict, "r-a2": model.OutcomeConflict,
+			},
 		},
 	}
 }
@@ -188,7 +203,7 @@ func exactRef() Scenario {
 			TransactionRef: "pos-ref-99", Total: model.NewMoney(350, "GBP"),
 			IssuedAt: ts,
 		}},
-		Labels: []harness.LabelledPair{{TransactionID: "t-pos", ReceiptID: "r-pos"}},
+		Labels: []model.LabelledPair{{TransactionID: "t-pos", ReceiptID: "r-pos"}},
 	}
 }
 

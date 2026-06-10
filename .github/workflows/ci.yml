@@ -45,3 +45,9 @@ jobs:
 
       - name: Fuzz tests (short)
         run: make test-fuzz
+
+      - name: Determinism check
+        run: go test ./internal/match/ -run TestEngine_Determinism -count=5
+
+      - name: Gate evaluation
+        run: make evaluate-gate

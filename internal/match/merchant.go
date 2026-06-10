@@ -7,15 +7,21 @@ import (
 	"github.com/jimbery/receipt/internal/match/similarity"
 )
 
-// MerchantComparer scores descriptor similarity. Phase 3 replaces BasicMerchantComparer.
-type MerchantComparer interface {
+// MerchantResolver scores descriptor similarity. Phase 3 replaces BasicMerchantResolver.
+type MerchantResolver interface {
 	Similarity(txnDescriptor, receiptSupplier, receiptHint string) float64
 }
 
-// BasicMerchantComparer uses prefix stripping, token overlap, and Jaro-Winkler.
-type BasicMerchantComparer struct{}
+// MerchantComparer is deprecated; use MerchantResolver.
+type MerchantComparer = MerchantResolver
 
-func (BasicMerchantComparer) Similarity(txnDescriptor, receiptSupplier, receiptHint string) float64 {
+// BasicMerchantResolver uses prefix stripping, token overlap, Jaro-Winkler, and token-set ratio.
+type BasicMerchantResolver struct{}
+
+// BasicMerchantComparer is deprecated; use BasicMerchantResolver.
+type BasicMerchantComparer = BasicMerchantResolver
+
+func (BasicMerchantResolver) Similarity(txnDescriptor, receiptSupplier, receiptHint string) float64 {
 	txn := normaliseMerchant(txnDescriptor)
 	if txn == "" {
 		return 0
@@ -29,9 +35,13 @@ func (BasicMerchantComparer) Similarity(txnDescriptor, receiptSupplier, receiptH
 		}
 		token := tokenOverlap(txn, rec)
 		jw := similarity.JaroWinkler(txn, rec)
+		tsr := similarity.TokenSetRatio(txn, rec)
 		score := token
 		if jw > score {
 			score = jw
+		}
+		if tsr > score {
+			score = tsr
 		}
 		if strings.Contains(txn, rec) || strings.Contains(rec, txn) {
 			if contained := 0.85; contained > score {

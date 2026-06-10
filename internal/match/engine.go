@@ -14,18 +14,23 @@ const (
 // Engine is a deterministic, source-agnostic matching pipeline (ADR-001).
 type Engine struct {
 	cfg      Config
-	merchant MerchantComparer
+	merchant MerchantResolver
 }
 
 func NewEngine(cfg Config) *Engine {
-	return &Engine{cfg: cfg, merchant: BasicMerchantComparer{}}
+	return &Engine{cfg: cfg, merchant: BasicMerchantResolver{}}
 }
 
-func NewEngineWithComparer(cfg Config, merchant MerchantComparer) *Engine {
+func NewEngineWithResolver(cfg Config, merchant MerchantResolver) *Engine {
 	if merchant == nil {
-		merchant = BasicMerchantComparer{}
+		merchant = BasicMerchantResolver{}
 	}
 	return &Engine{cfg: cfg, merchant: merchant}
+}
+
+// NewEngineWithComparer is deprecated; use NewEngineWithResolver.
+func NewEngineWithComparer(cfg Config, merchant MerchantComparer) *Engine {
+	return NewEngineWithResolver(cfg, merchant)
 }
 
 func (e *Engine) Config() Config {
@@ -94,39 +99,6 @@ func (e *Engine) scoreCandidates(
 		})
 	}
 	return scored
-}
-
-func (e *Engine) generateCandidates(
-	transactions []model.Transaction,
-	receipts []model.Receipt,
-	skipTxn, skipReceipt map[string]struct{},
-) []candidate {
-	var out []candidate
-	for _, txn := range transactions {
-		if _, skip := skipTxn[txn.ID]; skip {
-			continue
-		}
-		for _, rec := range receipts {
-			if _, skip := skipReceipt[rec.ID]; skip {
-				continue
-			}
-			if !e.withinTemporalWindow(txn.OccurredAt.UTC, rec.IssuedAt.UTC) {
-				continue
-			}
-			if txn.Amount.Currency != rec.Total.Currency {
-				continue
-			}
-			if !txn.Amount.WithinTolerance(
-				rec.Total,
-				e.cfg.AbsAmountTolerance*candidateAbsToleranceMultiplier,
-				e.cfg.RelAmountTolerance*candidateRelToleranceMultiplier,
-			) {
-				continue
-			}
-			out = append(out, candidate{Transaction: txn, Receipt: rec})
-		}
-	}
-	return out
 }
 
 func (e *Engine) withinTemporalWindow(txnTime, receiptTime time.Time) bool {

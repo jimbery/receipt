@@ -223,6 +223,9 @@ linters:
       - path: 'internal/match/config\.go'
         linters:
           - mnd
+      - path: 'internal/harness/gate\.go'
+        linters:
+          - mnd
       - path: 'internal/match/similarity/'
         linters:
           - mnd

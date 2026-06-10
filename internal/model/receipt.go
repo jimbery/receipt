@@ -15,6 +15,7 @@ type LineItem struct {
 	NetAmount   Money
 	VATAmount   Money
 	VATRate     float64
+	VAT         VATLine
 }
 
 type Receipt struct {

@@ -1,0 +1,32 @@
+{
+  "MaxReceiptLead": 172800000000000,
+  "MaxReceiptLag": 604800000000000,
+  "AbsAmountTolerance": 50,
+  "RelAmountTolerance": 0.02,
+  "AmountBands": {
+    "TipAbsMinor": 500,
+    "TipRel": 0.15,
+    "PartialCaptureAbsMinor": 2000,
+    "PartialCaptureRel": 0.2,
+    "FuelPreAuthRel": 0.2,
+    "FXRoundingMinor": 2,
+    "CashbackAbsMinor": 500
+  },
+  "MinConfidence": 0.82,
+  "AmbiguityMargin": 0.02,
+  "MinMerchantForCandidate": 0.55,
+  "DistinguishAmountEpsilon": 0.01,
+  "DistinguishMerchantEpsilon": 0.01,
+  "DistinguishTemporalSecs": 120,
+  "WeightAmount": 0.42,
+  "WeightTemporal": 0.23,
+  "WeightMerchant": 0.3,
+  "WeightMCC": 0.05,
+  "SourceBoost": {
+    "email": 1,
+    "ocr": 1,
+    "pos": 1
+  },
+  "_hash_sha256": "9b36c6504d7fb524be330b0ed4a0fcbdb2e19b4af898c768b16c7cc45c21a12e",
+  "_note": "Committed Phase 0 default config. Hash from match.DefaultConfig().Hash()."
+}

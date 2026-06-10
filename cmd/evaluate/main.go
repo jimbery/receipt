@@ -1,7 +1,8 @@
-// Command evaluate runs the Phase 0 synthetic harness (ADR D7).
+// Command evaluate runs the Phase 0 synthetic harness and formal gate (M0.5).
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"text/tabwriter"
@@ -11,13 +12,67 @@ import (
 	"github.com/jimbery/receipt/internal/synth"
 )
 
-func main() {
-	engine := match.NewEngine(match.DefaultConfig())
-	scenarios := synth.All()
+const engineVersion = "phase-0.2"
 
-	w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+func main() {
+	var (
+		seed      = flag.Int64("seed", 42, "RNG seed for generated dataset")
+		generated = flag.Int("generated", 100, "number of generated pairs (0 to skip)")
+		jsonOut   = flag.String("json", "", "write machine-readable gate report to path")
+		compare   = flag.Bool("compare", false, "run baseline vs tightened MinConfidence comparison")
+	)
+	flag.Parse()
+
+	cfg := match.DefaultConfig()
+	engine := match.NewEngine(cfg)
+	scenarios := synth.AllExtended()
+
+	if *generated > 0 {
+		gen := synth.NewGenerator(*seed)
+		scenarios = append(scenarios, gen.GenerateSuite(*generated)...)
+	}
+
+	thresholds := harness.DefaultGateThresholds()
+	report := harness.RunGateWithOptions(engine, scenarios, thresholds, harness.GateRunOptions{
+		Seed:          *seed,
+		ConfigHash:    cfg.Hash(),
+		DatasetScale:  *generated,
+		EngineVersion: engineVersion,
+	})
+
+	if *compare {
+		tight := cfg
+		tight.MinConfidence = 0.85
+		base, cand := harness.CompareConfigs(cfg, tight, scenarios)
+		printCompare(os.Stdout, base, cand)
+	}
+
+	printSummary(os.Stdout, report)
+
+	if *jsonOut != "" {
+		data, err := harness.MarshalReport(report)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "marshal: %v\n", err)
+			os.Exit(1)
+		}
+		if writeErr := os.WriteFile(*jsonOut, data, 0o600); writeErr != nil {
+			fmt.Fprintf(os.Stderr, "write json: %v\n", writeErr)
+			os.Exit(1)
+		}
+	}
+
+	if !report.Passed {
+		for _, r := range report.FailureReasons {
+			fmt.Fprintf(os.Stderr, "gate failed: %s\n", r)
+		}
+		os.Exit(1)
+	}
+}
+
+func printSummary(out *os.File, report harness.GateReport) {
+	w := tabwriter.NewWriter(out, 0, 0, 2, ' ', 0)
 	mustWrite(func() error {
-		_, err := fmt.Fprintln(w, "CLASS\tPRECISION\tRECALL\tFMR\tCONFLICTS\tMATCHED\tPASS")
+		_, err := fmt.Fprintln(w, "CLASS\tRECALL\tFMR\tCONFLICT_RATE\tCONFLICT_OK\tOUTCOME_OK\tPASS")
 		return err
 	})
 	defer func() {
@@ -27,46 +82,39 @@ func main() {
 		}
 	}()
 
-	var (
-		totalPrecision float64
-		totalFMR       float64
-		count          int
-	)
-
-	for _, s := range scenarios {
-		result := engine.Match(s.Transactions, s.Receipts)
-		metrics := harness.EvaluateResult(s.Transactions, s.Receipts, result, s.Labels)
-
-		pass := "yes"
-		if s.Class == synth.ClassAmbiguous {
-			if metrics.FalseMatchRate > 0 {
-				pass = "no"
-			}
-		} else if metrics.Precision < 1.0 || metrics.FalseMatchRate > 0 {
-			pass = "no"
-		}
-
+	for _, cm := range report.PerClass {
+		outcomeOK := cm.OutcomeViolations == 0
 		mustWrite(func() error {
-			_, err := fmt.Fprintf(w, "%s\t%.3f\t%.3f\t%.3f\t%d\t%d\t%s\n",
-				s.Class, metrics.Precision, metrics.Recall, metrics.FalseMatchRate,
-				metrics.Conflicts, metrics.Matched, pass)
-			return err
-		})
-
-		if s.Class != synth.ClassAmbiguous {
-			totalPrecision += metrics.Precision
-			totalFMR += metrics.FalseMatchRate
-			count++
-		}
-	}
-
-	if count > 0 {
-		mustWrite(func() error {
-			_, err := fmt.Fprintf(os.Stdout, "\nAggregate (excl. ambiguous): precision=%.3f fmr=%.3f\n",
-				totalPrecision/float64(count), totalFMR/float64(count))
+			_, err := fmt.Fprintf(w, "%s\t%.3f\t%.3f\t%.3f\t%.3f\t%v\t%v\n",
+				cm.Class, cm.Recall, cm.FalseMatchRate, cm.ConflictRate,
+				cm.ConflictCorrectness, outcomeOK, cm.Pass)
 			return err
 		})
 	}
+
+	mustWrite(func() error {
+		_, err := fmt.Fprintf(out,
+			"\nOVERALL recall=%.3f fmr=%.3f conflict_rate=%.3f conflict_ok=%.3f deterministic=%v passed=%v\n"+
+				"seed=%d config_hash=%s scale=%d engine=%s schema=%s\n",
+			report.Overall.Recall, report.Overall.FalseMatchRate, report.Overall.ConflictRate,
+			report.Overall.ConflictCorrectness, report.Deterministic, report.Passed,
+			report.Seed, report.ConfigHash, report.DatasetScale, report.EngineVersion, report.SchemaVersion)
+		return err
+	})
+}
+
+func printCompare(out *os.File, base, cand harness.GateReport) {
+	mustWrite(func() error {
+		_, err := fmt.Fprintf(
+			out,
+			"\nCOMPARE baseline_fmr=%.4f candidate_fmr=%.4f baseline_recall=%.3f candidate_recall=%.3f\n",
+			base.Overall.FalseMatchRate,
+			cand.Overall.FalseMatchRate,
+			base.Overall.Recall,
+			cand.Overall.Recall,
+		)
+		return err
+	})
 }
 
 func mustWrite(fn func() error) {

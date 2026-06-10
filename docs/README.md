@@ -23,6 +23,7 @@ MILESTONE status → done
 | Record a technical decision | [`adr/template.md`](adr/template.md) — next number in sequence |
 | Understand testing expectations | [`development/TESTING.md`](development/TESTING.md) |
 | See the end-to-end workflow | [`development/WORKFLOW.md`](development/WORKFLOW.md) |
+| Read independent gate validation reports | [`validation/`](validation/README.md) |
 
 ## Directory layout
 
@@ -32,6 +33,7 @@ docs/
 ├── milestones/       # Phase execution docs — each triggers a build cycle
 │   └── _template/    # Copy this to start a new milestone
 ├── adr/              # Architecture Decision Records
+├── validation/       # Independent validator reports (verbatim, versioned)
 └── development/      # Engineering conventions (testing, workflow)
 ```
 

@@ -27,3 +27,28 @@ Record material changes to strategy, gates, or sequencing here.
 - Design constraint C1: no merchant-cooperation dependency for core value
 
 **Milestones affected:** all
+
+---
+
+## 2026-06-10 — Phase 0 gate tuning log (ratified post validation v2)
+
+**Trigger:** Independent validation v2 conditional pass; Decisions 1–2 require written ratification before Phase 0 complete.
+
+**Config changes** (`match.DefaultConfig`, before gate re-commit):
+
+| Parameter | Prior | Committed | Rationale |
+|---|---|---|---|
+| `MinConfidence` | 0.75 | 0.82 | Reduce false matches at scale; precision bias |
+| `AmbiguityMargin` | 0.03 | 0.02 | Tighter ambiguity detection |
+| `MinMerchantForCandidate` | — | 0.55 | Filter cross-merchant false candidates in dense index |
+| `DistinguishAmountEpsilon` | — | 0.01 | ADR amendment: resolve distinguishable near-duplicates |
+| `DistinguishMerchantEpsilon` | — | 0.01 | ADR amendment |
+| `DistinguishTemporalSecs` | — | 120 | ADR amendment: 3-min spacing still conflicts; 5-min+ resolves |
+
+**Generator changes** (ratified):
+
+- `TxnSpacingHours = 37` — breaks 48h settlement periodic aliasing; sole-trader year spread
+- Ambiguous population scales at 2% of n (min 4); near-duplicate at 5%; refunds 2% — capped because txn+receipt conflict entries double-count toward the ≤5% overall conflict-rate gate
+- Permanent `density_stress` scenario class (10 pairs in gate; tested to n=200)
+
+**Milestones affected:** phase-00-matching-engine

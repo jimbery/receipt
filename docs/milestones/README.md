@@ -16,9 +16,11 @@ cp -r docs/milestones/_template docs/milestones/phase-XX-short-name
 | `Draft` | Scope and gates being defined |
 | `Ready` | Test plan complete; ADRs accepted; dependencies met |
 | `In progress` | Active implementation |
-| `Gate review` | Code complete; harness run against criteria |
-| `Done` | Gate passed |
+| `Gate review` | Code complete; formal gate run at protocol scale (see [TESTING.md § Formal gate protocol](../development/TESTING.md#formal-gate-protocol)) |
+| `Done` | Gate passed; `gate-results.json` committed; independent re-run would agree |
 | `Killed` | Kill/pivot criterion met; see roadmap CHANGELOG |
+
+**Done requires more than green unit tests.** Phase 0 gate pass specifically needs n≥10⁴ generated pairs, five thresholds, and reproducible metadata in the committed report.
 
 ## Index
 

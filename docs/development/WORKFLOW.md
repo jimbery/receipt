@@ -36,15 +36,29 @@ Order of work:
 
 ### 5. Gate review
 
-Run:
+See [TESTING.md § Formal gate protocol](TESTING.md#formal-gate-protocol) for the full checklist. Summary:
+
+**Forbidden:**
+
+- Claiming gate pass on fewer pairs than the milestone protocol requires (Phase 0: **≥ 10⁴**)
+- Changing fixture expectations or spec behaviour to make results pass without ADR/spec review
+- Committing `gate-results.json` without re-running the harness on the same commit
+- Determinism checks that compare only output **counts**, not full contents and order
+
+**Required:**
 
 ```bash
 make test          # unit + race
 make test-fuzz     # fuzz targets (short mode in CI)
-make test-cover    # coverage report
+make lint          # strict golangci-lint
+make evaluate-gate # Phase 0: n=10⁴ formal gate (CI)
 ```
 
-Record results in the milestone doc **Gate review** section. Compare against acceptance criteria.
+Record results in the milestone doc **Gate review** section from the committed JSON report — not from memory or a smaller local run. Compare every threshold (Phase 0: five metrics + determinism).
+
+An independent reviewer should be able to cold-clone the branch, run `make evaluate-gate`, and reach the same pass/fail verdict.
+
+**Validator reports:** store the full text in [`docs/validation/`](../validation/README.md) (versioned filename, never overwrite). Record ratification responses alongside when the validator issues conditional pass decisions.
 
 ### 6. Close or pivot
 
@@ -73,3 +87,6 @@ test/
 - Milestone acceptance tests not written or not passing
 - Gate metric regression without ADR explaining the trade-off
 - New external dependency without ADR
+- `gate-results.json` missing, hand-edited, or produced at below protocol scale
+- Spec behaviour changed to green tests without ADR amendment
+- Generator or harness gaps that make CI green but formal gate unmeasurable (see TESTING.md)

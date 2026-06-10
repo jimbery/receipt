@@ -1,11 +1,11 @@
 package harness
 
-import "github.com/jimbery/receipt/internal/model"
+import (
+	"github.com/jimbery/receipt/internal/model"
+)
 
-type LabelledPair struct {
-	TransactionID string `json:"transaction_id"`
-	ReceiptID     string `json:"receipt_id"`
-}
+// LabelledPair is ground truth for evaluation (defined in model).
+type LabelledPair = model.LabelledPair
 
 type Metrics struct {
 	ItemisationRate           float64

@@ -34,7 +34,7 @@ The matcher operates exclusively on canonical `Transaction` and `Receipt` types.
    - *Temporal score* — proximity decay across a generous window. Must handle auth-vs-settlement skew (days), timezone offsets, and receipt timestamps that precede or follow the transaction event.
    - *Merchant similarity score* — normalised string similarity (token-based + Jaro-Winkler) between the transaction's merchant descriptor and the receipt's merchant name, after basic prefix stripping (`SQ *`, `PAYPAL *`, store numbers). Full canonical merchant resolution is deliberately deferred to Phase 3; Phase 0 ships a basic normaliser behind an interface so Phase 3 is a drop-in replacement.
    - MCC participates only as a weak corroborating signal, never as a hard filter.
-3. **Resolution** — enforce 1:1 matching globally. Greedy assignment by descending confidence with conflict detection: when two candidates for the same transaction (or two transactions for the same receipt) score within an ambiguity margin of each other, the engine emits `conflict` rather than choosing. Ambiguity is surfaced, not guessed away.
+3. **Resolution** — enforce 1:1 matching globally. Greedy assignment by descending confidence with conflict detection: when two candidates for the same transaction (or two transactions for the same receipt) score within an ambiguity margin of each other, the engine emits `conflict` rather than choosing — **unless** the top two candidates are distinguishable on a primary signal (see Amendment 2026-06-10 below). Ambiguity is surfaced, not guessed away.
 ### D3 — Refusal threshold as a first-class output
  
 Every match outcome is one of `matched | unmatched | conflict`, with confidence and method attached. Pairs scoring below a configurable threshold are `unmatched` even if they are the best candidate. The engine is explicitly biased toward refusal: the precision target dominates the recall target (see gate criteria in the milestone document).
@@ -78,3 +78,21 @@ The deliverable includes a labelled synthetic dataset generator producing advers
 - **Hard merchant-string equality after normalisation** — rejected; descriptor mangling makes equality brittle, and Phase 3 exists precisely because this is the hard sub-problem.
 - **Allowing 1:N matches (one receipt, multiple transactions)** — deferred. Split-tender payments are real but rare in the target cohort; modelled as a future extension flag rather than core complexity now.
 - **Third-party fuzzy-matching / record-linkage libraries** — rejected for the core per D6; revisit only if internal implementations prove inadequate in evaluation.
+
+---
+
+## Amendment 2026-06-10 — Signal distinguishability (ratified)
+
+**Context:** Independent Phase 0 validation (v2) identified that within-margin candidate pairs with clearly different amount, merchant, or temporal evidence (e.g. near-duplicate purchases five minutes apart) should resolve to the better candidate rather than emit `conflict`, while indistinguishable dense clusters (identical merchant, amount, and temporal delta) must still conflict. This refines D2 resolution semantics without weakening the precision bias.
+
+**Decision:** When the top two candidates for a transaction or receipt are within `AmbiguityMargin` on composite confidence, emit `conflict` only if they are **not** distinguishable: amount signal differs by ≤ `DistinguishAmountEpsilon`, merchant by ≤ `DistinguishMerchantEpsilon`, and temporal delta (seconds) by ≤ `DistinguishTemporalSecs`. All three thresholds live in `Config` (defaults 0.01, 0.01, 120).
+
+**Consequences:** Near-duplicate and timezone-shift scenarios can match correctly; density-stress populations (same merchant, amount, minutes apart) route entirely to `conflict` with zero false matches. Tuning these thresholds follows the config-as-data discipline (D4) and must be logged before gate re-runs.
+
+## Amendment 2026-06-10 — Synthetic generator composition (ratified)
+
+**Context:** Validation v1 exposed periodic aliasing when transaction spacing (1h) resonated with 48h settlement lag at scale. Remediation introduced 37h prime spacing between generated transactions — realistic for a sole-trader year spread, but changes what n=10⁴ measures.
+
+**Decision:** Generated transactions use `TxnSpacingHours = 37` (documented in `internal/synth/generator.go`). Adversarial populations scale with n: ambiguous **4%** (minimum 4, all `conflict`); near-duplicate **5%** (minimum 4); refunds **2%** (minimum 2). Fractions are capped so overall conflict rate stays within the ≤5% gate threshold while sample sizes grow with n. A permanent hand-built `density_stress` scenario class (identical Screwfix pairs, single timestamp) exercises the dense regime the well-separated gate population no longer samples.
+
+**Consequences:** Gate FMR at n=10⁴ predominantly measures well-separated pairs; density safety is asserted by the `density_stress` class and `TestDensityStress_ZeroFalseMatches`. Future generator composition changes require CHANGELOG entry before gate re-commit.

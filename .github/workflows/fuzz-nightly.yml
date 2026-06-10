@@ -1,0 +1,31 @@
+name: Fuzz (nightly)
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fuzz-long:
+    name: Long fuzz
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Fuzz matching engine — currency mismatch (5m)
+        run: go test ./internal/match/ -fuzz=FuzzEngine_NoFalsePositiveOnCurrencyMismatch -fuzztime=5m -count=1
+
+      - name: Fuzz merchant resolver (2m)
+        run: go test ./internal/match/ -fuzz=FuzzMerchantResolver_Bounded -fuzztime=2m -count=1
+
+      - name: Fuzz generator noise bounds (2m)
+        run: go test ./internal/synth/ -fuzz=FuzzGenerator_NoiseBounds -fuzztime=2m -count=1
