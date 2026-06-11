@@ -22,3 +22,7 @@ go.work.sum
 .env
 .env.*
 !.env.example
+
+/emls
+pilot-token*.json
+**/receipt-pilot/

@@ -1,0 +1,19 @@
+{
+  "schema_version": "ingest-fixture-smoke-v2",
+  "generated_at": "2026-06-10T20:04:37.961795Z",
+  "corpus_hash": "1033f9b13209b04d",
+  "classifier_rules_hash": "classify-v2-merchant-agnostic",
+  "extractor_version": "extract-v1-20260610",
+  "exact_precision": 1,
+  "exact_recall": 1,
+  "receipt_bearing_precision": 1,
+  "receipt_bearing_recall": 1,
+  "stratum_exact_accuracy": {
+    "hard_negative": 1,
+    "long_tail": 1,
+    "priority_merchant": 1
+  },
+  "requires_ocr_count": 0,
+  "passed": true,
+  "note": "Fixture-lab gate on frozen corpus. Classifier exact + receipt-bearing metrics."
+}

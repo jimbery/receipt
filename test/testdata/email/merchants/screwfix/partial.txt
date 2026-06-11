@@ -1,0 +1,7 @@
+From: receipts@screwfix.com
+To: REDACTED_EMAIL@example.com
+Subject: Screwfix receipt SF-2001
+Date: Tue, 11 Mar 2026 08:00:00 +0000
+Content-Type: text/html
+
+<html><body><table><tr><td>Total</td><td>£45.00</td></tr></table></body></html>

@@ -1,0 +1,14 @@
+From: orders@currys.co.uk
+To: shopper@example.com
+Subject: Currys order confirmation CC-88421 ready to collect
+Date: Tue, 13 May 2026 11:02:00 +0000
+Content-Type: text/html; charset=UTF-8
+
+<html><body>
+<h1>Click &amp; Collect confirmation</h1>
+<p>Order reference: <b>CC-88421</b></p>
+<table>
+<tr><td>SanDisk 256GB SSD</td><td>£54.99</td></tr>
+<tr><td><b>Total paid</b></td><td><b>£54.99</b></td></tr>
+</table>
+</body></html>

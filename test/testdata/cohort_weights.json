@@ -1,5 +1,6 @@
 {
-  "description": "MTD cohort merchant mix — populate from Track A interviews",
+  "frozen": true,
+  "description": "Provisional MTD cohort merchant-mix vector (trade-heavy). Ratified for harness use; refresh from Track A interviews when available. Weights sum to 0.68 — priority email-channel merchants only; remainder is paper/long-tail outside this vector.",
   "weights": [
     { "merchant": "Screwfix", "weight": 0.18 },
     { "merchant": "Toolstation", "weight": 0.12 },

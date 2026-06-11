@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "signed_off_by": "Jay Imbery",
+  "signed_off_date": "2026-06-10",
+  "note": "Pattern-scrubbed pilot-mail .eml fixtures. Hashes lock content after validation F1 remediation. Branch history rewritten 2026-06-10 to purge prior unscubbed commits.",
+  "fixtures": [
+    {
+      "path": "merchants/amazon/ordered-2-amazon-fire-tv-stick-4k.eml",
+      "sha256": "4e1db59e8f9bb9fc325dbc469f5b776b1a6f635136bc4ba18017a32d6e0d357a"
+    },
+    {
+      "path": "merchants/amazon/ordered-american-tourister-soundbox-and-2-more-items.eml",
+      "sha256": "c8824c7197e3731c50e265028d2eb4062f5914ee21dc0bd88e4f4bf691173771"
+    },
+    {
+      "path": "merchants/amazon/ordered-usb-c-plug-anker-40w-usb-c-and-1-more-item.eml",
+      "sha256": "c2e8c8e06016fabe3d0ee4193317334aaca6b4e334129d8d35b8477681950e85"
+    },
+    {
+      "path": "merchants/screwfix/confirmation-of-your-order-order.eml",
+      "sha256": "6abd603b245d55e307ea8714c3fa538d05eeb9eeb9ae6a7d9e237397775196eb"
+    },
+    {
+      "path": "merchants/screwfix/confirmation-of-your-order-order-2.eml",
+      "sha256": "c139ea6695eb2f1057d9bc6bb0486c5732f852a0cd757d7bbe04d604b6538ae5"
+    },
+    {
+      "path": "merchants/toolstation/toolstation-order-order-confirmed.eml",
+      "sha256": "00cef9cc34f7cac10e823b65a7f248b0ee7820e1294d6ff65abfa27fa39df8b7"
+    },
+    {
+      "path": "merchants/toolstation/toolstation-order-order-confirmed-2.eml",
+      "sha256": "8544eafdef175c78390252a246179555ec23a4279cd2703a9c315311694212e8"
+    },
+    {
+      "path": "merchants/toolstation/toolstation-order-order-confirmed-3.eml",
+      "sha256": "a004a0782764db3f782394456e51fcf5cf404da59b1ab70852a0ed40d9b23652"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+From: orders@amazon.co.uk
+To: REDACTED_EMAIL@example.com
+Subject: Your Amazon order confirmation
+Date: Mon, 10 Mar 2026 10:00:00 +0000
+Content-Type: text/plain
+
+Order #AMZ-1001
+Order total: £24.99
+Widget pack £20.82
+VAT £4.17

@@ -1,0 +1,9 @@
+From: receipts@screwfix.com
+To: REDACTED_EMAIL@example.com
+Subject: Screwfix receipt SF-2001
+Date: Mon, 10 Mar 2026 11:00:00 +0000
+Content-Type: text/html
+
+<html><body><table><tr><td>Drill bit</td><td>£37.50</td></tr>
+<tr><td>Total</td><td>£45.00</td></tr></table>
+<p>Order ref: SF2001</p></body></html>

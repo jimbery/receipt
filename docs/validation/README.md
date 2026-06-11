@@ -12,6 +12,8 @@ Reports are immutable once filed. Follow-up reviews get a new versioned file; re
 | Phase 0 | v2 | `350dfb6` | **CONDITIONAL PASS** | [2026-06-10-v2-350dfb6.md](phase-00/2026-06-10-v2-350dfb6.md) |
 | Phase 0 | Ratification response | (post-v2) | Decisions 1–2 ratified | [2026-06-10-ratification-response.md](phase-00/2026-06-10-ratification-response.md) |
 | Phase 0 | v3 | `2bcc071` | **PASS** | [2026-06-10-v3-2bcc071.md](phase-00/2026-06-10-v3-2bcc071.md) |
+| Phase 1 | v1 | `c192aa2` | **NOT MET** | [2026-06-10-v1-c192aa2.md](phase-01/2026-06-10-v1-c192aa2.md) |
+| Phase 1 | Threshold ratification | 2026-06-10 | Gate numbers + cohort weights frozen | [2026-06-10-ratification-thresholds.md](phase-01/2026-06-10-ratification-thresholds.md) |
 
 ## Filing convention
 

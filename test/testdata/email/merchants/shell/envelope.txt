@@ -1,0 +1,7 @@
+From: receipts@shell.com
+To: REDACTED_EMAIL@example.com
+Subject: Shell fuel purchase acknowledgement
+Date: Thu, 13 Mar 2026 10:00:00 +0000
+Content-Type: text/plain
+
+Thank you for visiting Shell. View your receipt in the Shell app.

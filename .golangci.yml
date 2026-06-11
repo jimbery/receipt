@@ -232,3 +232,27 @@ linters:
       - path: 'cmd/evaluate/'
         linters:
           - mnd
+      - path: 'cmd/ingest-evaluate/'
+        linters:
+          - mnd
+      - path: 'cmd/scrub-eml/'
+        linters:
+          - forbidigo
+          - mnd
+      - path: 'internal/ingest/harness/'
+        linters:
+          - mnd
+      - path: 'internal/dedup/'
+        linters:
+          - mnd
+      - path: 'internal/extract/'
+        linters:
+          - mnd
+          - gocognit
+      - path: 'internal/extract/generic.go'
+        linters:
+          - gocognit
+      - path: 'internal/mail/'
+        linters:
+          - gocognit
+          - nestif

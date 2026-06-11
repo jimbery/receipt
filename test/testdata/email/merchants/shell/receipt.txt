@@ -1,0 +1,8 @@
+From: receipts@shell.com
+To: REDACTED_EMAIL@example.com
+Subject: Shell Go+ receipt
+Date: Mon, 10 Mar 2026 15:00:00 +0000
+Content-Type: text/html
+
+<html><body><table><tr><td>Fuel</td><td>£62.00</td></tr>
+<tr><td>Total</td><td>£62.00</td></tr></table></body></html>

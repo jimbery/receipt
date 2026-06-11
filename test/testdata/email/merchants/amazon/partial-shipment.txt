@@ -1,0 +1,9 @@
+From: ship@amazon.co.uk
+To: REDACTED_EMAIL@example.com
+Subject: Your package has dispatched
+Date: Tue, 11 Mar 2026 09:00:00 +0000
+Content-Type: text/html
+
+<html><body><p>Tracking number TRACK1001</p>
+<table><tr><td>Cable</td><td>£10.82</td></tr><tr><td>Total</td><td>£12.99</td></tr></table>
+<p>Order #AMZ-1001</p></body></html>

@@ -1,0 +1,7 @@
+From: receipts@esso.com
+To: REDACTED_EMAIL@example.com
+Subject: Esso fuel purchase acknowledgement
+Date: Thu, 13 Mar 2026 11:00:00 +0000
+Content-Type: text/plain
+
+Thank you for visiting Esso. View your receipt in the Esso app.

@@ -1,0 +1,1900 @@
+Received: from SN1NAM01HT092.eop-nam01.prod.protection.outlook.com
+ (2603:10a6:802:15::43) by VI1P18901MB0254.EURP189.PROD.OUTLOOK.COM with HTTPS
+ via VI1PR08CA0234.EURPRD08.PROD.OUTLOOK.COM; Tue, 17 Jul 2018 16:05:29 +0000
+Received: from SN1NAM01FT007.eop-nam01.prod.protection.outlook.com
+ (10.152.64.60) by SN1NAM01HT092.eop-nam01.prod.protection.outlook.com
+ (10.152.64.123) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.952.17; Tue, 17 Jul
+ 2018 16:05:28 +0000
+Authentication-Results: spf=pass (sender IP is 194.72.6.62)
+ smtp.mailfrom=screwfix.com; hotmail.com; dkim=none (message not signed)
+ header.d=none;hotmail.com; dmarc=pass action=none header.from=screwfix.com;
+Received-SPF: Pass (protection.outlook.com: domain of screwfix.com designates
+ 194.72.6.62 as permitted sender) receiver=protection.outlook.com;
+ client-ip=194.72.6.62; helo=smtp.bt.net;
+Received: from smtp.bt.net (194.72.6.62) by
+ SN1NAM01FT007.mail.protection.outlook.com (10.152.65.101) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.952.17 via Frontend Transport; Tue, 17 Jul 2018 16:05:28 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:2AA5A1B1E4142AA22AB4E863792096B9D2BFE2E979B0A6EB396804EC94D1EB2E;UpperCasedChecksum:8E54ABCE763B8D5CC111DE3600F3EC9EF8C477A78F53531A42D7BB59E5C45C11;SizeAsReceived:811;Count:11
+Received: from [194.73.176.71] (helo=lnxs2262.dmz.screwfix.local)
+	by 009PO.mail.bt.net with smtp (Exim 4.90_1)
+	(envelope-from <confirmation@screwfix.com>)
+	id 1ffSTf-000B3M-UB
+	for REDACTED_EMAIL@example.com; Tue, 17 Jul 2018 17:05:27 +0100
+Received: (qmail 31629 invoked from network); 17 Jul 2018 16:05:33 -0000
+Received: from unknown (HELO unxs2062) (10.121.2.55)
+  by lnxs2262.dmz.screwfix.local with SMTP; 17 Jul 2018 16:05:33 -0000
+Date: Tue, 17 Jul 2018 17:05:27 +0100
+From: <confirmation@screwfix.com>
+To: <REDACTED_EMAIL@example.com>
+Message-ID: <REDACTED_PHONE.5413.REDACTED_PHONE.JavaMail.weblogic@unxs2062>
+Subject: Confirmation of your order: REDACTED_ORDER
+Content-Type: multipart/alternative;
+	boundary="----=_Part_5412_286764868.REDACTED_PHONE"
+X-ATG-MailingId: 442982703
+X-IncomingHeaderCount: 11
+Return-Path: confirmation@screwfix.com
+X-MS-Exchange-Organization-ExpirationStartTime: 17 Jul 2018 16:05:28.3247
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: Original Submit
+X-MS-Exchange-Organization-ExpirationInterval: 2:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: Original Submit
+X-MS-Exchange-Organization-Network-Message-Id: ddd9fREDACTED_PHONEbREDACTED_PHONEd5ebff1d48
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-Microsoft-Exchange-Diagnostics: 1;SN1NAM01FT007;1:njZR5JQx1cUwV2NNsOg22ELXkaadiQh2RPkqnbMNPwoecm5d/sCHBjPEkcRCUOzs99m608NOab2Bmb62mgSt0KgmwYb0JDweHyRP+7R4vq5Lf5zJr9gPjB0OpZ6pzN4I
+X-Forefront-Antispam-Report: EFV:NLI;
+X-MS-Exchange-Organization-AuthSource: SN1NAM01FT007.eop-nam01.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-PublicTrafficType: Email
+X-MS-UserLastLogonTime: 7/17/2018 1:10:36 AM
+X-MS-Office365-Filtering-Correlation-Id: ddd9fREDACTED_PHONEbREDACTED_PHONEd5ebff1d48
+X-Microsoft-Antispam: BCL:0;PCL:0;RULEID:(REDACTED_PHONE);SRVR:SN1NAM01HT092;
+X-Microsoft-Exchange-Diagnostics: 1;SN1NAM01HT092;3:CcJX15VjIOV0i2eDX5xJp9Bx/bmK1u7fVNyEHBh2fG3l6bKvPUg8+g1GNnCegLsLiJcC0ILnnPr4fse5SRdqiPdiTpyWcoAysEtxWZPNhpDIGO5pIg02x3e+engYxF67vhuUoKd85dCkp9kMJOMZw16i4cnNfgbilnxtVMRMQZzAfQKnadJ9817eO2ovrk/xKzenUcuaHCKVO61FA8z7R6kQfuykQBxZPY0NY2Rzg0+LyEbYFSUWOn2S3xu/Q5LXvVJaVhPkEtpvorMJl5Q6oUOgWa55cUZBqX7cLMHRW08QAPe3NF7DxxOXiFndA1zW;25:4cdLR3hn16MfHTS4TusxMgcKRlczuP8laP48IiPuVwz2+RYFFYKiapm6DUYEe3jj97iAk8efuRM+LynY5WFEv34IMF1nfjZlGNKiTErjvmo9aIy6VY/oJIImF5KZ4Z5Yv1kpLo8Ab3E/Kr5dpMucp5PcMAfFdGdw4EffxX6iUPddorAnLKtQLDjvkSs4qtMwJUao4RmxYuJ9N1ktKxr2wSCycrDCoqC+pgM0CYdu4CASB/TH5jY/3jqVeMrvSVTNNkweXUcLdJKQtuAQBl55TTU3z+aY791HhMH8maAzFpg7JDWdj5lIm2uO+X9l9G5YO/uAGGrprBGZAZfMTlHIuA==;31:7PSqh/CXpqJBmmDIaNFnzft8lULExVBVWwmuDG9BTzCMo1gMJLOYbl4e9cxSfLaDXBTraWcWwP+UZqxWyYN8HP+64OI0WmxJsPvLW//Aq6UuBlPVPgrfA28L/ws7T2T4Mi0Z5dNKylG1LxVThDoCQRnn5iRkcYSsEGAgbzb4zf4iBgvmGYm1OI3rIeObdfeiMGJatJXs8ATpKhxPkkZpwWrBb6oN0+82Z8OW2vhwZuQ=
+X-MS-TrafficTypeDiagnostic: SN1NAM01HT092:
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 194.72.6.62
+X-SID-PRA: CONFIRMATION@SCREWFIX.COM
+X-SID-Result: PASS
+X-MS-Exchange-Organization-PCL: 2
+X-Exchange-Antispam-Report-Test: UriScan:(REDACTED_PHONE);
+X-Exchange-Antispam-Report-CFA-Test: BCL:0;PCL:0;RULEID:(REDACTED_PHONE);SRVR:SN1NAM01HT092;BCL:0;PCL:0;RULEID:;SRVR:SN1NAM01HT092;
+X-Microsoft-Exchange-Diagnostics: 1;SN1NAM01HT092;4:No/LB2RighUcqiNk1UcW2+dBsOk4jpYoUHdch4xOZZ1WVf5vr/3C4aA4MP4RB2CKaj/OXg3S12m04/X9HjlwLjrMBEhdjfqdLlQEWIAA3SWtoV7lDl+zAhYh/5edp0+XS+B6xJGXIg7ijt4ScZvkfYPmAraUZUEKKTL4Mam8j3P2tRTgFYPsh5REv7ljkRiJyKzveqnM6GQzEIbh7y7vDWy2V+kPtIsMsKJinMoa+VE7IWISWnw0hQk5mS4p49AZVQyW42//QJj9UWuykqiTsfEZQqh9RgvWdOyDItlAu7wbLSBvc3ZWTAHG0gnHQdFYYxEyBp4eL3YeiOx/ESByukbJGMR6rdZiupUqdlrsiTXoBLXNeY7TAYcplIsY9Wq+TPB6Oc0d2kWeqxyfEeGwlXV/k2EaVKv9v/yqtzvLmOodvZNzP2oJuFzdZ4IxfNrs7gqZ0GRWgoC8eEaPUVhngwNi/C+D41ufJke27IkLkDxrmVvKCJs+iNvuvpnjXhlbV1t6kYynu7Ar99aU/0pY4kbN6rYaMO0BAs7s6Qae9E11yiet9F0W4nEicrtW0TpFNnTqx86Op+2XytMkhfyvcuJeUC5yRgfXXwcdpkffjoTH6o/Nf53D0CWm67JEaZhG
+X-Microsoft-Antispam-Message-Info: OBzXXBGXrByth8SnOiXHgLjZiBM5WBqFD7yJuOrQ55vYVr1gRdY9jr+QAEhgsWnsoXO5WlHiFKykTRXOC/KExWlgQs9mwBwNSY5SzxifmoxNPPMymyr1RMIZWP2i1EWd6YePbDJxQuIOmRrbE4Robd1bIXvzn4J2bJhynYmG6AjL4zcBcb+UkdUA8JqcRfoRK3BnKG32gttQoqjtYuQUpz+/BljX2m8hCZ47GWmSugmK6QKkL3BQny2ZIZpQBRhsBuoe4JceP1qtt6iHuU2jKT+ANoiMiVvP73dxcJuCqyhbjyThbhFkY3jkKTsJJLGAwX/wThu6fK3zKDmdaK6Mvo8I8DyNCUBkPE6J9dBcVQub6ID2aTGbDKvS01FTC+C2X8epHE+kxchG03WQe+3xXQRvHmi8t49XfVbKekwwCCs=
+X-Microsoft-Exchange-Diagnostics: 1;SN1NAM01HT092;6:DB0oh9O5FltXr0H6Kpjci76Sb3k+XXawT6KQSiAZ9CZsj/Oe15aSCUEXkYW2IWe8AeLrHvxpgd6tFO2Q9dc/vRsSeuy8Wg9LDuGSlYGosZagBAQ6r8rPOQloLC9UKiebBUMtY0y8p0jk4PR2ZRJcESccFk6p2L4C6TDKRZ2n7XKceb9uzv0mPsmcfAn8eFaZONKQcMG8BfNFtXI5hN+c5PT+o/epf3vNK8w0bxo5lwy4ZxHDKhj6JtY4nCXSFsd1d01gQkXhizbTh4qV6XBO4fxMA0yj7/ORvFommZmduksYPU7eu8jf7ZZ/lUgtv3sKiAHdZnBd0AfaQezxMQg03SgOFvCdVVKpasXPJ9q4KkpPbtEZLRtl9Kvw/lG7yUFhDnGyjcPDiX4aWrlJ6TIUT9mGd7FXOR31lLvB88FVrn13nSEv5kEwGAid329vQlMsujCH+zFNorVs5M9oM+cidQ==;5:JofN5O1a3FwBORbzLN2IbmokZ5mQi93WUMj6Mh3tqTcNq5dr5uDS/+hNnw6w8pR1nL2iQjh6OtUAtO5uhPhDPu9pVTb9f4D3zSrRLQ1yl15FmWASK6+l0MZcWM0tB0bEiJQ8PPnw5UPIBH6hwG7qHqV1cn0GJGQlPVNC1s2JBzs=;7:pOEw55T/GZ3eYosmPyLUf0x7G9fk/yFs639uA2BCULG49RpX1HdEd7riYu6EKrCq61l8nrfiwyQGGeyhEzB+Txp/LEu4Dqsd8y4J6sMZc7lNRVwVTZoZjt6eiPljhXsZEYQZrGjWYzhUg51DcChillN1ZtK5UQmfljakkXVPhi0hiB7990mHOeYKkTbK4aRLQBXD5gBQsZWhfhd2XNExLtltX72KTUgLiJ4hfsnaRawgn2zLXH9Js0RMgRJwhvak
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2018 16:05:28.2934
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ddd9fREDACTED_PHONEbREDACTED_PHONEd5ebff1d48
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 9a4eREDACTED_PHONEcf-bfc3-dcaef82d5da1
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1NAM01HT092
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.2295477
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.0952.000
+X-Microsoft-Antispam-Mailbox-Delivery:
+	abwl:0;wl:0;pcwl:0;kl:0;iwl:0;ijl:0;dwl:0;dkl:0;rwl:0;ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(REDACTED_PHONE);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0xO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	k7F0ULIBtoNvJIraRJmJvWt5LllqrzRs/UFghWre9xCkMD5CjUu1/4UIF64GRDgIc7vuRAArxcr48DuyDVtZVpyHUqyjxEB74q0463xmOGHAW+G8iqkEDat6QYn/xfnb61bxFe9cS+R38kVEQyza0YF8CFkOPfUxwVkjxtB5VZ8Cc2mjHVz6+TosjrjBddSFJNB87A4MuEQ3Ropzq7b4JR9OGnk//0+y3i0F+IVS5saawr0MXffzZjni8c4lvmIIjdn50/v27QARpM9fakpkPYDwUvifoMJQKy9et/pusqzOf7bx0RExwZMm5m9hQyrvjx23Z+faFc5OokKH42+fUu+tBraVN1FnuhhR70Fa1BnNBwHD5qduhJc2TtZr46Uc7YYUy0QdCsCpxti4cqIZBUV6k++IXq4NPKu2vVNXk91yfkUH9JGw/cT/hxQK6W4Dc13uHMgM0+0reloogm3Q9GA3Mk+euF9GKXI5K8Xdl3J3DdB1OCv+jI6VLTC0KOqtt4lGq/OacXg1dYnV5Bifddyjo24U4Xefr2nTE20ottTgOd0fn+FSYkrxZy+zkMGSiPSwjjXW673EgZC4kmqc3wpLQfp6GC1UflNuJvVMynw8o/ToIZth3FzHT8B/njec
+MIME-Version: 1.0
+
+------=_Part_5412_286764868.REDACTED_PHONE
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+/* Client-specific Styles */ #outlook a { padding: 0; } /* Force
+Outlook to provide a "view in browser" menu link. */ body { width:
+100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust:
+100%; margin: 0; padding: 0; background-color: #fbfbfb; } /* Prevent
+Webkit and Windows Mobile platforms from changing default font sizes,
+while not breaking desktop design. */ .ExternalClass { width: 100%; }
+/* Force Hotmail to display emails at full width */
+.ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass
+font,.ExternalClass td,.ExternalClass div { line-height: 100%; } /*
+Force Hotmail to display normal line spacing.*/ #backgroundTable {
+margin: 0; padding: 0; width: 100% !important; line-height: 100%
+!important; } img { outline: none; text-decoration: none; border:
+none; -ms-interpolation-mode: bicubic; } a img { border: none; }
+.image_fix { display: block; } p { margin: 0px 0px !important; } table
+td { border-collapse: collapse; } table { border-collapse: collapse;
+mso-table-lspace: 0pt; mso-table-rspace: 0pt; table-layout: fixed;
+margin: auto; } table table table { table-layout: auto; } a { color:
+#0053a0; } /*STYLES*/ table[class=3Dfull] { width: 100%; clear: both; }
+/*HIDE MOBILE HEADER ON DESKTOP DISPLAY*/ @media only screen and
+(min-width: 641px) { td[class=3Ddesktop-hide] { display: none
+!important; } } /*IPAD STYLES*/ @media only screen and (max-width:
+640px) { a[href^=3D"tel"],a[href^=3D"sms"] { text-decoration: none; color:
+#0053a0; /* or whatever your want */ pointer-events: none; cursor:
+default; } .mobile_link a[href^=3D"tel"],.mobile_link a[href^=3D"sms"] {
+text-decoration: default; color: #0053a0 !important; pointer-events:
+auto; cursor: default; } table[class=3Ddevicewidth] { width: 440px
+!important; text-align: center !important; }
+table[class=3Ddevicewidthinner] { width: 420px !important; text-align:
+center !important; } td[class=3D"order-info"] { line-height: 30px
+!important; } td[class=3D"mobilespacing"] { height: 10px !important; } }
+/*IPHONE STYLES*/ @media only screen and (max-width: 480px) {
+a[href^=3D"tel"],a[href^=3D"sms"] { text-decoration: none; color: #0a8cce;
+/* or whatever your want */ pointer-events: none; cursor: default; }
+.mobile_link a[href^=3D"tel"],.mobile_link a[href^=3D"sms"] {
+text-decoration: default; color: #0a8cce !important; pointer-events:
+auto; cursor: default; } table[class=3Ddevicewidth] { width: 280px
+!important; text-align: center !important; }
+table[class=3Ddevicewidthinner] { width: 260px !important; text-align:
+center !important; } table[class=3Dinnerborder] { width: 250px
+!important; text-align: center !important; }
+table[class=3Dinnerbordercontent] { width: 240px !important; text-align:
+center !important; } img[class=3Dbanner] { width: 280px !important;
+height: 140px !important; } td[class=3Dmobile-hide] { display: none
+!important; } td[class=3D"order-info"] { line-height: 30px !important; }
+td[class=3D"mobilespacing"] { height: 10px !important; } }   =20
+=20
+
+Dear REDACTED_NAME, your order is now being
+processed.
+
+    Order number: REDACTED_ORDER       =20
+Screwfix Tyseley Speedwell Industrial Estate
+102 Kings Road
+Tyseley
+Birmingham
+REDACTED_POSTCODE
+
+Please bring the card you have paid with and head straight to the
+collection point where you will be asked to verify your pin. We hold
+all collection items for 21 days.
+
+Ready to collect in as little as 1 minute!
+
+Please check store opening hours before you set off. 41720 x 1 Fly
+Lead Coaxial Plug to Plug 1m =C2=A31.69       Sub total
+(inc. VAT) =C2=A31.69 VAT =C2=A30.28 Total (inc. VAT) =C2=A31.69 Total (ex.=
+ VAT)
+=C2=A31.41
+
+All purchases are subject to our terms and conditions, saved at
+www.screwfix.com/help/termsandconditions
+
+    =20
+
+Forward planning:
+While we try our hardest to get your products to you in time and in
+perfect condition, we suggest that you don&#8217;t schedule any
+installation work until a few days after the expected delivery date,
+just in case you need to resolve any technical questions or order
+additional fittings if necessary.
+
+Disclaimer:
+This e-mail and any attachments are confidential. If you are not the
+intended recipient, please contact us immediately on REDACTED_PHONE
+(Mobile Friendly) and inform the sender. Please then delete the e-mail
+and do not disclose the contents to anyone.
+
+Although we do scan outgoing e-mails for viruses, it is possible that
+a virus may have become attached and it is your responsibility to scan
+incoming e-mails.
+
+Contact Us:
+Telephone: REDACTED_PHONE (Mobile Friendly) UK based contact centre
+Email: online@screwfix.com
+Address: Screwfix Direct Ltd, Trade House, Mead Avenue, Yeovil, REDACTED_POSTCODE
+Company Registration No 03006378 VAT No REDACTED_PHONE
+------=_Part_5412_286764868.REDACTED_PHONE
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns=3D"http://www.w3.org/1999/xht=
+ml"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+<title>Confirmation Email Confirmation Template</title>
+
+<style type=3D"text/css">
+/* Client-specific Styles */
+#outlook a {
+	padding: 0;
+} /* Force Outlook to provide a "view in browser" menu link. */
+body {
+	width: 100% !important;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #fbfbfb;
+}
+/* Prevent Webkit and Windows Mobile platforms from changing default font s=
+izes, while not breaking desktop design. */
+.ExternalClass {
+	width: 100%;
+} /* Force Hotmail to display emails at full width */
+.ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass font,.Ex=
+ternalClass td,.ExternalClass div
+	{
+	line-height: 100%;
+} /* Force Hotmail to display normal line spacing.*/
+#backgroundTable {
+	margin: 0;
+	padding: 0;
+	width: 100% !important;
+	line-height: 100% !important;
+}
+
+img {
+	outline: none;
+	text-decoration: none;
+	border: none;
+	-ms-interpolation-mode: bicubic;
+}
+
+a img {
+	border: none;
+}
+
+.image_fix {
+	display: block;
+}
+
+p {
+	margin: 0px 0px !important;
+}
+
+table td {
+	border-collapse: collapse;
+}
+
+table {
+	border-collapse: collapse;
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+	table-layout: fixed;
+	margin: auto;
+}
+
+table table table {
+	table-layout: auto;
+}
+
+a {
+	color: #0053a0;
+}
+/*STYLES*/
+table[class=3Dfull] {
+	width: 100%;
+	clear: both;
+}
+
+/*HIDE MOBILE HEADER ON DESKTOP DISPLAY*/
+@media only screen and (min-width: 641px) {
+	td[class=3Ddesktop-hide] {
+		display: none !important;
+	}
+}
+
+/*IPAD STYLES*/
+@media only screen and (max-width: 640px) {
+	a[href^=3D"tel"],a[href^=3D"sms"] {
+		text-decoration: none;
+		color: #0053a0; /* or whatever your want */
+		pointer-events: none;
+		cursor: default;
+	}
+	.mobile_link a[href^=3D"tel"],.mobile_link a[href^=3D"sms"] {
+		text-decoration: default;
+		color: #0053a0 !important;
+		pointer-events: auto;
+		cursor: default;
+	}
+	table[class=3Ddevicewidth] {
+		width: 440px !important;
+		text-align: center !important;
+	}
+	table[class=3Ddevicewidthinner] {
+		width: 420px !important;
+		text-align: center !important;
+	}
+	td[class=3D"order-info"] {
+		line-height: 30px !important;
+	}
+	td[class=3D"mobilespacing"] {
+		height: 10px !important;
+	}
+}
+
+/*IPHONE STYLES*/
+@media only screen and (max-width: 480px) {
+	a[href^=3D"tel"],a[href^=3D"sms"] {
+		text-decoration: none;
+		color: #0a8cce; /* or whatever your want */
+		pointer-events: none;
+		cursor: default;
+	}
+	.mobile_link a[href^=3D"tel"],.mobile_link a[href^=3D"sms"] {
+		text-decoration: default;
+		color: #0a8cce !important;
+		pointer-events: auto;
+		cursor: default;
+	}
+	table[class=3Ddevicewidth] {
+		width: 280px !important;
+		text-align: center !important;
+	}
+	table[class=3Ddevicewidthinner] {
+		width: 260px !important;
+		text-align: center !important;
+	}
+	table[class=3Dinnerborder] {
+		width: 250px !important;
+		text-align: center !important;
+	}
+	table[class=3Dinnerbordercontent] {
+		width: 240px !important;
+		text-align: center !important;
+	}
+	img[class=3Dbanner] {
+		width: 280px !important;
+		height: 140px !important;
+	}
+	td[class=3Dmobile-hide] {
+		display: none !important;
+	}
+	td[class=3D"order-info"] {
+		line-height: 30px !important;
+	}
+	td[class=3D"mobilespacing"] {
+		height: 10px !important;
+	}
+}
+</style>
+</head>
+<body bgcolor=3D"#fbfbfb">
+
+
+
+
+	<!-- Start of Header -->
+=09
+	=09
+	=09
+	=09
+=09
+
+
+
+
+
+
+<table width=3D"100%" bgcolor=3D"#fbfbfb" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" id=3D"backgroundTable" st-sortable=3D"header">
+   <tbody>
+      <tr>
+         <td>
+			<table width=3D"670" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" al=
+ign=3D"center" class=3D"devicewidth" style=3D"margin: auto;">
+			   <tbody>
+				  <tr>
+					 <td width=3D"100%">
+						<table width=3D"670" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"=
+ align=3D"center" class=3D"devicewidth">
+						   <tbody>
+							  <!-- Spacing -->
+							  <tr>
+								 <td height=3D"20" style=3D"font-size:1px; line-height:1px; mso-lin=
+e-height-rule: exactly;" class=3D"mobilespacing">&nbsp;</td>
+							  </tr>
+							  <!-- Spacing -->
+							  <tr>
+								 <td>
+									<!-- logo -->
+									<table width=3D"640" align=3D"center" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" class=3D"devicewidth">
+									   <tbody>
+										  <tr>
+
+											=20
+											=09
+											=09
+											=09
+											=20
+											=09
+											=09
+											=09
+
+											       <td width=3D"100%" align=3D"center">
+													  <div class=3D"imgpop">
+														 <a target=3D"_blank" href=3D"http://www.screwfix.com">
+															<img src=3D"http://content.screwfix.com/Confirmation/sfxdesk=
+tophead.png" alt=3D"Screwfix" border=3D"0" style=3D"border: 0; display: blo=
+ck; width: 100%">
+														 </a>
+													  </div>
+											       </td>
+
+											=09
+											=20
+
+										  </tr>
+									   </tbody>
+									</table>
+									<!-- end of logo -->
+								 </td>
+							  </tr>
+						   </tbody>
+						</table>
+					 </td>
+				  </tr>
+			   </tbody>
+			</table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+
+	<!-- End of Header -->
+
+
+
+	<!-- Start of separator -->
+	<table width=3D"100%" bgcolor=3D"#fbfbfb" cellpadding=3D"0" cellspacing=3D=
+"0" border=3D"0" id=3D"backgroundTable" st-sortable=3D"seperator">
+		<tbody>
+			<tr>
+				<td>
+					<table width=3D"670" align=3D"center" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" class=3D"devicewidth">
+						<tbody>
+							<tr>
+								<td align=3D"center" height=3D"20" style=3D"font-size: 1px; line-he=
+ight: 1px;" class=3D"mobilespacing">&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- End of separator -->
+
+
+
+	<!-- Start Full REDACTED_NAME – REDACTED_CITY -->
+=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+=09
+
+
+
+
+
+
+
+
+<table width=3D"100%" bgcolor=3D"#fbfbfb" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" id=3D"backgroundTable" st-sortable=3D"full-text">
+   <tbody>
+      <tr>
+         <td>
+			<table width=3D"670" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" al=
+ign=3D"center" class=3D"devicewidth">
+			   <tbody>
+				  <tr>
+					 <td width=3D"100%">
+						<table width=3D"670" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"=
+ align=3D"center" class=3D"devicewidth" style=3D"border: solid 1px #d1d1d1"=
+ bgcolor=3D"#ffffff">
+						   <tbody>
+							  <!-- Spacing -->
+							  <tr>
+								 <td height=3D"20" style=3D"font-size:1px; line-height:1px; mso-lin=
+e-height-rule: exactly;" class=3D"mobilespacing">&nbsp;</td>
+							  </tr>
+							  <!-- Spacing -->
+							  <tr>
+								 <td>
+									<table width=3D"630" align=3D"center" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" class=3D"devicewidthinner">
+									   <tbody>
+										  <!-- Title -->
+										  <tr>
+											 <td style=3D"font-family: Helvetica, arial, sans-serif; font-si=
+ze: 14px; color: #636363; line-height: 14px;" st-title=3D"fulltext-heading"=
+ align=3D"left">
+												<p style=3D"color:#0053a0">Dear REDACTED_NAME<p>
+												<br style=3D"line-height: 18px;">
+												<p>
+
+												=20
+												=09
+												=09
+												=09
+											=09
+												=09
+												=09
+												=09
+													   Thank you for shopping with Screwfix, your order is now bei=
+ng processed.
+												=09
+											=09
+
+												</p>
+											 </td>
+										  </tr>
+										  <!-- End of Title -->
+										  <!-- spacing -->
+										  <tr>
+											 <td width=3D"100%" height=3D"20" style=3D"font-size:1px; line-h=
+eight:1px; mso-line-height-rule: exactly;" class=3D"mobilespacing">&nbsp;</=
+td>
+										  </tr>
+										  <!-- End of spacing -->
+										  <!-- content -->
+										  <tr>
+											 <td>
+												<table width=3D"100%" align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"devicewidthinner" bgcolor=3D"fbfbfb">
+												   <tbody>
+													  <tr>
+														 <td height=3D"20" style=3D"font-size:1px; line-height:1px; m=
+so-line-height-rule: exactly;" class=3D"mobilespacing">&nbsp;</td>
+													  </tr>
+													  <tr>
+														 <td style=3D"font-family: Helvetica, arial, sans-serif; font=
+-size: 20px; line-height: 24px; color: #666666; text-align:center;" st-cont=
+ent=3D"fulltext-content" class=3D"order-info">
+															Order number: <span style=3D"color: #0053a0; padding-right: =
+20px;">REDACTED_ORDER</span> =20
+
+														=09
+															  =20
+															  =20
+														=09
+															  =20
+															  =20
+
+																 =20
+																	=20
+																	=20
+																	=20
+																 =20
+																	=20
+																	=20
+																	=20
+																	=20
+																  =20
+
+															  =20
+														=09
+														 </td>
+													  </tr>
+													  <tr>
+														 <td height=3D"20" style=3D"font-size:1px; line-height:1px; m=
+so-line-height-rule: exactly;" class=3D"mobilespacing">&nbsp;</td>
+													  </tr>
+												   </tbody>
+												</table>
+											 </td>
+										  </tr>
+										  <!-- End of content -->
+									   </tbody>
+									</table>
+								 </td>
+							  </tr>
+							  <!-- Spacing -->
+							  <tr>
+								 <td height=3D"20" style=3D"font-size:1px; line-height:1px; mso-lin=
+e-height-rule: exactly;" class=3D"mobilespacing">&nbsp;</td>
+							  </tr>
+							  <!-- Spacing -->
+						   </tbody>
+						</table>
+					 </td>
+				  </tr>
+			   </tbody>
+			</table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+
+	<!-- end of full text -->
+
+
+
+
+	<!-- Start of separator -->
+=09
+=09
+
+<div style=3D"height: 15px;">&nbsp;</div>
+
+	<!-- End of separator -->
+
+
+
+
+	<!-- Start Full REDACTED_NAME – REDACTED_CITY & COLLECT -->
+=09
+	=09
+	=09
+=09
+	=09
+	=09
+
+		=09
+			=09
+			=09
+			=09
+			=09
+			=09
+			=09
+			=09
+			=09
+			=09
+			=09
+		=09
+
+
+
+=09
+=09
+=09
+	 =20
+
+=09
+=09
+=09
+=09
+=09
+
+=09
+	=09
+	=09
+	=09
+=09
+	=09
+	=09
+	=09
+		=09
+
+		=09
+			=09
+			=09
+			=09
+			=09
+			=09
+			=09
+		=09
+			=09
+			=09
+			=09
+				=09
+			=09
+			=09
+			=09
+			=09
+		=09
+	=09
+=09
+
+=09
+	=09
+	=09
+=09
+	=09
+					=09
+		=09
+	=09
+					=09
+
+	<table width=3D"100%" bgcolor=3D"#fbfbfb" cellpadding=3D"0" cellspacing=3D=
+"0" border=3D"0" id=3D"backgroundTable" st-sortable=3D"full-text">
+		<tbody>
+			<tr>
+				<td>
+				<table width=3D"670" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" a=
+lign=3D"center" class=3D"devicewidth">
+					<tbody>
+						<tr>
+							<td width=3D"100%">
+								<table width=3D"670" cellpadding=3D"0" cellspacing=3D"0" border=3D"=
+0" align=3D"center" class=3D"devicewidth" style=3D"border: solid 1px #d1d1d=
+1" bgcolor=3D"#ffffff">
+									<tbody>
+										<!-- Spacing -->
+										<tr>
+											<td height=3D"20" style=3D"font-size:1px; line-height:1px; mso-l=
+ine-height-rule: exactly;" class=3D"mobilespacing">&nbsp;</td>
+										</tr>
+										<!-- Spacing -->
+										<tr>
+											<td>
+												<table width=3D"630" align=3D"center" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" class=3D"devicewidthinner" bgcolor=3D"#fbfbfb">
+													<tbody>
+														<!-- content -->
+															<tr>
+																<td style=3D"font-family: Helvetica, arial, sans-serif; fon=
+t-size: 20px; color: #0053a0; height: 69px; padding-left: 10px;">
+																	<img src=3D"http://content.screwfix.com/Confirmation/click=
+collect.gif" alt=3D"" border=3D"0" width=3D"227" height=3D"38" style=3D"bor=
+der:none; outline:none; text-decoration:none; text-align: left;">
+																</td>
+															</tr>
+															<tr>
+																<td style=3D"font-family: Helvetica, arial, sans-serif; fon=
+t-size: 13px; color: #666666; text-align:center;" st-content=3D"fulltext-co=
+ntent">
+																	<!-- start of left column -->
+																	<table width=3D"300" align=3D"left" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" class=3D"devicewidth">
+																		<tbody>
+																			<tr>
+																				<td>
+																					<!-- start of text content table -->
+																					<table width=3D"300" align=3D"left" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" class=3D"devicewidth">
+																						<tbody>
+																							<!-- Content -->
+																							<tr>
+																								<td>
+																									<table width=3D"285" align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" class=3D"devicewidthinner">
+																										<tbody>
+																											<tr>
+																												<td style=3D"font-family: Helvetica, arial, san=
+s-serif; font-size: 15px; color: #636363; font-weight: bold; text-align: le=
+ft; padding-bottom: 4px;" st-title=3D"2coltitle1" colspan=3D"2">
+																													Screwfix
+																													Tyseley
+																												</td>
+																											</tr>
+																											<tr>
+																												<td style=3D"font-family: Helvetica, arial, san=
+s-serif; line-height:18px; color: #636363; text-align: left" st-conteent=3D=
+"2colcontent1">
+
+																												=09
+																													=09
+																													=09
+																												=09
+																													=09
+																													=09
+																															Speedwell Industrial Estate<br>
+																													=09
+																												=09
+
+																												=09
+																													=09
+																													=09
+																												=09
+																													=09
+																													=REDACTED_PHONE Kings Road<br>
+																													=09
+																												=09
+
+																												=09
+																													=09
+																													=09
+																												=09
+																													=09
+																													=09
+																															Tyseley<br>
+																													=09
+																												=09
+
+																												=09
+																													=09
+																													=09
+																												=09
+																													=09
+																													=09
+																															Birmingham<br>
+																													=09
+																												=09
+
+																												=09
+																													=09
+																													=09
+																												=09
+																													=09
+																														=20
+																															REDACTED_POSTCODE<br>
+																													=09
+																												=09
+																												</td>
+																												<td style=3D"vertical-align: bottom;"></td>
+																											</tr>
+																										</tbody>
+																									</table>
+																								</td>
+																							</tr>
+																							<!-- end of Content -->
+																						</tbody>
+																					</table>
+																				</td>
+																			</tr>
+																			<!-- end of text content table -->
+																			<!-- Spacing -->
+																			<tr>
+																				<td width=3D"100%" height=3D"20"></td>
+																			</tr>
+																			<!-- Spacing -->
+																		</tbody>
+																	</table>
+																	<!-- end of left column -->
+																	<!-- start of right column -->
+																	<table width=3D"300" align=3D"right" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" class=3D"devicewidth">
+																		<tbody>
+																			<tr>
+																				<td>
+																					<!-- start of text content table -->
+																					<table width=3D"300" align=3D"left" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" class=3D"devicewidth">
+																						<tbody>
+																							<!-- Content -->
+																							<tr>
+																								<td>
+																									<table width=3D"200" align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" class=3D"devicewidthinner">
+																										<tbody>
+																											<tr>
+																												<td> </td>
+																											</tr>
+																										</tbody>
+																									</table>
+																								</td>
+																							</tr>
+																							<!-- end of Content -->
+																						</tbody>
+																					</table>
+																				</td>
+																			</tr>
+																			<!-- end of text content table -->
+																			<!-- Spacing -->
+																			<tr>
+																				<td width=3D"100%" height=3D"20"></td>
+																			</tr>
+																			<!-- Spacing -->
+																		</tbody>
+																	</table>
+																	<!-- end of right column -->
+																</td>
+															</tr>
+
+														=09
+															=09
+
+															=09
+														=09
+															=09
+
+															=09
+																=09
+																	=09
+																=09
+
+
+
+	<tr>
+		<td width=3D"100%" st-content=3D"fulltext-content">
+			<table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"=
+ class=3D"devicewidthinner" style=3D"margin: 10px;" bgcolor=3D"#0053a0">
+				<tbody>
+					<tr>
+						<td style=3D"padding: 10px;">
+							<img src=3D"http://content.screwfix.com/Confirmation/i-con.gif" alt=
+=3D"" border=3D"0" width=3D"22" height=3D"22" style=3D"border:none; outline=
+:none; text-decoration:none;">
+						</td>
+						<td style=3D"font-family: Helvetica, arial, sans-serif; font-size: 12=
+px; color: #ffffff;">
+							<p style=3D"padding: 8px 5px 8px 0;">Please bring the card you have =
+paid with and head straight to the collection point where you will be asked=
+ to verify your pin. We hold all collection items for 21 days.</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+
+
+															=09
+														=09
+
+														=09
+															=09
+
+															=09
+														=09
+
+														=09
+															=09
+
+															=09
+														=09
+
+														=09
+															=09
+
+															=09
+														=09
+															=09
+
+															=09
+																	<!-- Spacing -->=09
+																	<tr>
+																		<td width=3D"100%" height=3D"20"></td>
+																	</tr>
+																	<!-- Spacing -->
+																	<tr>
+																		<td style=3D"font-family: Helvetica, arial, sans-serif; c=
+olor: #636363; text-align: left; padding: 10px;" st-title=3D"2coltitle2" st=
+-content=3D"fulltext-content">
+																			<p style=3D"color: #0053a0; font-weight: bold; font-size=
+: 18px;">
+																				Ready to collect in as little as 1 minute!
+																			</p>
+																			<span style=3D"color: #0053a0; font-size: 13px;">
+																				Please check <a href=3D"http://www.screwfix.com/jsp/tra=
+deCounter/tradeCounterPage.jsp" style=3D"" target=3D"_blank">store opening =
+hours</a> before you set off.
+																			</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style=3D"border-top: 1px solid #d1d1d1; border-bottom=
+: 1px solid #d1d1d1">
+																			<table width=3D"610" align=3D"center" cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" class=3D"devicewidthinner" style=3D"font-fam=
+ily: Helvetica, arial, sans-serif; font-size: 13px; line-height: 24px; colo=
+r: #636363; text-align: left">
+																				<tbody>
+																				=09
+																					=09
+																					=09
+
+																					=09
+																				=09
+																					=09
+																					=09
+
+																					=09
+
+																						=09
+																=09
+																						=09
+																							=09
+																							=09
+																							=09
+																						=09
+																							=09
+																							=09
+																							=09
+																								=09
+																							=09
+																						=09
+																=09
+																						=09
+																							=09
+																							=09
+																						=09
+
+=09
+=09
+
+=09
+
+=09
+=09
+	=09
+	=09
+	=09
+=09
+	=09
+	=09
+	=09
+		=09
+	=09
+=09
+
+=09
+=09
+	=09
+	=09
+	=09
+=09
+	=09
+	=09
+	=09
+		=09
+	=09
+=09
+
+=09
+=09
+	=09
+		=09
+		=09
+=09
+	=09
+		=09
+		=09
+			=09
+		=09
+=09
+
+=09
+=09
+	=09
+	=09
+	=09
+	=09
+=09
+	=09
+	=09
+	=09
+	=09
+		=09
+			=09
+			=09
+			=09
+		=09
+			=09
+			=09
+			=09
+				=09
+			=09
+		=09
+	=09
+=09
+
+=09
+	=09
+	=09
+	=09
+=09
+	=09
+	=09
+			<tr>
+				<td align=3D"left" style=3D"line-height: 20px; border-bottom: dashed 1p=
+x #d1d1d1; padding: 4px 0" width=3D"20%">
+					41720            x 1       =20
+				</td>
+				<td width=3D"60%" style=3D"border-bottom: dashed 1px #d1d1d1;">Fly Lead=
+ Coaxial Plug to Plug 1m                                                </t=
+d>
+				<td align=3D"right" width=3D"20%" style=3D"border-bottom: dashed 1px #d=
+1d1d1;">=C2=A31.69         </td>
+			</tr>
+	=09
+	=09
+=09
+
+																	=09
+																					=09
+																				=09
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+															=09
+														=09
+
+														=09
+															=09
+
+															=09
+														=09
+
+															<!-- End of content -->
+														</tbody>
+													</table>
+												</td>
+											</tr>
+											<!-- Spacing -->
+											<tr>
+												<td height=3D"20" style=3D"font-size:1px; line-height:1px; mso-=
+line-height-rule: exactly;" class=3D"mobilespacing">&nbsp;</td>
+											</tr>
+											<!-- Spacing -->
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- Start of separator -->
+=09
+=09
+
+<div style=3D"height: 15px;">&nbsp;</div>
+
+	<!-- End of separator -->
+
+
+
+	=09
+=09
+	<!-- End Full REDACTED_NAME – REDACTED_CITY & COLLECT -->
+
+
+
+	<!-- Start Full REDACTED_NAME – REDACTED_CITY -->
+=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+=09
+
+
+
+
+
+
+
+
+
+
+
+
+<table width=3D"100%" bgcolor=3D"#fbfbfb" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" id=3D"backgroundTable" st-sortable=3D"full-text">
+   <tbody>
+      <tr>
+         <td>
+            <table width=3D"670" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" align=3D"center" class=3D"devicewidth">
+               <tbody>
+                  <tr>
+                     <td width=3D"100%">
+                        <table width=3D"670" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" align=3D"center" class=3D"devicewidth" style=3D"border:=
+ solid 1px #d1d1d1" bgcolor=3D"#ffffff">
+                           <tbody>
+                              <!-- Spacing -->
+                              <tr>
+                                 <td height=3D"20" style=3D"font-size:1px; =
+line-height:1px; mso-line-height-rule: exactly;" class=3D"mobilespacing">&n=
+bsp;</td>
+                              </tr>
+                              <!-- Spacing -->
+                              <tr>
+                                 <td>
+                                    <table width=3D"630" align=3D"center" c=
+ellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"devicewidthinner" =
+bgcolor=3D"#fbfbfb">
+                                       <tbody>
+                                          <!-- content -->
+                                         =20
+                                            =20
+                                            =20
+                                         =20
+
+                                         =20
+                                            =20
+                                            =20
+                                         =20
+
+                                         =20
+											   =20
+											=09
+                                         =20
+
+
+                                          <tr>
+                                             <td style=3D"font-family: Helv=
+etica, arial, sans-serif; font-size: 13px; color: #666666; text-align:cente=
+r; padding-bottom: 18px;" bgcolor=3D"#ffffff" st-content=3D"fulltext-conten=
+t">
+                                                <!-- start of left column -=
+->
+                                                <table width=3D"300" align=
+=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"devicew=
+idth">
+                                                   <tbody>
+                                                      <tr>
+                                                         <td>
+                                                            <!-- start of t=
+ext content table -->
+                                                          =20
+                                                           	=09
+                                                          =20
+
+
+
+
+
+
+
+=09
+=09
+
+=09
+=09
+	=09
+	=09
+=09
+
+
+
+
+
+=09
+=09
+=09
+
+
+                                                          =20
+                                                          =20
+                                                          =20
+                                                          =20
+                                                          =20
+                                                             <!-- end of co=
+ntent -->
+                                                         </td>
+                                                      </tr>
+                                                      <!-- end of text cont=
+ent table -->
+                                                      <!-- Spacing -->
+                                                      <tr>
+                                                         <td width=3D"100%"=
+ height=3D"20"></td>
+                                                      </tr>
+                                                      <!-- Spacing -->
+                                                   </tbody>
+                                                </table>
+                                                <!-- end of left column -->
+                                                <!-- start of right column =
+-->
+
+                                               =09
+                                                 =09
+                                                 =09
+                                                 =09
+                                                 =09
+                                                 =09
+                                                 =09
+											=09
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=09
+=09
+=09
+
+=09
+=09
+=09
+	=09
+=09
+
+<table width=3D"300" align=3D"right" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" class=3D"devicewidth">
+     <tbody>
+        <tr>
+           <td>
+              <!-- start of text content table -->
+              <table width=3D"300" align=3D"left" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"devicewidth">
+                 <tbody>
+					<tr>
+					   <td>
+					      <table width=3D"285" align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"devicewidthinner" style=3D"font-weight: b=
+old; font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #66=
+6666;">
+					         <tbody>
+					            <tr>
+					               <td width=3D"100%" height=3D"20" colspan=3D"2"></td>
+					            </tr>
+					            <tr>
+					               <td style=3D"line-height: 20px; border-bottom: dashed 1=
+px #d1d1d1; border-top: dashed 1px #d1d1d1; padding: 4px 0; text-align: lef=
+t;" width=3D"200">
+					                  Sub total <span style=3D"font-weight: normal; font-s=
+ize: 12px;">(inc. VAT)</span>
+					               </td>
+					               <td width=3D"85" style=3D"border-bottom: dashed 1px #d1=
+d1d1; border-top: dashed 1px #d1d1d1; text-align: right">
+					               	=09
+									=09
+					              =20
+					               	=09
+										=09
+										=09
+				=09
+										=09
+									=09
+										=09
+										=09
+				=09
+										=09
+											=09
+												=09
+												=09
+											=09
+
+
+
+
+
+
+
+
+
+
+
+=09
+=09
+=09
+=09
+=09
+=09
+
+=09
+=09
+	=09
+					=09
+=09
+=09
+=09
+=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+		=09
+			=09
+			=09
+		=09
+		=09
+		=09
+			=09
+
+			=09
+
+			=09
+		=09
+			=09
+
+			=09
+
+			=09
+											=09
+			=09
+		=09
+	=09
+=09
+
+
+											=09
+											=09
+											=09
+											=09
+											=09
+											=09
+										=09
+									=09
+									=09
+									=09
+										=09
+										=09
+										=09
+										=09
+									=09
+										=09
+										=09
+										=09
+										=09
+												=C2=A31.69
+										=09
+									=09
+					              =20
+					               </td>
+					            </tr>
+					           =20
+					           =20
+					           =20
+								=09
+				=09
+								=09
+							=09
+								=09
+				=09
+								=09
+									=09
+										=09
+										=09
+										=09
+										=09
+										=09
+									=09
+										=09
+										=09
+										=09
+											=09
+										=09
+										=09
+										=09
+									=09
+					            =09
+							=09
+					           =20
+					           =20
+					           =20
+								=09
+								=09
+							=09
+							=09
+							=09
+					            <tr>
+					               <td style=3D"line-height: 20px; border-bottom: dashed 1=
+px #d1d1d1; padding: 4px 0; text-align: left;" width=3D"200">
+					                  VAT
+					               </td>
+					               <td width=3D"85" style=3D"border-bottom: dashed 1px #d1=
+d1d1; text-align: right">
+					                       =20
+							           =20
+									=09
+										=09
+										=09
+										=09
+										=09
+									=09
+										=09
+										=09
+										=09
+										=09
+												=C2=A30.28
+										=09
+									=09
+				=09
+					               </td>
+					            </tr>
+					           =20
+					                      =20
+					           =20
+								=09
+								=09
+							=09
+							=09
+							=09
+							=09
+							=09
+								=09
+															=09
+										=09
+							=09
+							=09
+					           =20
+					            <tr>
+					               <td style=3D"padding: 20px 0; font-size: 22px; text-ali=
+gn: left;" width=3D"200">
+					                  Total <span style=3D"font-weight: normal; font-size:=
+ 12px;">(inc. VAT)</span>
+					               </td>
+					               <td width=3D"85" style=3D"font-size: 22px; text-align: =
+right">
+					                     =20
+							           =20
+										=09
+										=09
+										=09
+										=09
+									=09
+										=09
+										=09
+										=09
+										=09
+												=C2=A31.69
+										=09
+									=09
+				=09
+					               </td>
+					            </tr>
+					           =20
+					           =20
+					           =20
+					            <tr>
+					               <td style=3D"padding: 4px 0; text-align: left;" width=
+=3D"200">
+					                  Total <span style=3D"font-weight: normal; font-size:=
+ 12px;">(ex. VAT)</span>
+					               </td>
+					               <td width=3D"85" style=3D"text-align: right">
+					                =09
+										=09
+										=09
+										=09
+										=09
+									=09
+										=09
+										=09
+										=09
+										=09
+												=C2=A31.41
+										=09
+									=09
+					               </td>
+					            </tr>
+					         </tbody>
+					      </table>
+					   </td>
+					</tr>
+                    <!-- end of Content -->
+                 </tbody>
+              </table>
+           </td>
+        </tr>
+        <!-- end of text content table -->
+        <!-- Spacing -->
+        <tr>
+           <td width=3D"100%" height=3D"20" class=3D"mobilespacing"></td>
+        </tr>
+        <!-- Spacing -->
+     </tbody>
+  </table>
+                                               =20
+=09
+
+                                                <!-- end of right column --=
+>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td style=3D"border-top: 1px s=
+olid #d1d1d1; font-family: Helvetica, arial, sans-serif; font-size: 13px; c=
+olor: #636363; height: 14px; line-height: 14px; padding-top: 18px; mso-line=
+-height-rule: exactly;" st-title=3D"TCs-footer" align=3D"center" bgcolor=3D=
+"#ffffff">
+                                                <p>All purchases are subjec=
+t to our terms and conditions, saved at <a href=3D"http://www.screwfix.com/=
+help/termsandconditions" target=3D"_blank">www.screwfix.com/help/termsandco=
+nditions</a></p>
+                                             </td>
+                                          </tr>
+                                          <!-- End of Title -->
+                                          <!-- End of content -->
+                                       </tbody>
+                                    </table>
+                                 </td>
+                              </tr>
+                              <!-- Spacing -->
+                              <tr>
+                                 <td height=3D"20" style=3D"font-size:1px; =
+line-height:1px; mso-line-height-rule: exactly;" class=3D"mobilespacing">&n=
+bsp;</td>
+                              </tr>
+                              <!-- Spacing -->
+                           </tbody>
+                        </table>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+
+	<!-- end Full REDACTED_NAME – REDACTED_CITY -->
+
+
+
+	<!-- Start of separator -->
+=09
+=09
+
+<div style=3D"height: 15px;">&nbsp;</div>
+
+	<!-- End of separator -->
+
+
+
+	<!-- Start of separator -->
+=09
+=09
+
+<div style=3D"height: 15px;">&nbsp;</div>
+
+	<!-- End of separator -->
+
+
+
+	<!-- Start of social icons -->
+=09
+=09
+
+
+
+<table width=3D"100%" bgcolor=3D"#fbfbfb" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" id=3D"backgroundTable" st-sortable=3D"social">
+   <tbody>
+      <tr>
+         <td>
+			<table width=3D"670" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" al=
+ign=3D"center" class=3D"devicewidth">
+			   <tbody>
+				  <tr>
+					 <td width=3D"100%">
+						<table width=3D"380" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"=
+ align=3D"center" class=3D"devicewidth">
+						   <tbody>
+							  <tr>
+								 <td align=3D"left" valign=3D"middle" style=3D"font-family: Helveti=
+ca, arial, sans-serif; font-size: 12px;color: #666666" st-content=3D"postfo=
+oter">
+									<!-- Social Icons -->
+									   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" width=3D"100%">
+										  <tbody>
+											 <tr>
+												<td align=3D"center">
+												   <img style=3D"display:block;" src=3D"http://content.screwfix=
+.com/Confirmation/connectTxt.gif" alt=3D"" border=3D"0" width=3D"100%">
+												</td>
+											 </tr>
+										  </tbody>
+									   </table>
+									   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" width=3D"100%">
+										  <tbody>
+											 <tr>
+												<td>
+												   <a href=3D"https://twitter.com/screwfix" target=3D"_blank">
+													  <img style=3D"display:block;" src=3D"http://content.screwfix=
+.com/Confirmation/iconTwitter.gif" alt=3D"" border=3D"0" width=3D"100%">
+												   </a>
+												</td>
+												<td>
+												   <a href=3D"https://www.facebook.com/Screwfix" target=3D"_bla=
+nk">
+													  <img style=3D"display:block;" src=3D"http://content.screwfix=
+.com/Confirmation/iconFB.gif" alt=3D"" border=3D"0" width=3D"100%">
+												   </a>
+												</td>
+												<td>
+												   <a href=3D"http://www.youtube.com/screwfix" target=3D"_blank=
+">
+													  <img style=3D"display:block;" src=3D"http://content.screwfix=
+.com/Confirmation/iconYouTube.gif" alt=3D"" border=3D"0" width=3D"100%">
+												   </a>
+												</td>
+												<td>
+												   <a href=3D"http://community.screwfix.com/" target=3D"_blank"=
+>
+													  <img style=3D"display:block;" src=3D"http://content.screwfix=
+.com/Confirmation/iconForum.gif" alt=3D"" border=3D"0" width=3D"100%">
+												   </a>
+												</td>
+												<td>
+												   <a href=3D"https://plus.google.com/&#43;screwfix/posts" targ=
+et=3D"_blank">
+													  <img style=3D"display:block;" src=3D"http://content.screwfix=
+.com/Confirmation/iconGooglePlus.gif" alt=3D"" border=3D"0" width=3D"100%">
+												   </a>
+												</td>
+											 </tr>
+										  </tbody>
+									   </table>
+									<!-- END SOCIAL ICONS -->
+								 </td>
+							  </tr>
+							  <!-- Spacing -->
+							  <tr>
+								 <td width=3D"100%" height=3D"20"></td>
+							  </tr>
+							  <!-- Spacing -->
+						   </tbody>
+						</table>
+					 </td>
+				  </tr>
+			   </tbody>
+			</table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+
+	<!-- End of social icons -->
+
+
+
+	<!-- Start of footer -->
+=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+	=09
+=09
+
+
+=09
+=09
+
+<table width=3D"100%" bgcolor=3D"#fbfbfb" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" id=3D"backgroundTable" st-sortable=3D"postfooter">
+   <tbody>
+      <tr>
+         <td>
+            <table width=3D"670" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" align=3D"center" class=3D"devicewidth">
+               <tbody>
+                  <tr>
+                     <td width=3D"100%">
+                        <table width=3D"630" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" align=3D"center" class=3D"devicewidth">
+                           <tbody>
+                              <tr>
+                                 <td align=3D"left" valign=3D"middle" style=
+=3D"font-family: Helvetica, arial, sans-serif; font-size: 12px;color: #6666=
+66" st-content=3D"postfooter">
+                                    <p>
+										<strong>
+											Forward planning:
+										</strong>
+										<br>
+										While we try our hardest to get your products to you in time and =
+in perfect condition, we suggest that you don=E2=80=99t schedule any instal=
+lation work until a few days after the expected delivery date, just in case=
+ you need to resolve any technical questions or order additional fittings i=
+f necessary.
+									</p>
+								=09
+								=09
+									=09
+									=09
+								=09
+									=09
+									=09
+											<br>
+											<p style=3D"padding-bottom: 4px;">
+											   <strong>
+												  Disclaimer:
+											   </strong>
+											   <br>
+
+											  =20
+												 =20
+												 =20
+												 =20
+												 =20
+												 =20
+											  =20
+												 =20
+												 =20
+												 =20
+												 =20
+												 =20
+													 This e-mail and any attachments are confidential. If you are =
+not the intended recipient, please contact us immediately on REDACTED_PHONE =
+(Mobile Friendly) and inform the sender. Please then delete the e-mail and =
+do not disclose the contents to anyone.
+												 =20
+											  =20
+											</p>
+
+											<p style=3D"padding-bottom: 4px;">Although we do scan outgoing e=
+-mails for viruses, it is possible that a virus may have become attached an=
+d it is your responsibility to scan incoming e-mails.</p>
+									=09
+								=09
+
+                                    <br>
+                                    <p style=3D"padding-bottom: 4px;"><stro=
+ng>Contact Us:</strong><br>
+
+									=09
+										=09
+										=09
+										=09
+										=09
+										=09
+									=09
+										=09
+										=09
+										=09
+										=09
+										=09
+											   Telephone: REDACTED_PHONE (Mobile Friendly) UK based contact c=
+entre <br>
+                                      Email: online@screwfix.com <br>
+                                      Address: Screwfix Direct Ltd, Trade H=
+ouse, Mead Avenue, Yeovil, REDACTED_POSTCODE
+                                   <br> Company Registration No 03006378 VA=
+T No REDACTED_PHONE
+										=09
+									=09
+
+                                    </p>
+								</td>
+                              </tr>
+                              <!-- Spacing -->
+                              <tr>
+                                 <td width=3D"100%" height=3D"20"></td>
+                              </tr>
+                              <!-- Spacing -->
+                           </tbody>
+                        </table>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+
+	<!-- End of footer -->
+
+		</body>
+	</html>
+
+------=_Part_5412_286764868.REDACTED_PHONE--

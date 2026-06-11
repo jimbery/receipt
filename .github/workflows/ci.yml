@@ -51,3 +51,6 @@ jobs:
 
       - name: Gate evaluation
         run: make evaluate-gate
+
+      - name: Ingestion fixture smoke (classifier only)
+        run: make evaluate-ingest-smoke
