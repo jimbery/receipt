@@ -1,0 +1,8 @@
+From: receipts@diy.com
+To: REDACTED_EMAIL@example.com
+Subject: B&Q receipt — VAT-exempt purchase
+Date: Tue, 11 Mar 2026 09:30:00 +0000
+Content-Type: text/html
+
+<html><body><table><tr><td>Zero-rated goods</td><td>£10.00</td></tr>
+<tr><td>Total</td><td>£10.00</td></tr></table></body></html>

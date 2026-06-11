@@ -1,0 +1,10 @@
+From: alerts@barclays.co.uk
+To: shopper@example.com
+Subject: Your monthly statement is ready to view
+Date: Thu, 15 May 2026 06:30:00 +0000
+Content-Type: text/html; charset=UTF-8
+
+<html><body>
+<p>Your statement for account ending 4421 is available in online banking.</p>
+<p>Balance brought forward £2,431.18. This message is not a purchase receipt.</p>
+</body></html>

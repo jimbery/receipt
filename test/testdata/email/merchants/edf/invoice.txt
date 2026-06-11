@@ -1,0 +1,9 @@
+From: billing@edfenergy.com
+To: REDACTED_EMAIL@example.com
+Subject: EDF energy invoice
+Date: Mon, 10 Mar 2026 18:00:00 +0000
+Content-Type: text/html
+
+<html><body><table><tr><td>Standing charge</td><td>£74.17</td></tr>
+<tr><td>Total</td><td>£89.00</td></tr></table>
+<p>Account ref: EDF7001</p></body></html>

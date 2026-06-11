@@ -1,0 +1,10 @@
+From: rewards@highstreet-retailer.co.uk
+To: shopper@example.com
+Subject: Newsletter — loyalty voucher expires Friday
+Date: Mon, 12 May 2026 08:15:00 +0000
+Content-Type: text/html; charset=UTF-8
+
+<html><body>
+<p>Thanks for being a valued member. Your £5 loyalty voucher expires on Friday.</p>
+<p><a href="https://highstreet-retailer.co.uk/unsubscribe">Unsubscribe</a></p>
+</body></html>

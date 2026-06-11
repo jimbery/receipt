@@ -23,8 +23,8 @@ Each phase links to its execution doc. **Implementation starts from the mileston
 |---|---|---|
 | Track A | [track-a-customer-discovery](../milestones/track-a-customer-discovery/MILESTONE.md) | Willingness to pay |
 | Phase 0 | [phase-00-matching-engine](../milestones/phase-00-matching-engine/MILESTONE.md) | Precision / FMR on synthetic data |
-| Phase 1 | [phase-01-email-ingestion](../milestones/phase-01-email-ingestion/MILESTONE.md) | Cohort-weighted itemisation rate |
-| Phase 2 | [phase-02-open-banking](../milestones/phase-02-open-banking/MILESTONE.md) | End-to-end match rate |
+| Phase 1 | [phase-01-email-ingestion](../milestones/phase-01-email-ingestion/MILESTONE.md) | Fixture-lab ingest gate (moat → Phase 2) |
+| Phase 2 | [phase-02-open-banking](../milestones/phase-02-open-banking/MILESTONE.md) | End-to-end match rate + moat measurement |
 | Phase 3 | [phase-03-merchant-normalisation](../milestones/phase-03-merchant-normalisation/MILESTONE.md) | Match rate lift vs Phase 2 |
 | Phase 4 | [phase-04-ocr-capture](../milestones/phase-04-ocr-capture/MILESTONE.md) | Combined itemisation moat |
 | Phase 5 | [phase-05-pos-integration](../milestones/phase-05-pos-integration/MILESTONE.md) | Optional coverage lift |
@@ -103,8 +103,8 @@ Full phase detail lives in individual [milestone docs](../milestones/). Risk reg
 **Sequence (v2):**
 
 1. Phase 0 + Track A (parallel)
-2. Phase 1 → measure moat
-3. Phase 2 → Open Banking
+2. Phase 1 → fixture-lab ingest gate
+3. Phase 2 → Open Banking + moat measurement (transferred from M1.6, ratified 2026-06-11)
 4. Phase 3 → merchant normalisation
 5. Phase 4 → OCR
 6. Phase 5 → POS (optional)

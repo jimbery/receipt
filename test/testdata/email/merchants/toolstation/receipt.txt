@@ -1,0 +1,9 @@
+From: noreply@toolstation.com
+To: REDACTED_EMAIL@example.com
+Subject: Toolstation order confirmation
+Date: Mon, 10 Mar 2026 12:00:00 +0000
+Content-Type: text/html
+
+<html><body><table><tr><td>Saw blade</td><td>£18.75</td></tr>
+<tr><td>Total</td><td>£22.50</td></tr></table>
+<p>Order number: 3001</p></body></html>

@@ -1,0 +1,8 @@
+From: receipts@diy.com
+To: REDACTED_EMAIL@example.com
+Subject: B&Q receipt
+Date: Mon, 10 Mar 2026 13:00:00 +0000
+Content-Type: text/html
+
+<html><body><p>Receipt no: 4001</p><table><tr><td>Paint</td><td>£56.50</td></tr>
+<tr><td>Total</td><td>£67.80</td></tr></table></body></html>

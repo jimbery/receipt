@@ -1,0 +1,8 @@
+From: returns@amazon.co.uk
+To: REDACTED_EMAIL@example.com
+Subject: Refund confirmation
+Date: Wed, 12 Mar 2026 14:00:00 +0000
+Content-Type: text/html
+
+<html><body><p>Order #AMZ-1001</p><p>Credit note for order AMZ-1001</p>
+<table><tr><td>Refund total</td><td>£-5.00</td></tr></table></body></html>

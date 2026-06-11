@@ -65,3 +65,57 @@ Record material changes to strategy, gates, or sequencing here.
 - Phase 0 milestone status → **Done**; v3 report filed in `docs/validation/`
 
 **Milestones affected:** phase-00-matching-engine
+
+---
+
+## 2026-06-10 — Git history purge (PII)
+
+**Action:** `phase-01` rewritten to single commit off `main` (`ce40f26`). Six prior commits containing unscubbed pilot-mail `.eml` fixtures orphaned locally; branch force-pushed.
+
+**Note:** Anyone who cloned old SHAs (`a099f48`, `d52ad9a`, etc.) should re-clone or reset to the new tip.
+
+---
+
+**Trigger:** Validation v2 BLOCKED on real PII in committed `.eml` fixtures and circular scrubber property test.
+
+**Changes:**
+- Pattern-based scrubber: UK postcodes, greeting names, addresses, order refs, collection areas
+- Re-scrubbed all 8 `.eml` fixtures; order IDs stripped from filenames
+- `test/testdata/email/manifest.json` + hash-locked sign-off test
+- Property test uses `DetectPIIViolations` (patterns), not dictionary-only
+
+**Still required:** git history purge (`git filter-repo`/BFG) for commits before this remediation.
+
+---
+
+## 2026-06-10 — Validation v2 F2 (gate governance — pending)
+
+**Trigger:** Commit `3b27128` marked M1.6 Done by redefining the gate without confirmed Jay ratification.
+
+**Status:** M1.6 reverted to **Partial**. Moat gate pending or formal deferral — [validation-response-gate-deferral.md](../milestones/phase-01-email-ingestion/validation-response-gate-deferral.md).
+
+---
+
+## 2026-06-11 — Validation v3 closure + moat gate transfer (ratified)
+
+**Trigger:** Validation v3 (`0a338d1`) — remediation verified; closure commit C1–C4.
+
+**Ratified by:** Jay Imbery — [gate deferral ratification](../validation/phase-01/2026-06-11-ratification-gate-deferral.md)
+
+**Scope change:** The ≥8-volunteer moat gate, paper-gap quantification, and kill/pivot decision tree move from Phase 1 M1.6 to **Phase 2**. Phase 1 closes on fixture-lab CI evidence (classifier, field accuracy, dedup, PII audit). **Accepted cost:** moat measurement and pivot decisions fire later; paper-gap data unavailable until volunteer mailboxes exist at scale. Open Banking work may proceed in parallel.
+
+**Mechanical fixes:** synthetic PII in regression tests; pilot blocklist moved to gitignored `emls/pilot-blocklist.json`; milestone directory renamed `phase-01-email-ingestion`.
+
+**M1.6 status:** **Done** (redefined — fixture-lab only; moat appendix transferred to Phase 2).
+
+**Still required (Jay):** GitHub Support purge of pre-rebuild SHAs on PR #3 timeline.
+
+---
+
+## 2026-06-10 — Phase 1 fixture-lab thresholds ratified
+
+**Ratified by:** Jay Imbery — fixture-lab subset only ([ratification doc](../validation/phase-01/2026-06-10-ratification-thresholds.md))
+
+**Phase 1 CI thresholds** (`DefaultSmokeConfig()` + table tests): classifier ≥97%/92%, field accuracy ≥98%, dedup false merges 0, pattern PII audit pass.
+
+**Moat gate (M1.6 exit):** not measured; deferral **not** ratified in this entry.

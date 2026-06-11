@@ -1,0 +1,9 @@
+From: billing@octopus.energy
+To: REDACTED_EMAIL@example.com
+Subject: Your Octopus Energy invoice
+Date: Mon, 10 Mar 2026 17:00:00 +0000
+Content-Type: text/html
+
+<html><body><script type="application/ld+json">
+{"@type":"Invoice","accountNumber":"ACC6001","totalPaymentDue":{"price":"120.00"}}
+</script><table><tr><td>Energy</td><td>£100.00</td></tr><tr><td>Total</td><td>£120.00</td></tr></table></body></html>

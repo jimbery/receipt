@@ -1,0 +1,8 @@
+From: dispatch@toolstation.com
+To: REDACTED_EMAIL@example.com
+Subject: Order confirmation — partial shipment 3001
+Date: Tue, 11 Mar 2026 10:00:00 +0000
+Content-Type: text/html
+
+<html><body><p>Partial shipment 1 of order 3001</p>
+<table><tr><td>Item</td><td>£12.50</td></tr><tr><td>Total</td><td>£15.00</td></tr></table></body></html>

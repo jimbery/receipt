@@ -1,0 +1,1426 @@
+Received: from DU0PR10MB6439.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:10:408::20)
+ by AM9PR10MB4853.EURPRD10.PROD.OUTLOOK.COM with HTTPS; Fri, 28 Mar 2025
+ 10:00:14 +0000
+Received: from DM6PR06CA0063.namprd06.prod.outlook.com (2603:10b6:5:54::40) by
+ DU0PR10MB6439.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:10:408::20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8534.44; Fri, 28 Mar 2025 10:00:12 +0000
+Received: from DS1PEPF00017099.namprd05.prod.outlook.com
+ (2603:10b6:5:54:cafe::e5) by DM6PR06CA0063.outlook.office365.com
+ (2603:10b6:5:54::40) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8534.33 via Frontend Transport; Fri,
+ 28 Mar 2025 10:00:10 +0000
+Authentication-Results: spf=pass (sender IP is 54.240.1.60)
+ smtp.mailfrom=bounces.amazon.co.uk; dkim=pass (signature was verified)
+ header.d=amazon.co.uk;dkim=pass (signature was verified)
+ header.d=amazonses.com;dmarc=pass action=none
+ header.from=amazon.co.uk;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of bounces.amazon.co.uk
+ designates 54.240.1.60 as permitted sender) receiver=protection.outlook.com;
+ client-ip=54.240.1.60; helo=a1-60.smtp-out.eu-west-1.amazonses.com; pr=C
+Received: from a1-60.smtp-out.eu-west-1.amazonses.com (54.240.1.60) by
+ DS1PEPF00017099.mail.protection.outlook.com (10.167.18.103) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8534.20
+ via Frontend Transport; Fri, 28 Mar 2025 10:00:09 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:379EDB41515BD9954FDA5BC9E3CC2359E77E2F2AD019BD287962E0E2D12DED13;UpperCasedChecksum:7C5C30BED60E68A1A678052F18AED13DBB14A9CC386901DB2ADE5CEAB347A3C8;SizeAsReceived:1750;Count:15
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=xzr7cjj46bvb5ib4fyyv5hcqwj7o5lx2; d=amazon.co.uk; t=REDACTED_PHONE;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type;
+	bh=D7tYj8zJ0Z73yvZJZRMYV5mNgYeBlizYp2Nf0rnZ8MU=;
+	b=1wqwZ3R6h73D2FDXhkihMowbjzchfbkuFqg46lIZjeAVWcdkCw3s71bYPPhgQqfQ
+	bX+cXCu65mdqWOh8CZwgCH68LjDovLTA7ty5puY1OJHkb45Mcqi25VaYRzPyDDAdSME
+	xC9V29WFIeYlFGT6b79cDVPOlvQGzI0V05hbFlZo=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn; d=amazonses.com; t=REDACTED_PHONE;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:Feedback-ID;
+	bh=D7tYj8zJ0Z73yvZJZRMYV5mNgYeBlizYp2Nf0rnZ8MU=;
+	b=klp4lIh5oPO9i7M4lmcqPRYZsiQf/8EJur/aROxXTi3zO4MNc6hFe8pH3jGZh8pt
+	oaM4h6LTGZW9ddiDJGPbickAeF2OJvDl5mKtDX4CR/ToGtYZMYCh6ckjpjo2/fqTfB+
+	atZmYOd3Y2sdZhTsMfdkRcxLMX7rAbOPEL8ZH0AI=
+Date: Fri, 28 Mar 2025 10:00:08 +0000
+From: "Amazon.co.uk" <auto-confirm@amazon.co.uk>
+To: REDACTED_EMAIL@example.com
+Message-ID: <01020195dc31d740-eec227ea-f9de-46aREDACTED_PHONEe485ad8-000000@eu-west-1.amazonses.com>
+Subject: =?UTF-8?B?T3JkZXJlZDog4oCYVVNCIEMgUGx1ZywgQW5rZXIg?=
+ =?UTF-8?B?NDBXIFVTQiBDLi4u4oCZIGFuZCAxIG1vcmUgaXRlbQ==?=
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_179942_631733343.REDACTED_PHONE"
+X-AMAZON-MAIL-RELAY-TYPE: notification
+Bounces-to: REDACTED_PHONEc31acf5b688438eb6bb1cd53e70p0eu-C37VF9P10GUBT8@bounces.amazon.co.uk
+X-AMAZON-METADATA: CA=C37VF9P10GUBT8-CU=A2LNUHDXQRNH6U
+X-Original-MessageID: <urn.rtn.msg.REDACTED_PHONEc31acf5b688438eb6bb1cd53e70p0eu@REDACTED_PHONE.>
+Feedback-ID: REDACTED_PHONE::1.eu-west-1.UIAUrMfbpGrxavqnRE0yoZrAUBI9C7GRNUx/kUDo6B4=:AmazonSES
+X-SES-Outgoing: 2025.03.28-54.240.1.60
+X-IncomingHeaderCount: 15
+Return-Path: REDACTED_PHONEc31acf5b688438eb6bb1cd53e70p0eu-C37VF9P10GUBT8@bounces.amazon.co.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 28 Mar 2025 10:00:10.1044
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 4af4ef89-e7f5-49ed-9f70-08dd6ddf5369
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS1PEPF00017099:EE_|DU0PR10MB6439:EE_|AM9PR10MB4853:EE_
+X-MS-Exchange-Organization-AuthSource: DS1PEPF00017099.namprd05.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 3/28/2025 9:42:31 AM
+X-MS-Office365-Filtering-Correlation-Id: 4af4ef89-e7f5-49ed-9f70-08dd6ddf5369
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 54.240.1.60
+X-SID-PRA: AUTO-CONFIRM@AMAZON.CO.UK
+X-SID-Result: PASS
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:2;ARA:REDACTED_PHONE|REDACTED_PHONE|461199028|REDACTED_PHONE|REDACTED_PHONE|REDACTED_PHONE|REDACTED_PHONE|REDACTED_PHONE|REDACTED_PHONE|REDACTED_PHONE|56899033|REDACTED_PHONE|REDACTED_PHONE|REDACTED_PHONE|REDACTED_PHONE|REDACTED_PHONE|REDACTED_PHONE|440099028|REDACTED_PHONE|REDACTED_PHONE;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Mar 2025 10:00:09.7920
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4af4ef89-e7f5-49ed-9f70-08dd6ddf5369
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: DS1PEPF00017099.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: REDACTED_PHONE
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR10MB6439
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:04.3449389
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8534.033
+X-Microsoft-Antispam-Mailbox-Delivery:
+	wl:1;pcwl:1;ucf:0;jmr:0;ex:0;auth:1;dest:I;OFR:TrustedSenderList;ENG:(REDACTED_PHONE);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0tMQ==
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?cUljTFNSaUpSUTNZZkFrNDdmREc3Z1cwSlY5WkxFSXBhaWp6TU9DUUx4TW1K?=
+ =?utf-8?B?OEZmVTBDZFBTajlLNGN5VXJHekRkbUlRbEJhWDYvQTNkU3IvODF2V1Zsc0hK?=
+ =?utf-8?B?QUF5L0NHWkV1a1FWUkdWOVNhc0VYTDA5OEhPSVkwcDZNZ25BQUFRb1NtSUVW?=
+ =?utf-8?B?b1R3TVVHMHZxbU5hL0ttUWE3UEk1d2t4TFJNcS9VSHMwS2doS1pFZXBTTUVR?=
+ =?utf-8?B?QVdWVzVLWE9zOTN3em9ZbEZ2YmFsNkdIeHB0am52ajFrUGN3ZE53em1DRThP?=
+ =?utf-8?B?R0d5SDVlZkhiNTFGbVZLUlJWdFZqeTQ3T3BFcXZGM1doQ2hCb1BvYzhGdjNJ?=
+ =?utf-8?B?NHU2TW5SWGlVL1BYK2dpTE8vc0p2Y2ZON3poQnc2WFpSQ21zdStSUXNMY2lW?=
+ =?utf-8?B?WW9mZFFtaTRVTTlhdGQ5eWNJUEhRNTZsNmFjeFFqNWd5VE1idTRWYWFDVzl0?=
+ =?utf-8?B?M1VuenhjN0NtRjhENUU3aGYwbUFNY21abHVGUmJXcDJDby9wMldkV3pwdG1F?=
+ =?utf-8?B?S0x2RG1RZ3djaFVZcDdKaE1hK1VtdVJEMjVUK1hKYnVQdGY4T2NQdWpacys4?=
+ =?utf-8?B?bEY4OUhoRm9xUnhOTWQrNmV6cWxqckdIcmQ4elVDR2VjYXREMVVwU09KUlRP?=
+ =?utf-8?B?L0FHSk1Sam9WQjhSd2p0dnh3S01uMDBkYXRvSzFJVmVhOEVmSy85QmhLNFpD?=
+ =?utf-8?B?VFV4QnArZkl3UzNBRy9MSUpWYjg4dEJ1T1lTcVdia1pWcFg1WXlCRi94aCtE?=
+ =?utf-8?B?amFGdDdOTVczM29VenI2SVpDZzQ3Y0Y2L3Y2R2ZGNmdtQnRBbHFuL3RHT3Fv?=
+ =?utf-8?B?MVZTQXNmVmJtMi9qa3B4RVB0OHk3cGJSRnF4SnltN2UvZGFZa0I2clpFU2xR?=
+ =?utf-8?B?VmJvanhHT21SRlBQYXFZNEs3bVVsMnhnNzQ1WUZ1QzBEdyt2NlZvSCtrd25L?=
+ =?utf-8?B?aHlSMEo5b09tdzAzUjB0MXl5MmRySG00ZS9HdkxSNkh3R3Z5NHNOTTZVdDR0?=
+ =?utf-8?B?Y3M2L2o1aEhhV3B3S2wrcDVhdlRyOGpETkw3MnBmMWJITEMwUHJSQ2VwM1Yw?=
+ =?utf-8?B?dUZNTTVrL2g1VVh5bG5XM28wK0JtNGk4clkrYWx6Y1BEd0MrbjlKZjlWVVlj?=
+ =?utf-8?B?Ri9vbTZHN3FDZWQ5Nm44UElqNmFGa05hbnl1MjlzZ2FDYjV2cGpEbmlYNjJJ?=
+ =?utf-8?B?QXdWZ3BCaURiSm9IbStvNUU4bUpXMjAzdnBnL2RlYTJhUU40R1pxWnBtUmJU?=
+ =?utf-8?B?ZGdXdklKaU5BMG9FdjRyNHExS1Mza0ZSQkg5d1NFT1VzdmlKMDN5bGlrVjhR?=
+ =?utf-8?B?SUdyOVZaL2x1c2ZFYXhKS2NtbS9aSVdITEhnTVdmSFJLK2xUOXphSXFFQ2c2?=
+ =?utf-8?B?MTlFd0ZqclNVTEU4NVA2QWhaQitoZTlGVmVrZDVFL1NiYTJ6N1Z4MHdzMzdC?=
+ =?utf-8?B?TFErRkt3OUZnRWFnOWd0TDV4NEt0ZlNEQVRpb0VvTFBLd2doN1JsV3cyUURH?=
+ =?utf-8?B?dEtRK0U1SlpaaXBLd1c3Mm4xQzVjZHlLcjY3aTBiSTFUWWhOV1RFZlB3a2JZ?=
+ =?utf-8?B?dHh1dU00c0lHZFE5Y01IVHFodEpQa3RueGpnck4ySm9ESlpzWEU3bnJWaWQ1?=
+ =?utf-8?B?Y2RLbTR2Z29NV1ZNc1VoMFA1V2lXMDZNMDhVZzEvR3M0SU1ZWk5hVk95c05B?=
+ =?utf-8?B?cXcrcTJtRmpYMi9LTmRCaTQ1eTk2QTZUT3R3b1YwbVFRcUQwd3M0c2pKV3NL?=
+ =?utf-8?B?MWc1T0ZoK2pacElDSFVJalpMbkh1bUdWc2M5OC94K2d6UUtudG8zcUxLZzdQ?=
+ =?utf-8?B?bk5IRG9qdmM2Qk5ML3dVbG9SN1ZJZndFVVJ5TFRrRExTQVR4cUxOTVFYYlIz?=
+ =?utf-8?B?b1R2WlRhdldWaUNwRmgzbERDaGVjbTRxRzFkNHdBMUNuTU91eEZZSUpScW9p?=
+ =?utf-8?B?eEgwZUowUDZmQ0FOOStxT1RROHYrOWxJVE45RmRNMGs5bkszSGZBQVQwOWk3?=
+ =?utf-8?B?K0hhaUprbWorMTdlTnVCQXRpN3lxRGV5NTUwdUwra3VRQm9UQldyTE9JVlNE?=
+ =?utf-8?B?dHpNUk14WjRUNDNDNSszTDFRMTRlZzBBN3pFNjRUT3ltVktaVkJRN3Q4Unh3?=
+ =?utf-8?B?ZmphT1ZLZDB1MmtkTHVoUnFRWitzcVNZUFFxYTFsNU82UWNTY3lnWFBHWENw?=
+ =?utf-8?B?R1VZQUpZQml1KzRSbER5TVVYRTBKNHNaZzRmMnUvOFVvRS91REhJc2Rwa1Zz?=
+ =?utf-8?B?bmIvTUhXOTZ4a09GMDhiZVFvNGdBYkFqa3NEYWRBNEdOWjJKaEN3Q0lSSDkx?=
+ =?utf-8?B?VUh4alQxQ294bGttTFU0ZXFkMFUyOG5FYlVGcjY2YnMzU21zc1A0UTZMK2J1?=
+ =?utf-8?B?VCtWUFJ5RXRnSEJ3Z05KQ0d3akpTQTJtbGtwc3JDaVpvSlQvMjhmd2Q1a0xD?=
+ =?utf-8?B?M0JFbFh6K3NUVURFeExSellqRmVEa2Y0OWNkVnBvcVpBMHZCa2RRK0dFQWt2?=
+ =?utf-8?B?cUZsdnkwa0l0UkkzbFJWOGdhNWJCVGtTdW4rM2NGYnR5ZnlUZVJjM3R0T1lB?=
+ =?utf-8?B?YjF3bndRaTdPZmowR1BQNXNKRFlYWi9NakJCa3gxS3krdkQ0R3pRcStRQUk1?=
+ =?utf-8?B?R29SaUU2aUVUZ0JWdVhCdjZSZUg0bVdzRWduMkY3OFZvbFNWc2ZDb3Y0Nkw1?=
+ =?utf-8?B?clBoYnNXSUtwd3ZFRmlVZ1ZxMHpDY2t2VDlrQVdFWHBXWXE3QVRQVU53STZk?=
+ =?utf-8?B?UmlneDVmcGdJaWVJVTNucTg4Wi81QTQvdW9nbDRtdkJMTVNsNEd3UzZ5bXd6?=
+ =?utf-8?B?ZVl4TkZVaklIYzFra2tKYkZnUElLaWk4S0dhMDhycU4yREU5RG44MUphSTEr?=
+ =?utf-8?B?OVJhWkp4N0dsZHhrVkJuZjVRakM5amVBWC9oaHRTamM3ZFpHRmczbEhmbU1w?=
+ =?utf-8?B?WnJQTHhEK0hmVjBCOGZLK3pMQ0VZQlZMa3AvYlhiQk9IOEpxMmVZdUYrVUxR?=
+ =?utf-8?B?MEhFdkplRzFMck45cWFNYzBLWGJHclRVVk9ycHZuRjNlUUxLMzZXaXF1dnVD?=
+ =?utf-8?B?VUJsekpsc3dUYjh2NTNVdW41RFdvdDA5VWFQOFZxTkI2c3dlaFNONXBNSWpC?=
+ =?utf-8?B?TW5XT010dGF5SjJCMGNKeEFSZWxrNzNSSXNTN1NpUmJ4Smo4clJkdERmckhK?=
+ =?utf-8?B?dS9nd2Q4eWZZNC9SZ3BiQng5SytVSVd1MFJaRUZpcVhHb1RUK0xVYTZNY3M1?=
+ =?utf-8?B?Tk4xSFIvMThYSDZieGNGSkpXYU9WM0lBUkJHazM3bG1CY01hd0xoQjBobTFV?=
+ =?utf-8?B?Y3lXaFVqazZEVW9sY1M0Uzg2Z2x0ZDlCNCt4MHRaMEk4aFRyWFFQZHhOc3NU?=
+ =?utf-8?Q?vK8BVmK9ZM2qKa3GcjGMG?=
+MIME-Version: 1.0
+
+------=_Part_179942_631733343.REDACTED_PHONE
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+ =20
+Your Orders
+
+https://www.amazon.co.uk/gp/css/order-history?ref_=3Dfed_yo_default
+
+Your Account
+
+https://www.amazon.co.uk/your-account?ref_=3Dfed_ya_default
+
+Buy Again
+
+https://www.amazon.co.uk/gp/buyagain?ref_=3Dfed_bia_default
+
+
+    Thanks for your order, REDACTED_NAME!
+Ordered
+
+Dispatched
+
+Out for delivery
+
+Delivered
+
+
+
+
+
+
+
+
+
+Arriving Monday
+
+REDACTED_NAME – REDACTED_CITY
+
+Order #
+REDACTED_PHONE
+
+View or edit order
+https://www.amazon.co.uk/gp/css/order-details?orderID=3DREDACTED_PHONE=
+&ref_=3Dfed_veo
+
+* Anker USB C to Lightning Cable, 310 iPhone Fast Charger Cable(White, 6ft)=
+, MFi Certified, Fast Charging Cable for iPhone 14 Plus 14 14 Pro Max 13 13=
+ Pro 12 11 X XS XR (Charger Not Included)
+  Quantity: 1
+  10.49 GBP
+
+* USB C Plug, Anker 40W USB C Fast Charger, 2-Port Compact Charger, Compati=
+ble with iPhone 15/15 Pro/15 Pro Max/14/14 Pro/14 Pro Max, Galaxy, iPad, an=
+d More (Cable Not Included)
+  Quantity: 1
+  19.99 GBP
+
+
+Total
+34.97 GBP
+
+
+
+
+Amazon.co.uk is a trading name for Amazon EU Sarl, for Amazon Europe Core S=
+arl and for Amazon Media EU Sarl, all of which have their registered office=
+ at 38 avenue John F. Kennedy, L-1855 Luxembourg. =C2=A92025 Amazon.com, In=
+c. or its affiliates. Amazon and all related marks are trademarks of Amazon=
+.com, Inc. or its affiliates.
+
+This e-mail is only an acknowledgement of receipt of your order. Your contr=
+act to purchase these items is not complete until we send you an [e-mail no=
+tifying you that the items have been dispatched](https://www.amazon.co.uk/g=
+p/help/customer/display.html/?nodeId=3D201909000&ref_=3Dfed_roclt_acknowled=
+gement). [Fulfilled By Amazon](https://www.amazon.co.uk/gp/help/customer/di=
+splay.html?nodeId=3D202018630&ref_=3Dfed_roclt_default_helpfba) (usually re=
+ferred to as FBA) items are generally sold by third-party sellers but store=
+d in an Amazon Fulfilment Centre and sent to you from there. Items which ar=
+e sold by Warehouse Deals are also labelled Fulfilled by Amazon. Warehouse =
+Deals is a trading name for Amazon EU Sarl, and is part of the Amazon.com g=
+roup. Unless otherwise noted, items sold by Amazon EU Sarl are subject to V=
+alue Added Tax based on country of delivery in accordance with the EU laws =
+on distance selling. If your order contains one or more items from a seller=
+ other than Amazon EU Sarl, it may also be subject to VAT, depending upon t=
+he seller's business policies and the location of their operations. Learn m=
+ore about [VAT and seller information](https://www.amazon.co.uk/VatSellerIn=
+fo?ref_=3Dfed_roclt_default_helpvat). If your item(s) are purchased from [A=
+mazon Marketplace](https://www.amazon.co.uk/marketplace?ref_=3Dfed_roclt_no=
+tsoldbyamznpen), the seller may request additional information such as the =
+VAT number or your VAT code, in order to issue a valid invoice.
+
+Amazon.co.uk
+------=_Part_179942_631733343.REDACTED_PHONE
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html lang=3D"en" dir=3D"auto" xmlns=3D"http://www.w3.org/19=
+99/xhtml" xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-=
+microsoft-com:office:office"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><t=
+itle></title><!--[if !mso]><!--><meta http-equiv=3D"X-UA-Compatible" conten=
+t=3D"IE=3Dedge"><!--<![endif]--><meta name=3D"viewport" content=3D"width=3D=
+device-width,initial-scale=3D1"><style type=3D"text/css">#outlook a{padding=
+:0}body{margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adju=
+st:100%}table,td{border-collapse:collapse;mso-table-lspace:0pt;mso-table-rs=
+pace:0pt}img{border:0;height:auto;line-height:100%;outline:0;text-decoratio=
+n:none;-ms-interpolation-mode:bicubic}p{display:block;margin:13px 0}</style=
+><!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]--><!--[if lte mso 11]>
+    <style type=3D"text/css">.mj-outlook-group-fix{width:100%!important}</s=
+tyle>
+    <![endif]--><style type=3D"text/css">@media only screen and (min-width:=
+600px){.mj-column-per-100{width:100%!important;max-width:100%}.mj-column-pe=
+r-25{width:25%!important;max-width:25%}.mj-column-per-75{width:75%!importan=
+t;max-width:75%}.mj-column-per-50{width:50%!important;max-width:50%}}</styl=
+e><style media=3D"screen and (min-width:600px)">.moz-text-html .mj-column-p=
+er-100 { width:100% !important; max-width: 100%; }
+.moz-text-html .mj-column-per-25 { width:25% !important; max-width: 25%; }
+.moz-text-html .mj-column-per-75 { width:75% !important; max-width: 75%; }
+.moz-text-html .mj-column-per-50 { width:50% !important; max-width: 50%; }<=
+/style><style type=3D"text/css">@media (prefers-color-scheme:dark){.rio-hea=
+der-148,.rio-header-148 *{color:#fff!important}}@media (prefers-color-schem=
+e:dark){.rio-header-149,.rio-header-149 *{color:#fff!important}}@media (pre=
+fers-color-scheme:dark){.rio-text-253{color:#fff}}@media (prefers-color-sch=
+eme:dark){.rio-text-254{color:#fff}}@media (prefers-color-scheme:dark){.rio=
+-text-255{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-256{colo=
+r:#fff}}@media (prefers-color-scheme:dark){.rio-text-257{color:#fff}}@media=
+ (prefers-color-scheme:dark){.rio-text-258{color:#fff}}@media (prefers-colo=
+r-scheme:dark){.rio-text-259{color:#fff}}@media (prefers-color-scheme:dark)=
+{.rio-text-260{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-261=
+{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-262{color:#fff}}@=
+media (prefers-color-scheme:dark){.rio-text-263{color:#fff}}@media (prefers=
+-color-scheme:dark){.rio-text-264{color:#fff}}@media (prefers-color-scheme:=
+dark){.rio-text-265{color:#fff}}@media (prefers-color-scheme:dark){.rio-tex=
+t-266{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-267{color:#f=
+ff}}@media (prefers-color-scheme:dark){.rio-text-268{color:#fff}}@media (pr=
+efers-color-scheme:dark){.rio-header-150,.rio-header-150 *{color:#fff!impor=
+tant}}@media (prefers-color-scheme:dark){.rio-text-269{color:#fff}}@media (=
+prefers-color-scheme:dark){.rio-text-270{color:#fff}}@media (prefers-color-=
+scheme:dark){.rio-text-271{color:#fff}}@media (prefers-color-scheme:dark){.=
+rio-text-272{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-273{c=
+olor:#fff}}@media (prefers-color-scheme:dark){.rio-text-274{color:#fff}}@me=
+dia (prefers-color-scheme:dark){.rio-text-275{color:#fff}}@media (prefers-c=
+olor-scheme:dark){.rio-text-276{color:#fff}}@media (prefers-color-scheme:da=
+rk){.rio-text-277{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-=
+278{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-279{color:#fff=
+}}@media (prefers-color-scheme:dark){.rio-text-280{color:#fff}}@media (pref=
+ers-color-scheme:dark){.rio-text-281{color:#fff}}@media (prefers-color-sche=
+me:dark){.rio-text-282{color:#fff}}@media (prefers-color-scheme:dark){.rio-=
+text-283{color:#fff}}@media (prefers-color-scheme:dark){.rio-header-151,.ri=
+o-header-151 *{color:#fff!important}}@media (prefers-color-scheme:dark){.ri=
+o-text-284{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-285{col=
+or:#fff}}@media (prefers-color-scheme:dark){.rio-text-286{color:#fff}}@medi=
+a (prefers-color-scheme:dark){.rio-text-287{color:#fff}}@media (prefers-col=
+or-scheme:dark){.rio-text-288{color:#fff}}@media (prefers-color-scheme:dark=
+){.rio-text-289{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-29=
+0{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-291{color:#fff}}=
+@media (prefers-color-scheme:dark){.rio-text-292{color:#fff}}@media (prefer=
+s-color-scheme:dark){.rio-text-293{color:#fff}}@media (prefers-color-scheme=
+:dark){.rio-text-294{color:#fff}}@media (prefers-color-scheme:dark){.rio-te=
+xt-295{color:#fff}}@media (prefers-color-scheme:dark){.rio-header-152,.rio-=
+header-152 *{color:#fff!important}}@media (prefers-color-scheme:dark){.rio-=
+text-296{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-297{color=
+:#fff}}@media (prefers-color-scheme:dark){.rio-text-298{color:#fff}}@media =
+(prefers-color-scheme:dark){.rio-text-299{color:#fff}}@media (prefers-color=
+-scheme:dark){.rio-text-300{color:#fff}}@media (prefers-color-scheme:dark){=
+.rio-text-301{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-302{=
+color:#fff}}@media (prefers-color-scheme:dark){.rio-text-303{color:#fff}}@m=
+edia (prefers-color-scheme:dark){.rio-text-304{color:#fff}}@media (prefers-=
+color-scheme:dark){.rio-text-305{color:#fff}}@media (prefers-color-scheme:d=
+ark){.rio-text-306{color:#fff}}@media (prefers-color-scheme:dark){.rio-text=
+-307{color:#fff}}@media (prefers-color-scheme:dark){.rio-header-153,.rio-he=
+ader-153 *{color:#fff!important}}@media (prefers-color-scheme:dark){.rio-te=
+xt-308{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-309{color:#=
+fff}}@media (prefers-color-scheme:dark){.rio-text-310{color:#fff}}@media (p=
+refers-color-scheme:dark){.rio-text-311{color:#fff}}@media (prefers-color-s=
+cheme:dark){.rio-text-312{color:#fff}}@media (prefers-color-scheme:dark){.r=
+io-text-313{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-314{co=
+lor:#fff}}@media (prefers-color-scheme:dark){.rio-text-315{color:#fff}}@med=
+ia (prefers-color-scheme:dark){.rio-text-316{color:#fff}}@media (prefers-co=
+lor-scheme:dark){.rio-header-154,.rio-header-154 *{color:#fff!important}}@m=
+edia (prefers-color-scheme:dark){.rio-text-317{color:#fff}}@media (prefers-=
+color-scheme:dark){.rio-text-318{color:#fff}}@media (prefers-color-scheme:d=
+ark){.rio-text-319{color:#fff}}@media (prefers-color-scheme:dark){.rio-text=
+-320{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-321{color:#ff=
+f}}@media (prefers-color-scheme:dark){.rio-text-322{color:#fff}}@media (pre=
+fers-color-scheme:dark){.rio-text-323{color:#fff}}@media (prefers-color-sch=
+eme:dark){.rio-text-324{color:#fff}}@media (prefers-color-scheme:dark){.rio=
+-text-325{color:#fff}}@media (prefers-color-scheme:dark){.rio-header-155,.r=
+io-header-155 *{color:#fff!important}}@media (prefers-color-scheme:dark){.r=
+io-text-326{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-327{co=
+lor:#fff}}@media (prefers-color-scheme:dark){.rio-text-328{color:#fff}}@med=
+ia (prefers-color-scheme:dark){.rio-text-329{color:#fff}}@media (prefers-co=
+lor-scheme:dark){.rio-text-330{color:#fff}}@media (prefers-color-scheme:dar=
+k){.rio-text-331{color:#fff}}@media (prefers-color-scheme:dark){.rio-header=
+-156,.rio-header-156 *{color:#fff!important}}@media (prefers-color-scheme:d=
+ark){.rio-text-332{color:#fff}}@media (prefers-color-scheme:dark){.rio-text=
+-333{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-334{color:#ff=
+f}}@media (prefers-color-scheme:dark){.rio-text-335{color:#fff}}@media (pre=
+fers-color-scheme:dark){.rio-text-336{color:#fff}}@media (prefers-color-sch=
+eme:dark){.rio-text-337{color:#fff}}@media (prefers-color-scheme:dark){.rio=
+-header-157,.rio-header-157 *{color:#fff!important}}@media (prefers-color-s=
+cheme:dark){.rio-text-338{color:#fff}}@media (prefers-color-scheme:dark){.r=
+io-text-339{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-340{co=
+lor:#fff}}@media (prefers-color-scheme:dark){.rio-text-341{color:#fff}}@med=
+ia only screen and (min-width:600px){.rio-asin-image-h1spJq4zWvudoX92KhUiFa=
+ .productImageTd{height:122px!important}.rio-asin-image-h1spJq4zWvudoX92KhU=
+iFa .productImage{max-height:122px!important;max-width:122px!important}}@me=
+dia (prefers-color-scheme:dark){.rio-text-342{color:#fff}}@media (prefers-c=
+olor-scheme:dark){.rio-text-343{color:#fff}}@media (prefers-color-scheme:da=
+rk){.rio-text-344{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-=
+345{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-346{color:#fff=
+}}@media only screen and (min-width:600px){.rio-asin-image-sTeEQ8Tp1LgZ8xCh=
+hMyUwM .productImageTd{height:122px!important}.rio-asin-image-sTeEQ8Tp1LgZ8=
+xChhMyUwM .productImage{max-height:122px!important;max-width:122px!importan=
+t}}@media (prefers-color-scheme:dark){.rio-text-347{color:#fff}}@media (pre=
+fers-color-scheme:dark){.rio-text-348{color:#fff}}@media (prefers-color-sch=
+eme:dark){.rio-text-349{color:#fff}}@media (prefers-color-scheme:dark){.rio=
+-text-350{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-351{colo=
+r:#fff}}@media (prefers-color-scheme:dark){.rio-text-352{color:#fff}}@media=
+ (prefers-color-scheme:dark){.rio-text-353{color:#fff}}@media (prefers-colo=
+r-scheme:dark){.rio-text-354{color:#fff}}@media (prefers-color-scheme:dark)=
+{.rio-text-355{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-356=
+{color:#fff}}@media (prefers-color-scheme:dark){.rio-text-357{color:#fff}}@=
+media (prefers-color-scheme:dark){.rio-text-358{color:#fff}}@media (prefers=
+-color-scheme:dark){.rio-text-359{color:#fff}}@media (prefers-color-scheme:=
+dark){.rio-text-360{color:#fff}}@media (prefers-color-scheme:dark){.rio-tex=
+t-361{color:#fff}}@media (prefers-color-scheme:dark){.rio-header-158,.rio-h=
+eader-158 *{color:#fff!important}}@media (prefers-color-scheme:dark){.rio-t=
+ext-362{color:#fff}}@media (prefers-color-scheme:dark){.rio-header-159,.rio=
+-header-159 *{color:#fff!important}}@media (prefers-color-scheme:dark){.rio=
+-card,.rio-card-text,.rio-card-text>table,.rio-card>table{background-color:=
+#181a1a!important}}[data-ogsc] .rio-card,[data-ogsc] .rio-card-text,[data-o=
+gsc] .rio-card-text>table,[data-ogsc] .rio-card>table{background-color:#181=
+a1a!important}.rio-card-text p+p{margin-top:1.2em}.rio-header strong{color:=
+#067d62}@media (prefers-color-scheme:dark){.rio-header a{color:#6ed6e6!impo=
+rtant}.rio-header strong{color:#13bd96!important}}[data-ogsc] .rio-header,[=
+data-ogsc] .rio-header *{color:#fff!important}[data-ogsc] .rio-header a{col=
+or:#6ed6e6!important}[data-ogsc] .rio-header strong{color:#13bd96!important=
+}@media only screen and (max-width:599px){table.mj-full-width-mobile{width:=
+100%!important}td.mj-full-width-mobile{width:auto!important}}.rio-text stro=
+ng{color:#067d62}.rio-text img{width:100%;height:auto}@media (prefers-color=
+-scheme:dark){.rio-text *{color:#fff!important}.rio-text a,.rio-text a>*{co=
+lor:#6ed6e6!important}.rio-text strong{color:#13bd96!important}}[data-ogsc]=
+ .rio-text *{color:#fff!important}[data-ogsc] .rio-text a,[data-ogsc] .rio-=
+text a>*{color:#6ed6e6!important}[data-ogsc] .rio-text strong{color:#13bd96=
+!important}.rio-asin-image .productImage{mix-blend-mode:multiply}u+.body .r=
+io-asin-image .productImage{mix-blend-mode:initial!important}@media (prefer=
+s-color-scheme:dark){.rio-asin-image .productImageTd{background-image:linea=
+r-gradient(#fff,#fff)!important}.rio-asin-image .productImage{mix-blend-mod=
+e:initial!important}}[data-ogsc] .rio-asin-image .productImageTd{background=
+-image:linear-gradient(#fff,#fff)!important}[data-ogsc] .rio-asin-image .pr=
+oductImage{mix-blend-mode:initial!important}@media only screen and (min-wid=
+th:600px){u+.body .rio-asin-image .productImage{mix-blend-mode:multiply!imp=
+ortant}}@media (prefers-color-scheme:dark){.asin-container{background:#2526=
+26!important}}[data-ogsc] .asin-container{background:#252626!important}.rio=
+-asin-container-image img{mix-blend-mode:multiply;object-fit:contain}@media=
+ (prefers-color-scheme:dark){.rio-asin-container-image img{mix-blend-mode:i=
+nitial!important}}u+.body .rio-asin-container-image img{mix-blend-mode:init=
+ial!important}@media only screen and (min-width:600px){u+.body .rio-asin-co=
+ntainer-image img{mix-blend-mode:multiply!important}}[data-ogsc] .rio-asin-=
+container-image img{mix-blend-mode:initial!important}.priceBadge{color:#cc0=
+c39}@media (prefers-color-scheme:dark){.priceBadge,.productHvePrimeDayPrice=
+{color:#fff!important}}[data-ogsc] .priceBadge,[data-ogsc] .productHvePrime=
+DayPrice{color:#fff!important}@media (prefers-color-scheme:dark){.productHv=
+eDiscount{color:#ff8c8c!important}.productHvePrice{color:#fff!important}}[d=
+ata-ogsc] .productHveDiscount{color:#ff8c8c!important}[data-ogsc] .productH=
+vePrice{color:#fff!important}.footer-card li,.footer-card p{color:#494d4d}.=
+footer-card p{margin-top:20px}.footer-card a{color:#007185!important;text-d=
+ecoration:none!important}@media (prefers-color-scheme:dark){.footer-card{ba=
+ckground-color:#303333!important}.footer-card a{color:#6ed6e6!important}.fo=
+oter-card li,.footer-card p,.footer-text{color:#c8cccc!important}.lightFoot=
+erImg{display:none!important}.darkFooterImg{display:block!important}}[data-=
+ogsb] .footer-card{background-color:#303333!important}[data-ogsc] .footer-c=
+ard a{color:#6ed6e6!important}[data-ogsc] .footer-card li,[data-ogsc] .foot=
+er-card p,[data-ogsc] .footer-text{color:#c8cccc!important}[data-ogsc] .lig=
+htFooterImg{display:none!important}[data-ogsc] .darkFooterImg{display:block=
+!important}</style><style type=3D"text/css">@font-face{font-family:Ember;fo=
+nt-weight:700;src:local("Ember"),url(https://m.media-amazon.com/images/G/01=
+/outbound/AmazonEmber_Bd._CBREDACTED_PHONE_.WOFF) format("woff");mso-generic-fo=
+nt-family:swiss;mso-font-alt:"Arial"}@font-face{font-family:Ember;font-weig=
+ht:600;src:local("Ember"),url(https://m.media-amazon.com/images/G/01/outbou=
+nd/AmazonEmber_Bd._CBREDACTED_PHONE_.WOFF) format("woff");mso-generic-font-fami=
+ly:swiss;mso-font-alt:"Arial"}@font-face{font-family:Ember;font-weight:500;=
+src:local("Ember"),url(https://m.media-amazon.com/images/G/01/outbound/Amaz=
+onEmber_Md._CBREDACTED_PHONE_.WOFF) format("woff");mso-generic-font-family:swis=
+s;mso-font-alt:"Arial"}@font-face{font-family:Ember;font-weight:400;font-st=
+yle:normal;src:local("Ember"),url(https://m.media-amazon.com/images/G/01/ou=
+tbound/AmazonEmber_Rg._CBREDACTED_PHONE_.WOFF) format("woff");mso-generic-font-=
+family:swiss;mso-font-alt:"Arial"}@font-face{font-family:Ember;font-weight:=
+200;src:local("Ember"),url(https://m.media-amazon.com/images/G/01/outbound/=
+AmazonEmber_Lt._CBREDACTED_PHONE_.WOFF) format("woff");mso-generic-font-family:=
+swiss;mso-font-alt:"Arial"}@font-face{font-family:"Amazon Ember";font-weigh=
+t:700;src:local("Amazon Ember"),url(https://m.media-amazon.com/images/G/01/=
+outbound/AmazonEmber_Bd._CBREDACTED_PHONE_.WOFF) format("woff");mso-generic-fon=
+t-family:swiss;mso-font-alt:"Arial"}@font-face{font-family:"Amazon Ember";f=
+ont-weight:600;src:local("Amazon Ember"),url(https://m.media-amazon.com/ima=
+ges/G/01/outbound/AmazonEmber_Bd._CBREDACTED_PHONE_.WOFF) format("woff");mso-ge=
+neric-font-family:swiss;mso-font-alt:"Arial"}@font-face{font-family:"Amazon=
+ Ember";font-weight:500;src:local("Amazon Ember"),url(https://m.media-amazo=
+n.com/images/G/01/outbound/AmazonEmber_Md._CBREDACTED_PHONE_.WOFF) format("woff=
+");mso-generic-font-family:swiss;mso-font-alt:"Arial"}@font-face{font-famil=
+y:"Amazon Ember";font-style:normal;font-weight:400;src:local("Amazon Ember"=
+),url(https://m.media-amazon.com/images/G/01/outbound/AmazonEmber_Rg._CB151=
+5450239_.WOFF) format("woff");mso-generic-font-family:swiss;mso-font-alt:"A=
+rial"}@font-face{font-family:"Amazon Ember";font-weight:200;src:local("Amaz=
+on Ember"),url(https://m.media-amazon.com/images/G/01/outbound/AmazonEmber_=
+Lt._CBREDACTED_PHONE_.WOFF) format("woff");mso-generic-font-family:swiss;mso-fo=
+nt-alt:"Arial"}*{font-family:Ember,'Amazon Ember',Arial,sans-serif;border-s=
+pacing:0;margin:0;padding:0}[data-ogsc] :root{--body-bg:#181A1A;--body-colo=
+r:#ffffff}.rootContent{background:#fff!important}.fonts,.sans,h1,h2,h3,h4,h=
+5,li,p,table,td,th{color:#0f1111}a{color:#007185;text-decoration:none}@medi=
+a screen and (max-width:599px){.mobile-only{display:initial!important}.desk=
+top-only{display:none!important;mso-hide:all!important}}@media screen and (=
+min-width:600px){.mobile-only{display:none!important;mso-hide:all!important=
+}}@media (prefers-color-scheme:light){:root{--body-bg:#ffffff;--body-color:=
+#000000}}@media (prefers-color-scheme:dark){:root{--body-bg:#181A1A;--body-=
+color:#ffffff}body{background-color:#181a1a!important}.fonts,.sans,h1,h2,h3=
+,h4,h5,li,p,table,td,th{color:#fff}a{color:#6ed6e6}.rootContent,.rootConten=
+t>table{background:#181a1a!important}}[data-ogsc] .fonts,[data-ogsc] .sans,=
+[data-ogsc] h1,[data-ogsc] h2,[data-ogsc] h3,[data-ogsc] h4,[data-ogsc] h5,=
+[data-ogsc] li,[data-ogsc] p{color:#fff}[data-ogsc] a{color:#6ed6e6}[data-o=
+gsc] .rootContent,[data-ogsc] .rootContent>table{background:#181a1a!importa=
+nt}body{background-color:var(--body-bg)!important;color:var(--body-color)!i=
+mportant;margin:0!important;padding:0}body>img{position:absolute}table{bord=
+er-spacing:0}h3,h4,h5,p,table th{font-weight:400;margin:0;padding:0}td{padd=
+ing:0}img{border:0}a,span,td{word-break:break-word!important}ol,ul{margin-l=
+eft:32px!important}.button{background-color:#ffd814;color:#0f1111!important=
+;border-radius:24px;padding:1px 16px;display:inline-block;box-shadow:1px 2p=
+x 4px rgba(153,153,153,.2);font-size:13px;line-height:29px;white-space:nowr=
+ap;text-decoration:none;margin-top:4px}.box-shadow a{box-shadow:1px 2px 4px=
+ rgba(153,153,153,.2)}a,body,table,td{-ms-text-size-adjust:100%;-webkit-tex=
+t-size-adjust:100%}.appleBody a,.appleFooter a{color:#007185!important;text=
+-decoration:none}a[x-apple-data-detectors]{color:#007185!important;font-fam=
+ily:inherit!important;font-size:inherit!important;font-weight:inherit!impor=
+tant;line-height:inherit!important}u+#body a{color:#007185!important;font-f=
+amily:inherit!important;font-size:inherit!important;font-weight:inherit!imp=
+ortant;line-height:inherit!important}#MessageViewBody a{color:#007185!impor=
+tant;font-family:inherit!important;font-size:inherit!important;font-weight:=
+inherit!important;line-height:inherit!important}</style><meta content=3D"te=
+lephone=3Dno" name=3D"format-detection"><meta content=3D"width=3Ddevice-wid=
+th,initial-scale=3D1;user-scalable=3Dno;" name=3D"viewport"><meta content=
+=3D"IE=3D9; IE=3D8; IE=3D7; IE=3DEDGE" http-equiv=3D"X-UA-Compatible"><meta=
+ name=3D"x-apple-disable-message-reformatting"><meta content=3D"light dark"=
+ name=3D"color-scheme"><meta content=3D"light dark" name=3D"supported-color=
+-schemes"><!--
+             =20
+             =20
+             =20
+              --><style type=3D"text/css">.productListPrice{color:#565959}.=
+productDiscount{color:#cc0c39}.productPrice{color:#0f1111}@media (prefers-c=
+olor-scheme:dark){.productListPrice{color:#fff!important}.productDiscount{c=
+olor:#ff8c8c!important}.productPrice{color:#fff!important}}[data-ogsc] .pro=
+ductListPrice{color:#fff!important}[data-ogsc] .productDiscount{color:#ff8c=
+8c!important}[data-ogsc] .productPrice{color:#fff!important}</style><style =
+type=3D"text/css">.dealBadge{background-color:#cc0c39;color:#fff}.dealText{=
+color:#cc0c39}@media (prefers-color-scheme:dark){.dealBadge{background-colo=
+r:#ff8c8c!important;color:#000!important}.dealText{color:#ff8c8c!important}=
+}[data-ogsc] .dealBadge{background-color:#ff8c8c!important;color:#000!impor=
+tant}[data-ogsc] .dealText{color:#ff8c8c!important}</style><!--[if gte mso =
+9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG />
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <style>
+        body, h1, h2, h3, h4, table, th, td, p, li, a, .sans, .fonts {
+            font-family: Helvetica, Arial, sans-serif !important;
+        }
+        [data-ogsc] .rootContent, [data-ogsc] .rootContent > table{
+          background: #181A1A !important;
+        }
+    </style>
+    <![endif]--></head><body class=3D"body" style=3D"word-spacing:normal;">=
+<img width=3D"1" height=3D"1" src=3D"https://www.amazon.co.uk/gp/r.html?C=
+=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONEc3=
+1acf5b688438eb6bb1cd53e70p0eu&amp;R=3DZRQ44R4KZYT6&amp;T=3DO&amp;U=3Dhttps%=
+3A%2F%2Fimages-eu.ssl-images-amazon.com%2Fimages%2FG%2F01%2Fnav%2Ftransp.gi=
+f&amp;H=3DZAUGPOQLJXZ3HHAU9ZREEAHQS4WA&amp;ref_=3Dpe_112168041_REDACTED_PHONE_o=
+pens"><div style=3D"display:none;font-size:1px;color:#ffffff;line-height:1p=
+x;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">Ordered: =E2=80=
+=98USB C Plug, Anker 40W USB C...=E2=80=99 and 1 more item=CD=8F =E2=80=8C =
+&nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=
+=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=
+=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=
+=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=
+=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =
+=E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &n=
+bsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=
+=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =
+=E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=
+=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =
+=C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=
+=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp=
+; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C =
+&nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=
+=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=
+=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=
+=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=
+=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =
+=E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &n=
+bsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=
+=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =
+=E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=
+=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =
+=C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=
+=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp=
+; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C =
+&nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=
+=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=
+=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=
+=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=
+=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =
+=E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &n=
+bsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=
+=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =
+=E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=
+=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =
+=C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=
+=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp=
+; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C =
+&nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=
+=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=
+=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=
+=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=
+=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =
+=E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &n=
+bsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=
+=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =
+=E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=
+=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =
+=C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=
+=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp=
+; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C =
+&nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=
+=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=
+=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=
+=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=
+=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =
+=E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &n=
+bsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=
+=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =
+=E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=
+=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =
+=C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=
+=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp=
+; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C =
+&nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=
+=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=
+=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=
+=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=
+=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =
+=E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &n=
+bsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=
+=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =
+=E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=
+=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =
+=C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=
+=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp=
+; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C =
+&nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=
+=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=
+=8F =E2=80=8C &nbsp; =E2=80=87 =C2=AD=CD=8F =E2=80=8C &nbsp; =E2=80=87 =C2=
+=AD</div><div class=3D"body" lang=3D"en" dir=3D"auto"><!--[if mso | IE]><ta=
+ble align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"rootContent-outlook" role=3D"presentation" style=3D"width:600px;" width=
+=3D"600" bgcolor=3D"#ffffff" ><tr><td style=3D"line-height:0px;font-size:0p=
+x;mso-line-height-rule:exactly;"><![endif]--><div class=3D"rootContent" sty=
+le=3D"background:#ffffff;background-color:#ffffff;margin:0px auto;max-width=
+:600px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"background:#ffffff;background-color:#=
+ffffff;width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;pad=
+ding:0px 0px 4px 0px;text-align:left;"><!--[if mso | IE]><table role=3D"pre=
+sentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><![endif]--> <!=
+--[if mso | IE]><tr><td align=3D"left" class=3D"sonar-three-link-header-out=
+look sonar-three-link-header-v1-outlook" width=3D"600px" ><table align=3D"c=
+enter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rio-card-o=
+utlook" role=3D"presentation" style=3D"width:600px;" width=3D"600" bgcolor=
+=3D"#ffffff" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-heigh=
+t-rule:exactly;"><![endif]--><div class=3D"rio-card" style=3D"background:#f=
+fffff;background-color:#ffffff;margin:0px auto;border-radius:4px;max-width:=
+600px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"background:#ffffff;background-color:#=
+ffffff;width:100%;border-radius:4px;"><tbody><tr><td style=3D"direction:ltr=
+;font-size:0px;padding:0px 0px 0px 0px;text-align:left;"><!--[if mso | IE]>=
+<table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0"><tr><td align=3D"left" class=3D"" width=3D"600px" ><table align=3D"cente=
+r" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"pres=
+entation" style=3D"width:600px;" width=3D"600" bgcolor=3D"#232F3E" ><tr><td=
+ style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![e=
+ndif]--><div style=3D"background:#232F3E;background-color:#232F3E;margin:0p=
+x auto;max-width:600px;"><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"background:#232F3E;=
+background-color:#232F3E;width:100%;"><tbody><tr><td style=3D"direction:ltr=
+;font-size:0px;padding:8px 4px;text-align:left;"><!--[if mso | IE]><table r=
+ole=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><=
+td align=3D"left" class=3D"" style=3D"width:592px;" ><![endif]--><div class=
+=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0;line-heigh=
+t:0;text-align:left;display:inline-block;width:100%;direction:ltr;"><!--[if=
+ mso | IE]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" ><tr><td style=3D"align:left;vertical-align:middle;width:592p=
+x;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" styl=
+e=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;verti=
+cal-align:middle;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"ver=
+tical-align:middle;padding:0;"><table border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"ce=
+nter" style=3D"font-size:0px;padding:0;word-break:break-word;"><div style=
+=3D"font-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:14px;font-w=
+eight:bold;letter-spacing:-.02em;line-height:20px;text-align:center;color:#=
+000000;"><mj-raw>    </mj-raw><a href=3D"https://www.amazon.co.uk/gp/r.html=
+?C=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONE=
+c31acf5b688438eb6bb1cd53e70p0eu&amp;R=3D1PY7D5HZUFU48&amp;T=3DC&amp;U=3Dhtt=
+ps%3A%2F%2Fwww.amazon.co.uk%2Fgp%2Fcss%2Forder-history%3Fref_%3Dpe_11216804=
+1_REDACTED_PHONE_TLH0001BT_fed_yo_default&amp;H=3DDOXOOD3VCWXSQIQV6KUYI2LA7LIA&=
+amp;ref_=3Dpe_112168041_REDACTED_PHONE_TLH0001BT_fed_yo_default" style=3D"color=
+:#FFFFFF; text-decoration:none; white-space: nowrap !important;" data-sonar=
+-role=3D"header">Your Orders</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a hre=
+f=3D"https://www.amazon.co.uk/gp/r.html?C=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X=
+1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONEc31acf5b688438eb6bb1cd53e70p0eu&amp;=
+R=3D3ULM8SGMYWORX&amp;T=3DC&amp;U=3Dhttps%3A%2F%2Fwww.amazon.co.uk%2Fyour-a=
+ccount%3Fref_%3Dpe_112168041_REDACTED_PHONE_TLH0002BT_fed_ya_default&amp;H=3D9Z=
+3TZC5H3Q2PNVDA2PH2OSKCEVQA&amp;ref_=3Dpe_112168041_REDACTED_PHONE_TLH0002BT_fed=
+_ya_default" style=3D"color:#FFFFFF; text-decoration:none; white-space: now=
+rap !important;">Your Account</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a hr=
+ef=3D"https://www.amazon.co.uk/gp/r.html?C=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9=
+X1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONEc31acf5b688438eb6bb1cd53e70p0eu&amp=
+;R=3D1VDZFTJ6B0TQC&amp;T=3DC&amp;U=3Dhttps%3A%2F%2Fwww.amazon.co.uk%2Fgp%2F=
+buyagain%3Fref_%3Dpe_112168041_REDACTED_PHONE_TLH0003BT_fed_bia_default&amp;H=
+=3DZEASS695JHLJDJGGLHL4SJZYUX8A&amp;ref_=3Dpe_112168041_REDACTED_PHONE_TLH0003B=
+T_fed_bia_default" style=3D"color:#FFFFFF; text-decoration:none; white-spac=
+e: nowrap !important;">Buy Again</a><mj-raw></mj-raw></div></td></tr></tbod=
+y></table></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></tab=
+le><![endif]--></div><!--[if mso | IE]></td></tr></table><![endif]--></td><=
+/tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td></tr></t=
+able><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></t=
+r></table></td></tr><![endif]--> <!--[if mso | IE]></table><![endif]--></td=
+></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--=
+> <!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" class=3D"rootContent-outlook" role=3D"presentation" style=
+=3D"width:600px;" width=3D"600" bgcolor=3D"#ffffff" ><tr><td style=3D"line-=
+height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div cl=
+ass=3D"rootContent" style=3D"background:#ffffff;background-color:#ffffff;ma=
+rgin:0px auto;max-width:600px;"><table align=3D"center" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"background:#ff=
+ffff;background-color:#ffffff;width:100%;"><tbody><tr><td style=3D"directio=
+n:ltr;font-size:0px;padding:4px 8px 4px 8px;text-align:left;"><!--[if mso |=
+ IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0"><![endif]--> <!--[if mso | IE]><tr><td align=3D"left" class=3D"" wi=
+dth=3D"600px" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" class=3D"rio-card-outlook" role=3D"presentation" style=3D"widt=
+h:584px;" width=3D"584" bgcolor=3D"#ffffff" ><tr><td style=3D"line-height:0=
+px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div class=3D"r=
+io-card" style=3D"background:#ffffff;background-color:#ffffff;margin:0px au=
+to;border-radius:4px;max-width:584px;"><table align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"backgro=
+und:#ffffff;background-color:#ffffff;width:100%;border-radius:4px;"><tbody>=
+<tr><td style=3D"direction:ltr;font-size:0px;padding:12px 8px 16px 8px;text=
+-align:left;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0"><tr><td align=3D"left" class=3D"" width=
+=3D"584px" ><![endif]-->  <!--[if mso | IE]><table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation"=
+ style=3D"width:568px;" width=3D"568" ><tr><td style=3D"line-height:0px;fon=
+t-size:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin:=
+0px auto;max-width:568px;"><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody=
+><tr><td style=3D"direction:ltr;font-size:0px;padding:0;padding-bottom:10px=
+;text-align:left;"><!--[if mso | IE]><table role=3D"presentation" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td align=3D"left" class=3D"" s=
+tyle=3D"" ><![endif]--><div style=3D"font-family:Ember,'Amazon Ember',Arial=
+,sans-serif;font-size:15px;line-height:1;text-align:center;color:#000000;">=
+<h2 style=3D"margin:0;padding:0;font-family:Ember,'Amazon Ember',Arial,sans=
+-serif;font-weight:700;font-size:18px;line-height:22px;color:#0F1111;" clas=
+s=3D"rio-header rio-header-152">Thanks for your order, REDACTED_NAME!</h2></div><!--[=
+if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div>=
+<!--[if mso | IE]></td></tr></table><![endif]--> <!--[if mso | IE]></td></t=
+r><tr><td align=3D"left" class=3D"" width=3D"584px" ><![endif]-->  <table c=
+ellpadding=3D"0" cellspacing=3D"0" role=3D"list" width=3D"100%" border=3D"0=
+" style=3D"color:#000000;font-family:Ember,'Amazon Ember',Arial,sans-serif;=
+font-size:15px;line-height:22px;table-layout:auto;width:100%;border:none;">=
+<tr><td width=3D"25%" valign=3D"top" role=3D"listitem"><table cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" border=3D"0" =
+style=3D"color:#000000;font-family:Ember,'Amazon Ember',Arial,sans-serif;fo=
+nt-size:15px;line-height:22px;table-layout:auto;width:100%;border:none;"><t=
+r><td style=3D"height:18px"><table cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" width=3D"100%" border=3D"0" style=3D"color:#000000;font-f=
+amily:Ember,'Amazon Ember',Arial,sans-serif;font-size:15px;line-height:22px=
+;table-layout:auto;width:100%;border:none;"><tr><td width=3D"50%" height=3D=
+"18"> <table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" widt=
+h=3D"100%" border=3D"0" style=3D"color:#000000;font-family:Ember,'Amazon Em=
+ber',Arial,sans-serif;font-size:15px;line-height:22px;table-layout:auto;wid=
+th:100%;border:none;"><tr><td height=3D"7"></td></tr><tr><td height=3D"4"><=
+/td></tr><tr><td height=3D"7"></td></tr></table> </td><td height=3D"18"> <t=
+able cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"18"=
+ border=3D"0" style=3D"color:#000000;font-family:Ember,'Amazon Ember',Arial=
+,sans-serif;font-size:15px;line-height:22px;table-layout:auto;width:18;bord=
+er:none;"><tr><td width=3D"18" height=3D"18" align=3D"center"><div style=3D=
+"border-radius:18px;background:#1196AB;line-height:17px;box-shadow:0 0 0 2p=
+x #1196AB;"><img src=3D"https://m.media-amazon.com/images/G/01/outbound/etc=
+/steptracker-checkmark._CB552848383_.png" width=3D"19" height=3D"19" style=
+=3D"width:18px;height:18px;display:block;" alt=3D"Completed"></div></td></t=
+r></table> </td><td width=3D"50%" height=3D"18"> <table cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation" width=3D"100%" border=3D"0" style=3D=
+"color:#000000;font-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:=
+15px;line-height:22px;table-layout:auto;width:100%;border:none;"><tr><td he=
+ight=3D"7"></td></tr><tr><td height=3D"4" style=3D"background:#1196AB"><div=
+ style=3D"width:100%;height:0;border-width:0;background:#1196AB;border-bott=
+om:4px solid #1196AB;border-radius:0 2px 2px 0;"></div></td></tr><tr><td he=
+ight=3D"7"></td></tr></table> </td></tr></table></td></tr><tr><td height=3D=
+"5"></td></tr><tr><td><div style=3D"font-family:Ember,'Amazon Ember',Arial,=
+sans-serif;font-size:15px;font-weight:700;line-height:21px;text-align:cente=
+r;color:#0F1111;"><span class=3D"rio-text rio-text-284">Ordered</span></div=
+>  </td></tr></table></td><td width=3D"25%" valign=3D"top" role=3D"listitem=
+"><table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D=
+"100%" border=3D"0" style=3D"color:#000000;font-family:Ember,'Amazon Ember'=
+,Arial,sans-serif;font-size:15px;line-height:22px;table-layout:auto;width:1=
+00%;border:none;"><tr><td style=3D"height:18px"><table cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation" width=3D"100%" border=3D"0" style=3D"=
+color:#000000;font-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:1=
+5px;line-height:22px;table-layout:auto;width:100%;border:none;"><tr><td wid=
+th=3D"50%" height=3D"18">  <table cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" width=3D"100%" border=3D"0" style=3D"color:#000000;font-f=
+amily:Ember,'Amazon Ember',Arial,sans-serif;font-size:15px;line-height:22px=
+;table-layout:auto;width:100%;border:none;"><tr><td height=3D"7"></td></tr>=
+<tr><td height=3D"4" style=3D"background:#E9E7E7"><div style=3D"width:100%;=
+height:0;border-width:0;background:#E9E7E7;border-bottom:4px solid #E9E7E7;=
+"></div></td></tr><tr><td height=3D"7"></td></tr></table></td><td height=3D=
+"18">  <table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" wid=
+th=3D"18" border=3D"0" style=3D"color:#000000;font-family:Ember,'Amazon Emb=
+er',Arial,sans-serif;font-size:15px;line-height:22px;table-layout:auto;widt=
+h:18;border:none;"><tr><td width=3D"18" height=3D"18" align=3D"center"><div=
+ style=3D"border-radius:18px;background:#E9E7E7;line-height:17px;box-shadow=
+:0 0 0 2px #E9E7E7;"><img src=3D"https://m.media-amazon.com/images/G/01/out=
+bound/etc/pixel.gif" width=3D"19" height=3D"19" style=3D"width:18px;height:=
+18px;display:block;" alt=3D"Pending"></div></td></tr></table></td><td width=
+=3D"50%" height=3D"18">  <table cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" width=3D"100%" border=3D"0" style=3D"color:#000000;font-fami=
+ly:Ember,'Amazon Ember',Arial,sans-serif;font-size:15px;line-height:22px;ta=
+ble-layout:auto;width:100%;border:none;"><tr><td height=3D"7"></td></tr><tr=
+><td height=3D"4" style=3D"background:#E9E7E7"><div style=3D"width:100%;hei=
+ght:0;border-width:0;background:#E9E7E7;border-bottom:4px solid #E9E7E7;"><=
+/div></td></tr><tr><td height=3D"7"></td></tr></table></td></tr></table></t=
+d></tr><tr><td height=3D"5"></td></tr><tr><td> <div style=3D"font-family:Em=
+ber,'Amazon Ember',Arial,sans-serif;font-size:15px;font-weight:400;line-hei=
+ght:21px;text-align:center;color:#0F1111;"><span class=3D"rio-text rio-text=
+-288">Dispatched</span></div> </td></tr></table></td><td width=3D"25%" vali=
+gn=3D"top" role=3D"listitem"><table cellpadding=3D"0" cellspacing=3D"0" rol=
+e=3D"presentation" width=3D"100%" border=3D"0" style=3D"color:#000000;font-=
+family:Ember,'Amazon Ember',Arial,sans-serif;font-size:15px;line-height:22p=
+x;table-layout:auto;width:100%;border:none;"><tr><td style=3D"height:18px">=
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%" border=3D"0" style=3D"color:#000000;font-family:Ember,'Amazon Ember',A=
+rial,sans-serif;font-size:15px;line-height:22px;table-layout:auto;width:100=
+%;border:none;"><tr><td width=3D"50%" height=3D"18">  <table cellpadding=3D=
+"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" border=3D"0" sty=
+le=3D"color:#000000;font-family:Ember,'Amazon Ember',Arial,sans-serif;font-=
+size:15px;line-height:22px;table-layout:auto;width:100%;border:none;"><tr><=
+td height=3D"7"></td></tr><tr><td height=3D"4" style=3D"background:#E9E7E7"=
+><div style=3D"width:100%;height:0;border-width:0;background:#E9E7E7;border=
+-bottom:4px solid #E9E7E7;"></div></td></tr><tr><td height=3D"7"></td></tr>=
+</table></td><td height=3D"18">  <table cellpadding=3D"0" cellspacing=3D"0"=
+ role=3D"presentation" width=3D"18" border=3D"0" style=3D"color:#000000;fon=
+t-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:15px;line-height:2=
+2px;table-layout:auto;width:18;border:none;"><tr><td width=3D"18" height=3D=
+"18" align=3D"center"><div style=3D"border-radius:18px;background:#E9E7E7;l=
+ine-height:17px;box-shadow:0 0 0 2px #E9E7E7;"><img src=3D"https://m.media-=
+amazon.com/images/G/01/outbound/etc/pixel.gif" width=3D"19" height=3D"19" s=
+tyle=3D"width:18px;height:18px;display:block;" alt=3D"Pending"></div></td><=
+/tr></table></td><td width=3D"50%" height=3D"18">  <table cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" width=3D"100%" border=3D"0" style=
+=3D"color:#000000;font-family:Ember,'Amazon Ember',Arial,sans-serif;font-si=
+ze:15px;line-height:22px;table-layout:auto;width:100%;border:none;"><tr><td=
+ height=3D"7"></td></tr><tr><td height=3D"4" style=3D"background:#E9E7E7"><=
+div style=3D"width:100%;height:0;border-width:0;background:#E9E7E7;border-b=
+ottom:4px solid #E9E7E7;"></div></td></tr><tr><td height=3D"7"></td></tr></=
+table></td></tr></table></td></tr><tr><td height=3D"5"></td></tr><tr><td> <=
+div style=3D"font-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:15=
+px;font-weight:400;line-height:21px;text-align:center;color:#0F1111;"><span=
+ class=3D"rio-text rio-text-291">Out for delivery</span></div> </td></tr></=
+table></td><td width=3D"25%" valign=3D"top" role=3D"listitem"><table cellpa=
+dding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" border=
+=3D"0" style=3D"color:#000000;font-family:Ember,'Amazon Ember',Arial,sans-s=
+erif;font-size:15px;line-height:22px;table-layout:auto;width:100%;border:no=
+ne;"><tr><td style=3D"height:18px"><table cellpadding=3D"0" cellspacing=3D"=
+0" role=3D"presentation" width=3D"100%" border=3D"0" style=3D"color:#000000=
+;font-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:15px;line-heig=
+ht:22px;table-layout:auto;width:100%;border:none;"><tr><td width=3D"50%" he=
+ight=3D"18">  <table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" width=3D"100%" border=3D"0" style=3D"color:#000000;font-family:Ember,'A=
+mazon Ember',Arial,sans-serif;font-size:15px;line-height:22px;table-layout:=
+auto;width:100%;border:none;"><tr><td height=3D"7"></td></tr><tr><td height=
+=3D"4" style=3D"background:#E9E7E7"><div style=3D"width:100%;height:0;borde=
+r-width:0;background:#E9E7E7;border-bottom:4px solid #E9E7E7;"></div></td><=
+/tr><tr><td height=3D"7"></td></tr></table></td><td height=3D"18">  <table =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"18" bord=
+er=3D"0" style=3D"color:#000000;font-family:Ember,'Amazon Ember',Arial,sans=
+-serif;font-size:15px;line-height:22px;table-layout:auto;width:18;border:no=
+ne;"><tr><td width=3D"18" height=3D"18" align=3D"center"><div style=3D"bord=
+er-radius:18px;background:#E9E7E7;line-height:17px;box-shadow:0 0 0 2px #E9=
+E7E7;"><img src=3D"https://m.media-amazon.com/images/G/01/outbound/etc/pixe=
+l.gif" width=3D"19" height=3D"19" style=3D"width:18px;height:18px;display:b=
+lock;" alt=3D"Pending"></div></td></tr></table></td><td width=3D"50%" heigh=
+t=3D"18">  <table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ width=3D"100%" border=3D"0" style=3D"color:#000000;font-family:Ember,'Amaz=
+on Ember',Arial,sans-serif;font-size:15px;line-height:22px;table-layout:aut=
+o;width:100%;border:none;"><tr><td height=3D"7"></td></tr><tr><td height=3D=
+"4"></td></tr><tr><td height=3D"7"></td></tr></table></td></tr></table></td=
+></tr><tr><td height=3D"5"></td></tr><tr><td> <div style=3D"font-family:Emb=
+er,'Amazon Ember',Arial,sans-serif;font-size:15px;font-weight:400;line-heig=
+ht:21px;text-align:center;color:#0F1111;"><span class=3D"rio-text rio-text-=
+294">Delivered</span></div> </td></tr></table></td></tr></table><!--[if mso=
+ | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[i=
+f mso | IE]></td></tr></table></td></tr><![endif]-->  <!--[if mso | IE]></t=
+able><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></t=
+r></table><![endif]--> <!--[if mso | IE]><table align=3D"center" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rootContent-outlook" role=
+=3D"presentation" style=3D"width:600px;" width=3D"600" bgcolor=3D"#ffffff" =
+><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactl=
+y;"><![endif]--><div class=3D"rootContent" style=3D"background:#ffffff;back=
+ground-color:#ffffff;margin:0px auto;max-width:600px;"><table align=3D"cent=
+er" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" =
+style=3D"background:#ffffff;background-color:#ffffff;width:100%;"><tbody><t=
+r><td style=3D"direction:ltr;font-size:0px;padding:4px 8px 4px 8px;text-ali=
+gn:left;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0"><![endif]--><!--[if mso | IE]><tr><td align=
+=3D"left" class=3D"" width=3D"600px" ><table align=3D"center" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"rio-card-outlook" role=3D"pres=
+entation" style=3D"width:584px;" width=3D"584" ><tr><td style=3D"line-heigh=
+t:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div class=
+=3D"rio-card" style=3D"margin:0px auto;border-radius:4px;max-width:584px;">=
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;border-radius:4px;"><tbody><tr><td =
+style=3D"direction:ltr;font-size:0px;padding:0px 8px 0px 8px;text-align:lef=
+t;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0"><tr><td align=3D"left" class=3D"" width=3D"584px" =
+><![endif]--><p style=3D"border-top:solid 1px #BBBFBF;font-size:1px;margin:=
+0px auto;width:100%;"></p><!--[if mso | IE]><table align=3D"left" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-top:solid 1px #BBBF=
+BF;font-size:1px;margin:0px auto;width:568px;" role=3D"presentation" width=
+=3D"568px" ><tr><td style=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table></td></tr></table><![endif]--></td></tr></tbody></table><=
+/div><!--[if mso | IE]></td></tr></table></td></tr><![endif]--><!--[if mso =
+| IE]></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]=
+></td></tr></table><![endif]--><!--[if mso | IE]><table align=3D"center" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rootContent-outlook=
+" role=3D"presentation" style=3D"width:600px;" width=3D"600" bgcolor=3D"#ff=
+ffff" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:=
+exactly;"><![endif]--><div class=3D"rootContent" style=3D"background:#fffff=
+f;background-color:#ffffff;margin:0px auto;max-width:600px;"><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"background:#ffffff;background-color:#ffffff;width:100%;"><=
+tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:4px 8px 4px 8px;=
+text-align:left;"><!--[if mso | IE]><table role=3D"presentation" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0"><![endif]--> <!--[if mso | IE]><tr><=
+td align=3D"left" class=3D"rex-multi-order-card-outlook rex-multi-order-car=
+d-v1-outlook" width=3D"600px" ><table align=3D"center" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" class=3D"rio-card-outlook" role=3D"presentatio=
+n" style=3D"width:584px;" width=3D"584" bgcolor=3D"#ffffff" ><tr><td style=
+=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-=
+-><div class=3D"rio-card" style=3D"background:#ffffff;background-color:#fff=
+fff;margin:0px auto;border-radius:4px;max-width:584px;"><table align=3D"cen=
+ter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"background:#ffffff;background-color:#ffffff;width:100%;border-rad=
+ius:4px;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:12px =
+8px 16px 8px;text-align:left;"><!--[if mso | IE]><table role=3D"presentatio=
+n" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><![endif]-->      <!--[=
+if mso | IE]><tr><td align=3D"left" class=3D"" width=3D"584px" ><table alig=
+n=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" ro=
+le=3D"presentation" style=3D"width:568px;" width=3D"568" ><tr><td style=3D"=
+line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><d=
+iv style=3D"margin:0px auto;max-width:568px;"><table align=3D"center" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"=
+width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:0;=
+text-align:left;"><!--[if mso | IE]><table role=3D"presentation" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0"><tr><td align=3D"left" class=3D"" st=
+yle=3D"vertical-align:top;width:568px;" ><![endif]--><div class=3D"mj-colum=
+n-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;dire=
+ction:ltr;display:inline-block;vertical-align:top;width:100%;"><table borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"=
+100%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%"><tbody><tr><td align=3D"left" style=3D"font-size:0px;padding:0;word-br=
+eak:break-word;"><!--[if mso | IE]><table align=3D"center" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"=
+width:568px;" width=3D"568" ><tr><td style=3D"line-height:0px;font-size:0px=
+;mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin:0px auto;m=
+ax-width:568px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td s=
+tyle=3D"direction:ltr;font-size:0px;padding:0;text-align:left;"><!--[if mso=
+ | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0"><tr><td align=3D"left" class=3D"" style=3D"vertical-align:top;wid=
+th:568px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fi=
+x" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-bloc=
+k;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D=
+"vertical-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"l=
+eft" style=3D"font-size:0px;padding:0;word-break:break-word;"><div style=3D=
+"font-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:18px;font-weig=
+ht:700;line-height:22px;text-align:left;color:#0F1111;"><span class=3D"rio-=
+text rio-text-338">Arriving Monday</span></div></td></tr><tr><td align=3D"l=
+eft" style=3D"font-size:0px;padding:0;word-break:break-word;"><div style=3D=
+"font-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:15px;font-weig=
+ht:400;line-height:21px;text-align:left;color:#0F1111;"><span class=3D"rio-=
+text rio-text-340"><b>REDACTED_NAME – REDACTED_CITY</b></span></div></td></tr><t=
+r><td align=3D"left" style=3D"font-size:0px;padding:0;word-break:break-word=
+;"><div style=3D"font-family:Ember,'Amazon Ember',Arial,sans-serif;font-siz=
+e:15px;font-weight:400;line-height:21px;text-align:left;color:#0F1111;"><sp=
+an class=3D"rio-text rio-text-341"><span>Order #</span> <span>=E2=80=AB202-=
+REDACTED_PHONE</span></span></div></td></tr><tr><td align=3D"left" style=
+=3D"font-size:0px;padding:0;word-break:break-word;"><!--[if mso | IE]><tabl=
+e align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"" role=3D"presentation" style=3D"width:568px;" width=3D"568" ><tr><td s=
+tyle=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![end=
+if]--><div style=3D"margin:0px auto;max-width:568px;"><table align=3D"cente=
+r" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;pa=
+dding:0;text-align:left;"><!--[if mso | IE]><table role=3D"presentation" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td align=3D"left" class=
+=3D"" style=3D"vertical-align:top;width:568px;" ><![endif]--><div class=3D"=
+mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:l=
+eft;direction:ltr;display:inline-block;vertical-align:top;width:100%;"><tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" w=
+idth=3D"100%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" wid=
+th=3D"100%"><tbody>   <tr><td align=3D"left" class=3D"rio-spacer" style=3D"=
+font-size:0px;padding:0;word-break:break-word;"><div style=3D"height:12px;l=
+ine-height:12px;">=E2=80=8A</div></td></tr><tr><td align=3D"left" style=3D"=
+font-size:0px;padding:0;word-break:break-word;"><table cellpadding=3D"0" ce=
+llspacing=3D"0" border=3D"0" role=3D"presentation"><tr><td class=3D"rio-but=
+ton-cta-primary" style=3D"text-align:center;border-radius:24px;mso-padding-=
+alt:6px 16px;mso-border-alt:1px solid #FCD200;background:#FFD916;"><a targe=
+t=3D"_blank" aria-describedby=3D"View or edit order" class=3D"rio-button-pr=
+imary" href=3D"https://www.amazon.co.uk/gp/r.html?C=3D3E0UC6L4QQ3O7&amp;K=
+=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONEc31acf5b688438eb6bb1cd53=
+e70p0eu&amp;R=3D357SA3J1891OK&amp;T=3DC&amp;U=3Dhttps%3A%2F%2Fwww.amazon.co=
+.uk%2Fgp%2Fcss%2Forder-details%3ForderID%3DREDACTED_PHONE%26ref_%3Dpe_=
+112168041_REDACTED_PHONE_fed_veo&amp;H=3DVBPUXSHJ5RTR4AKNTRQAKZYWOAAA&amp;ref_=
+=3Dpe_112168041_REDACTED_PHONE_fed_veo" style=3D"border:1px solid #FCD200;backg=
+round:#FFD916;mso-border-alt:none;font-family:Ember,'Amazon Ember',Arial,sa=
+ns-serif;color:#0F1111;text-decoration:none;border-radius:24px;padding:6px =
+16px;mso-padding-alt:0;display:inline-block;box-shadow:1px 2px 4px rgba(153=
+, 153, 153, 0.2);font-size:13px;line-height:18px;white-space:nowrap;text-sh=
+adow:0 0 0.1px transparent;"><span style=3D"text-decoration: none;">View or=
+ edit order</span></a></td></tr></table></td></tr></tbody></table></td></tr=
+></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td=
+></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--=
+></td></tr><tr><td align=3D"left" style=3D"font-size:0px;padding:0;word-bre=
+ak:break-word;"><!--[if mso | IE]><table align=3D"center" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"w=
+idth:568px;" width=3D"568" ><tr><td style=3D"line-height:0px;font-size:0px;=
+mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin:0px auto;ma=
+x-width:568px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td st=
+yle=3D"direction:ltr;font-size:0px;padding:0;text-align:left;"><!--[if mso =
+| IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td align=3D"left" class=3D"" style=3D"vertical-align:top;widt=
+h:568px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix=
+" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block=
+;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"=
+vertical-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"le=
+ft" class=3D"rio-spacer" style=3D"font-size:0px;padding:0;word-break:break-=
+word;"><div style=3D"height:12px;line-height:12px;">=E2=80=8A</div></td></t=
+r><tr><td align=3D"left" style=3D"font-size:0px;padding:0;word-break:break-=
+word;"><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:56=
+8px;" width=3D"568" ><tr><td style=3D"line-height:0px;font-size:0px;mso-lin=
+e-height-rule:exactly;"><![endif]--><div style=3D"margin:0px auto;max-width=
+:568px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=3D"=
+direction:ltr;font-size:0px;padding:0;text-align:left;"><!--[if mso | IE]><=
+table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+"><tr><td align=3D"left" class=3D"" style=3D"width:568px;" ><![endif]--><di=
+v class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0;lin=
+e-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">=
+<!--[if mso | IE]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" r=
+ole=3D"presentation" ><tr><td style=3D"align:left;vertical-align:top;width:=
+142px;" ><![endif]--><div class=3D"mj-column-per-25 mj-outlook-group-fix" s=
+tyle=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;ve=
+rtical-align:top;width:25%;"><table border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vert=
+ical-align:top;padding:0;padding-right:8px;padding-left:0;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%"><tbody>       <tr><td align=3D"left" class=3D"rio-asin-image" style=3D=
+"font-size:0px;padding:0;word-break:break-word;"><table style=3D"width: 100=
+%; border-radius: 4px;" class=3D"rio-asin-image-sTeEQ8Tp1LgZ8xChhMyUwM" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=
+=3D"100%"><tbody><tr><td class=3D"productImageTd" style=3D"background-image=
+:linear-gradient(rgba(15, 17, 17, 0.03), rgba(15, 17, 17, 0.03));border-rad=
+ius:4px;position:relative;width:100%;height:64px;vertical-align:middle;text=
+-align:center;padding:8px;"><a target=3D"_blank" href=3D"https://www.amazon=
+.co.uk/gp/f.html?C=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg=
+:REDACTED_PHONEc31acf5b688438eb6bb1cd53e70p0eu&amp;R=3D3MNAE7IN014AI&amp;T=
+=3DC&amp;U=3D%2Fdp%2FB0BJQ9MZM7%3Fref_%3Dpe_112168041_REDACTED_PHONE_fed_asin_t=
+itle&amp;H=3D9HZHJ4OEZ3AIWPNEY6ZUDJXWBXQA&amp;ref_=3Dpe_112168041_111139228=
+1_fed_asin_title" style=3D"background-color:transparent;display:inline-bloc=
+k;"><img style=3D"width:100%;height:auto;max-height:64px;max-width:64px;mar=
+gin:auto;display:block;" class=3D"productImage" width=3D"122" src=3D"https:=
+//m.media-amazon.com/images/I/51NjfD0m+bL.SS90_.jpg" alt=3D"Anker USB C to =
+Lightning Cable, 310 iPhone Fast Charger Cable(White, 6ft), MFi Certified, =
+Fast Charging Cable for iPhone 14 Plus 14 14 Pro Max 13 13 Pro 12 11 X XS X=
+R (Charger Not Included)"></a></td></tr></tbody></table></td></tr></tbody><=
+/table></td></tr></tbody></table></div><!--[if mso | IE]></td><td style=3D"=
+align:left;vertical-align:top;width:426px;" ><![endif]--><div class=3D"mj-c=
+olumn-per-75 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;d=
+irection:ltr;display:inline-block;vertical-align:top;width:75%;"><table bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=
+=3D"100%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><table bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=
+=3D"100%"><tbody><tr><td align=3D"left" style=3D"font-size:0px;padding:0;wo=
+rd-break:break-word;"><div style=3D"font-family:Ember,'Amazon Ember',Arial,=
+sans-serif;font-size:15px;font-weight:400;line-height:21px;text-align:left;=
+color:#0F1111;"><span class=3D"rio-text rio-text-347"><a href=3D"https://ww=
+w.amazon.co.uk/gp/f.html?C=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X1OZ&amp;M=3Durn=
+:rtn:msg:REDACTED_PHONEc31acf5b688438eb6bb1cd53e70p0eu&amp;R=3D2X5VWQIGMFG=
+XY&amp;T=3DC&amp;U=3D%2Fdp%2FB0BJQ9MZM7%3Fref_%3Dpe_112168041_REDACTED_PHONE_fe=
+d_asin_title&amp;H=3DGJBHYAGHB8UGQFGZRHXTHW4ZXCGA&amp;ref_=3Dpe_112168041_1=
+111392281_fed_asin_title" target=3D"_blank" style=3D"color: #0F1111;">Anker=
+ USB C to Lightning Cable, 3...</a></span></div></td></tr> <tr><td align=3D=
+"left" class=3D"rio-spacer" style=3D"font-size:0px;padding:0;word-break:bre=
+ak-word;"><div style=3D"height:4px;line-height:4px;">=E2=80=8A</div></td></=
+tr><tr><td align=3D"left" style=3D"font-size:0px;padding:0;word-break:break=
+-word;"><div style=3D"font-family:Ember,'Amazon Ember',Arial,sans-serif;fon=
+t-size:13px;font-weight:400;line-height:18px;text-align:left;color:#565959;=
+"><span class=3D"rio-text rio-text-348">Sold by AnkerDirect UK</span></div>=
+</td></tr> <tr><td align=3D"left" class=3D"rio-spacer" style=3D"font-size:0=
+px;padding:0;word-break:break-word;"><div style=3D"height:4px;line-height:4=
+px;">=E2=80=8A</div></td></tr><tr><td align=3D"left" style=3D"font-size:0px=
+;padding:0;word-break:break-word;"><div style=3D"font-family:Ember,'Amazon =
+Ember',Arial,sans-serif;font-size:13px;font-weight:400;line-height:18px;tex=
+t-align:left;color:#565959;"><span class=3D"rio-text rio-text-349">Conditio=
+n: New</span></div></td></tr> <tr><td align=3D"left" class=3D"rio-spacer" s=
+tyle=3D"font-size:0px;padding:0;word-break:break-word;"><div style=3D"heigh=
+t:4px;line-height:4px;">=E2=80=8A</div></td></tr><tr><td align=3D"left" sty=
+le=3D"font-size:0px;padding:0;word-break:break-word;"><div style=3D"font-fa=
+mily:Ember,'Amazon Ember',Arial,sans-serif;font-size:13px;font-weight:400;l=
+ine-height:18px;text-align:left;color:#565959;"><span class=3D"rio-text rio=
+-text-350">Quantity: 1</span></div></td></tr> <tr><td align=3D"left" class=
+=3D"rio-spacer" style=3D"font-size:0px;padding:0;word-break:break-word;"><d=
+iv style=3D"height:4px;line-height:4px;">=E2=80=8A</div></td></tr><tr><td a=
+lign=3D"left" style=3D"font-size:0px;padding:0;word-break:break-word;"><div=
+ style=3D"font-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:18px;=
+font-weight:400;line-height:22px;text-align:left;color:#0F1111;"><span clas=
+s=3D"rio-text rio-text-351">  <span role=3D"region" aria-label=3D"{amount=
+=3D10.49, currencyCode=3D{smallestAmount=3D0.01, code=3DGBP}}" style=3D"fon=
+t-size: 18px; font-weight: 400; vertical-align: baseline;"><!-- MSO-specifi=
+c style for Outlook --><!--[if mso]><table cellpadding=3D"0" cellspacing=3D=
+"0" border=3D"0" ><tr> <td style=3D"font-size: 18px; vertical-align: top; p=
+adding: 0;"><sup style=3D"position: relative; top: 2px;">=C2=A3</sup></td> =
+<td style=3D"font-size: 18px; font-weight: 400; vertical-align: middle; pad=
+ding: 0;"><span style=3D"display: inline-block;">10</span></td>  <td style=
+=3D"font-size: 18px; vertical-align: top; padding: 0;"><sup style=3D"positi=
+on: relative; top: 2px;">49</sup></td></tr></table><![endif]--><!-- Non-MSO=
+ rendering for other email clients --><!--[if !mso]><!--><sup style=3D"font=
+-size: 10px; position: relative; top: 2px;">=C2=A3</sup>10<sup style=3D"fon=
+t-size: 10px; position: relative; top: 2px;">49</sup><!--<![endif]--> </spa=
+n></span></div></td></tr></tbody></table></td></tr></tbody></table></div><!=
+--[if mso | IE]></td></tr></table><![endif]--></div><!--[if mso | IE]></td>=
+</tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>=
+</td></tr></table><![endif]--></td></tr></tbody></table></td></tr></tbody><=
+/table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tb=
+ody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr=
+><tr><td align=3D"left" style=3D"font-size:0px;padding:0;word-break:break-w=
+ord;"><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:568px=
+;" width=3D"568" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-h=
+eight-rule:exactly;"><![endif]--><div style=3D"margin:0px auto;max-width:56=
+8px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=3D"dir=
+ection:ltr;font-size:0px;padding:0;text-align:left;"><!--[if mso | IE]><tab=
+le role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><=
+tr><td align=3D"left" class=3D"" style=3D"vertical-align:top;width:568px;" =
+><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D=
+"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-=
+align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vertical-a=
+lign:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"left" class=
+=3D"rio-spacer" style=3D"font-size:0px;padding:0;word-break:break-word;"><d=
+iv style=3D"height:8px;line-height:8px;">=E2=80=8A</div></td></tr><tr><td a=
+lign=3D"left" style=3D"font-size:0px;padding:0;word-break:break-word;"><!--=
+[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" class=3D"" role=3D"presentation" style=3D"width:568px;" width=
+=3D"568" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-ru=
+le:exactly;"><![endif]--><div style=3D"margin:0px auto;max-width:568px;"><t=
+able align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=3D"direction:l=
+tr;font-size:0px;padding:0;text-align:left;"><!--[if mso | IE]><table role=
+=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td =
+align=3D"left" class=3D"" style=3D"width:568px;" ><![endif]--><div class=3D=
+"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0;line-height:0=
+;text-align:left;display:inline-block;width:100%;direction:ltr;"><!--[if ms=
+o | IE]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" ><tr><td style=3D"align:left;vertical-align:top;width:142px;" ><=
+![endif]--><div class=3D"mj-column-per-25 mj-outlook-group-fix" style=3D"fo=
+nt-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-ali=
+gn:top;width:25%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vertical-align=
+:top;padding:0;padding-right:8px;padding-left:0;"><table border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody>=
+       <tr><td align=3D"left" class=3D"rio-asin-image" style=3D"font-size:0=
+px;padding:0;word-break:break-word;"><table style=3D"width: 100%; border-ra=
+dius: 4px;" class=3D"rio-asin-image-sTeEQ8Tp1LgZ8xChhMyUwM" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%"><tbo=
+dy><tr><td class=3D"productImageTd" style=3D"background-image:linear-gradie=
+nt(rgba(15, 17, 17, 0.03), rgba(15, 17, 17, 0.03));border-radius:4px;positi=
+on:relative;width:100%;height:64px;vertical-align:middle;text-align:center;=
+padding:8px;"><a target=3D"_blank" href=3D"https://www.amazon.co.uk/gp/f.ht=
+ml?C=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONE=
+88c31acf5b688438eb6bb1cd53e70p0eu&amp;R=3D1IQVC1BJCKLP6&amp;T=3DC&amp;U=3D%=
+2Fdp%2FB09MJ11KBM%3Fref_%3Dpe_112168041_REDACTED_PHONE_fed_asin_title&amp;H=3DF=
+C7EEK8VAOXADPVAQVSUGSR1BKIA&amp;ref_=3Dpe_112168041_REDACTED_PHONE_fed_asin_tit=
+le" style=3D"background-color:transparent;display:inline-block;"><img style=
+=3D"width:100%;height:auto;max-height:64px;max-width:64px;margin:auto;displ=
+ay:block;" class=3D"productImage" width=3D"122" src=3D"https://m.media-amaz=
+on.com/images/I/71CSYwcHumL.SS90_.jpg" alt=3D"USB C Plug, Anker 40W USB C F=
+ast Charger, 2-Port Compact Charger, Compatible with iPhone 15/15 Pro/15 Pr=
+o Max/14/14 Pro/14 Pro Max, Galaxy, iPad, and More (Cable Not Included)"></=
+a></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></t=
+able></div><!--[if mso | IE]></td><td style=3D"align:left;vertical-align:to=
+p;width:426px;" ><![endif]--><div class=3D"mj-column-per-75 mj-outlook-grou=
+p-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-=
+block;vertical-align:top;width:75%;"><table border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=
+=3D"vertical-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td align=
+=3D"left" style=3D"font-size:0px;padding:0;word-break:break-word;"><div sty=
+le=3D"font-family:Ember,'Amazon Ember',Arial,sans-serif;font-size:15px;font=
+-weight:400;line-height:21px;text-align:left;color:#0F1111;"><span class=3D=
+"rio-text rio-text-347"><a href=3D"https://www.amazon.co.uk/gp/f.html?C=3D3=
+E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONEc31acf=
+5b688438eb6bb1cd53e70p0eu&amp;R=3DVA3LE88WEGX0&amp;T=3DC&amp;U=3D%2Fdp%2FB0=
+9MJ11KBM%3Fref_%3Dpe_112168041_REDACTED_PHONE_fed_asin_title&amp;H=3DBQMFG5KEFL=
+QBKTSERA0EZTPBSQWA&amp;ref_=3Dpe_112168041_REDACTED_PHONE_fed_asin_title" targe=
+t=3D"_blank" style=3D"color: #0F1111;">USB C Plug, Anker 40W USB C Fast ...=
+</a></span></div></td></tr> <tr><td align=3D"left" class=3D"rio-spacer" sty=
+le=3D"font-size:0px;padding:0;word-break:break-word;"><div style=3D"height:=
+4px;line-height:4px;">=E2=80=8A</div></td></tr><tr><td align=3D"left" style=
+=3D"font-size:0px;padding:0;word-break:break-word;"><div style=3D"font-fami=
+ly:Ember,'Amazon Ember',Arial,sans-serif;font-size:13px;font-weight:400;lin=
+e-height:18px;text-align:left;color:#565959;"><span class=3D"rio-text rio-t=
+ext-348">Sold by AnkerDirect UK</span></div></td></tr> <tr><td align=3D"lef=
+t" class=3D"rio-spacer" style=3D"font-size:0px;padding:0;word-break:break-w=
+ord;"><div style=3D"height:4px;line-height:4px;">=E2=80=8A</div></td></tr><=
+tr><td align=3D"left" style=3D"font-size:0px;padding:0;word-break:break-wor=
+d;"><div style=3D"font-family:Ember,'Amazon Ember',Arial,sans-serif;font-si=
+ze:13px;font-weight:400;line-height:18px;text-align:left;color:#565959;"><s=
+pan class=3D"rio-text rio-text-349">Condition: New</span></div></td></tr> <=
+tr><td align=3D"left" class=3D"rio-spacer" style=3D"font-size:0px;padding:0=
+;word-break:break-word;"><div style=3D"height:4px;line-height:4px;">=E2=80=
+=8A</div></td></tr><tr><td align=3D"left" style=3D"font-size:0px;padding:0;=
+word-break:break-word;"><div style=3D"font-family:Ember,'Amazon Ember',Aria=
+l,sans-serif;font-size:13px;font-weight:400;line-height:18px;text-align:lef=
+t;color:#565959;"><span class=3D"rio-text rio-text-350">Quantity: 1</span><=
+/div></td></tr> <tr><td align=3D"left" class=3D"rio-spacer" style=3D"font-s=
+ize:0px;padding:0;word-break:break-word;"><div style=3D"height:4px;line-hei=
+ght:4px;">=E2=80=8A</div></td></tr><tr><td align=3D"left" style=3D"font-siz=
+e:0px;padding:0;word-break:break-word;"><div style=3D"font-family:Ember,'Am=
+azon Ember',Arial,sans-serif;font-size:18px;font-weight:400;line-height:22p=
+x;text-align:left;color:#0F1111;"><span class=3D"rio-text rio-text-351">  <=
+span role=3D"region" aria-label=3D"{amount=3D19.99, currencyCode=3D{smalles=
+tAmount=3D0.01, code=3DGBP}}" style=3D"font-size: 18px; font-weight: 400; v=
+ertical-align: baseline;"><!-- MSO-specific style for Outlook --><!--[if ms=
+o]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" ><tr> <td style=
+=3D"font-size: 18px; vertical-align: top; padding: 0;"><sup style=3D"positi=
+on: relative; top: 2px;">=C2=A3</sup></td> <td style=3D"font-size: 18px; fo=
+nt-weight: 400; vertical-align: middle; padding: 0;"><span style=3D"display=
+: inline-block;">19</span></td>  <td style=3D"font-size: 18px; vertical-ali=
+gn: top; padding: 0;"><sup style=3D"position: relative; top: 2px;">99</sup>=
+</td></tr></table><![endif]--><!-- Non-MSO rendering for other email client=
+s --><!--[if !mso]><!--><sup style=3D"font-size: 10px; position: relative; =
+top: 2px;">=C2=A3</sup>19<sup style=3D"font-size: 10px; position: relative;=
+ top: 2px;">99</sup><!--<![endif]--> </span></span></div></td></tr></tbody>=
+</table></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table=
+><![endif]--></div><!--[if mso | IE]></td></tr></table><![endif]--></td></t=
+r></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></t=
+d></tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE]></=
+td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | I=
+E]></td></tr></table><![endif]--></td></tr></tbody></table></td></tr></tbod=
+y></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr><=
+/tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td><=
+/tr><tr><td align=3D"left" class=3D"rio-spacer" style=3D"font-size:0px;padd=
+ing:0;word-break:break-word;"><div style=3D"height:12px;line-height:12px;">=
+=E2=80=8A</div></td></tr><tr><td align=3D"left" style=3D"font-size:0px;padd=
+ing:0;word-break:break-word;"><table width=3D"100%" role=3D"presentation" b=
+order=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td style=3D"width:100%=
+;height:1px;padding-top:0px;padding-bottom:0px;padding-left:0px;padding-rig=
+ht:0px;background-color:#BBBFBF;"><p style=3D"border-top:solid 1px #BBBFBF;=
+font-size:1px;margin:0px auto;width:100%;"></p><!--[if mso | IE]><table ali=
+gn=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"borde=
+r-top:solid 1px #BBBFBF;font-size:1px;margin:0px auto;width:568px;" role=3D=
+"presentation" width=3D"568px" ><tr><td style=3D"height:0;line-height:0;"> =
+&nbsp;
+</td></tr></table><![endif]--></td></tr></table></td></tr><tr><td align=3D"=
+left" style=3D"font-size:0px;padding:0;word-break:break-word;"><!--[if mso =
+| IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"" role=3D"presentation" style=3D"width:568px;" width=3D"568" >=
+<tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly=
+;"><![endif]--><div style=3D"margin:0px auto;max-width:568px;"><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"width:100%;"><tbody><tr><td style=3D"direction:ltr;font-si=
+ze:0px;padding:0;text-align:left;"><!--[if mso | IE]><table role=3D"present=
+ation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td align=3D"le=
+ft" class=3D"" style=3D"vertical-align:top;width:568px;" ><![endif]--><div =
+class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;tex=
+t-align:left;direction:ltr;display:inline-block;vertical-align:top;width:10=
+0%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" width=3D"100%"><tbody><tr><td style=3D"vertical-align:top;padding:0=
+;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" width=3D"100%"><tbody><tr><td align=3D"left" class=3D"rio-spacer" sty=
+le=3D"font-size:0px;padding:0;word-break:break-word;"><div style=3D"height:=
+12px;line-height:12px;">=E2=80=8A</div></td></tr><tr><td align=3D"left" sty=
+le=3D"font-size:0px;padding:0;word-break:break-word;"><!--[if mso | IE]><ta=
+ble align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"" role=3D"presentation" style=3D"width:568px;" width=3D"568" ><tr><td s=
+tyle=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![end=
+if]--><div style=3D"margin:0px auto;max-width:568px;"><table align=3D"cente=
+r" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;pa=
+dding:0;text-align:left;"><!--[if mso | IE]><table role=3D"presentation" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td align=3D"left" class=
+=3D"" style=3D"vertical-align:top;width:568px;" ><![endif]--><div class=3D"=
+mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:l=
+eft;direction:ltr;display:inline-block;vertical-align:top;width:100%;"><tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" w=
+idth=3D"100%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" wid=
+th=3D"100%"><tbody><tr><td align=3D"left" style=3D"font-size:0px;padding:0;=
+word-break:break-word;"><table cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" border=3D"0" style=3D"color:#000000;font-family:Ember,'Amazon Ember'=
+,Arial,sans-serif;font-size:15px;line-height:22px;table-layout:auto;width:1=
+00%;border:none;"><tr><mj-raw></mj-raw></td><td align=3D"left" style=3D"wid=
+th: 50%; padding-right: 30px; font-size: 14px;">Total</td><td align=3D"righ=
+t" style=3D"width: 50%; font-size: 14px; font-weight: bold;"><mj-raw></mj-r=
+aw><mj-raw> </mj-raw>  =C2=A334.97<mj-raw></mj-raw></td></tr></table></td><=
+/tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE]></td>=
+</tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>=
+</td></tr></table><![endif]--></td></tr></tbody></table></td></tr></tbody><=
+/table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tb=
+ody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr=
+><tr><td align=3D"left" class=3D"rio-spacer" style=3D"font-size:0px;padding=
+:0;word-break:break-word;"><div style=3D"height:12px;line-height:12px;">=E2=
+=80=8A</div></td></tr><tr><td align=3D"left" style=3D"font-size:0px;padding=
+:0;word-break:break-word;"><table width=3D"100%" role=3D"presentation" bord=
+er=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td style=3D"width:100%;he=
+ight:1px;padding-top:0px;padding-bottom:0px;padding-left:0px;padding-right:=
+0px;background-color:#BBBFBF;"><p style=3D"border-top:solid 1px #BBBFBF;fon=
+t-size:1px;margin:0px auto;width:100%;"></p><!--[if mso | IE]><table align=
+=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-=
+top:solid 1px #BBBFBF;font-size:1px;margin:0px auto;width:568px;" role=3D"p=
+resentation" width=3D"568px" ><tr><td style=3D"height:0;line-height:0;"> &n=
+bsp;
+</td></tr></table><![endif]--></td></tr></table></td></tr></tbody></table><=
+/td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif=
+]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></t=
+d></tr><![endif]--> <!--[if mso | IE]></table><![endif]--></td></tr></tbody=
+></table></div><!--[if mso | IE]></td></tr></table></td></tr><![endif]--> <=
+!--[if mso | IE]></table><![endif]--></td></tr></tbody></table></div><!--[i=
+f mso | IE]></td></tr></table><![endif]--><!--[if mso | IE]><table align=3D=
+"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rootCont=
+ent-outlook" role=3D"presentation" style=3D"width:600px;" width=3D"600" bgc=
+olor=3D"#ffffff" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-h=
+eight-rule:exactly;"><![endif]--><div class=3D"rootContent" style=3D"backgr=
+ound:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;"><ta=
+ble align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"background:#ffffff;background-color:#ffffff;widt=
+h:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:4px 8p=
+x 4px 8px;text-align:left;"><!--[if mso | IE]><table role=3D"presentation" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><![endif]-->        <!--[i=
+f mso | IE]></table><![endif]--></td></tr></tbody></table></div><!--[if mso=
+ | IE]></td></tr></table><![endif]--><!--[if mso | IE]><table align=3D"cent=
+er" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rootContent-o=
+utlook" role=3D"presentation" style=3D"width:600px;" width=3D"600" bgcolor=
+=3D"#ffffff" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-heigh=
+t-rule:exactly;"><![endif]--><div class=3D"rootContent" style=3D"background=
+:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;"><table =
+align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"p=
+resentation" style=3D"background:#ffffff;background-color:#ffffff;width:100=
+%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:4px 0px 0px=
+ 0px;text-align:left;"><!--[if mso | IE]><table role=3D"presentation" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0"><![endif]--> <!--[if mso | IE]>=
+<tr><td align=3D"left" class=3D"sonar-footer-outlook sonar-footer-v1-outloo=
+k" width=3D"600px" ><![endif]--><style type=3D"text/css">.footer-card li,.f=
+ooter-card p{color:#494d4d}.footer-card p{margin-top:20px}.footer-card a{co=
+lor:#007185!important;text-decoration:none!important}@media (prefers-color-=
+scheme:dark){.footer-card{background-color:#303333!important}.footer-card a=
+{color:#6ed6e6!important}.footer-card li,.footer-card p,.footer-text{color:=
+#c8cccc!important}.lightFooterImg{display:none!important}.darkFooterImg{dis=
+play:block!important}}[data-ogsb] .footer-card{background-color:#303333!imp=
+ortant}[data-ogsc] .footer-card a{color:#6ed6e6!important}[data-ogsc] .foot=
+er-card li,[data-ogsc] .footer-card p,[data-ogsc] .footer-text{color:#c8ccc=
+c!important}[data-ogsc] .lightFooterImg{display:none!important}[data-ogsc] =
+.darkFooterImg{display:block!important}</style><table class=3D"footer-card"=
+ data-sonar-role=3D"footer" width=3D"100%" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" role=3D"presentation" style=3D"background-color:#F0F2F2;wi=
+dth:100%;"><tr><td width=3D"100%" align=3D"left" style=3D"width:100%;paddin=
+g-bottom:4px;text-align:left"><table width=3D"100%" cellspacing=3D"0" cellp=
+adding=3D"0" border=3D"0" role=3D"presentation" style=3D"width:100%;"><tr><=
+td class=3D"footer-text" style=3D"width:100%;padding:0 16px 16px 16px;font-=
+family:Ember,'Amazon Ember',Arial,sans-serif;font-size:14px;line-height:20p=
+x;color:#494D4D;"><div style=3D"margin-top:20px;">Amazon.co.uk is a trading=
+ name for Amazon EU Sarl, for Amazon Europe Core Sarl and for Amazon Media =
+EU Sarl, all of which have their registered office at 38 avenue John F. Ken=
+nedy, L-1855 Luxembourg. <br>=C2=A92025 Amazon.com, Inc. or its affiliates.=
+ Amazon and all related marks are trademarks of Amazon.com, Inc. or its aff=
+iliates.</div> <div style=3D"margin-top:20px;"><p>This e-mail is only an ac=
+knowledgement of receipt of your order. Your contract to purchase these ite=
+ms is not complete until we send you an <a href=3D"https://www.amazon.co.uk=
+/gp/r.html?C=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:20250=
+REDACTED_PHONEc31acf5b688438eb6bb1cd53e70p0eu&amp;R=3DGPQSJV636MKR&amp;T=3DC&am=
+p;U=3Dhttps%3A%2F%2Fwww.amazon.co.uk%2Fgp%2Fhelp%2Fcustomer%2Fdisplay.html%=
+2F%3FnodeId%3D201909000%26ref_%3Dpe_112168041_REDACTED_PHONE_fed_roclt_acknowle=
+dgement&amp;H=3DDO9DTGYYYXL80WSA8CENUTIISXWA&amp;ref_=3Dpe_112168041_111139=
+2281_fed_roclt_acknowledgement" rel=3D"nofollow">e-mail notifying you that =
+the items have been dispatched</a>.</p>
+<p><a href=3D"https://www.amazon.co.uk/gp/r.html?C=3D3E0UC6L4QQ3O7&amp;K=3D=
+AOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONEc31acf5b688438eb6bb1cd53e70=
+p0eu&amp;R=3D2LF4IRLOTSG5B&amp;T=3DC&amp;U=3Dhttps%3A%2F%2Fwww.amazon.co.uk=
+%2Fgp%2Fhelp%2Fcustomer%2Fdisplay.html%3FnodeId%3D202018630%26ref_%3Dpe_112=
+168041_REDACTED_PHONE_fed_roclt_default_helpfba&amp;H=3DTOKAFU9QWFISFY0VSHB9LGR=
+BCYKA&amp;ref_=3Dpe_112168041_REDACTED_PHONE_fed_roclt_default_helpfba" rel=3D"=
+nofollow">Fulfilled By Amazon</a> (usually referred to as FBA) items are ge=
+nerally sold by third-party sellers but stored in an Amazon Fulfilment Cent=
+re and sent to you from there. Items which are sold by Warehouse Deals are =
+also labelled Fulfilled by Amazon. Warehouse Deals is a trading name for Am=
+azon EU Sarl, and is part of the Amazon.com group.</p>
+<p>Unless otherwise noted, items sold by Amazon EU Sarl are subject to Valu=
+e Added Tax based on country of delivery in accordance with the EU laws on =
+distance selling. If your order contains one or more items from a seller ot=
+her than Amazon EU Sarl, it may also be subject to VAT, depending upon the =
+seller's business policies and the location of their operations. Learn more=
+ about <a href=3D"https://www.amazon.co.uk/gp/f.html?C=3D3E0UC6L4QQ3O7&amp;=
+K=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONEc31acf5b688438eb6bb1cd5=
+3e70p0eu&amp;R=3D11ZQLN9FWCOT&amp;T=3DC&amp;U=3Dhttps%3A%2F%2Fwww.amazon.co=
+.uk%2FVatSellerInfo%3Fref_%3Dpe_112168041_REDACTED_PHONE_fed_roclt_default_help=
+vat&amp;H=3DHL1MIWT064JAAEO6SCSTOWBGSJMA&amp;ref_=3Dpe_112168041_REDACTED_PHONE=
+_fed_roclt_default_helpvat" rel=3D"nofollow">VAT and seller information</a>=
+.</p>
+<p>If your item(s) are purchased from <a href=3D"https://www.amazon.co.uk/g=
+p/f.html?C=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:2025032=
+81000088c31acf5b688438eb6bb1cd53e70p0eu&amp;R=3DF9UMQ214384M&amp;T=3DC&amp;=
+U=3Dhttps%3A%2F%2Fwww.amazon.co.uk%2Fmarketplace%3Fref_%3Dpe_112168041_1111=
+392281_fed_roclt_notsoldbyamznpen&amp;H=3DZKVAFVVMNHEJXEADHCPDAEYYOXEA&amp;=
+ref_=3Dpe_112168041_REDACTED_PHONE_fed_roclt_notsoldbyamznpen" rel=3D"nofollow"=
+>Amazon Marketplace</a>, the seller may request additional information such=
+ as the VAT number or your VAT code, in order to issue a valid invoice.</p>=
+</div></td></tr></table><img src=3D"https://m.media-amazon.com/images/G/01/=
+outbound/OutboundTemplates/Smile_Logo_Light._BG240,242,242_.png" alt=3D"Ama=
+zon.co.uk" height=3D"43" width=3D"86" align=3D"left" class=3D"lightFooterIm=
+g" style=3D"display:block;"> <!--[if !mso]><! --><img src=3D"https://m.medi=
+a-amazon.com/images/G/01/outbound/OutboundTemplates/Smile_Logo_Dark.png" al=
+t=3D"Amazon.co.uk" height=3D"43" width=3D"86" align=3D"left" class=3D"darkF=
+ooterImg" style=3D"display:none;"><!--<![endif]--></td></tr></table><!--[if=
+ mso | IE]></td></tr><![endif]--> <!--[if mso | IE]></table><![endif]--></t=
+d></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-=
+-></div><img width=3D"1" height=3D"1" src=3D"https://www.amazon.co.uk/gp/r.=
+html?C=3D3E0UC6L4QQ3O7&amp;K=3DAOMFQHH9X1OZ&amp;M=3Durn:rtn:msg:REDACTED_PHONE=
+0088c31acf5b688438eb6bb1cd53e70p0eu&amp;R=3D2C02YK3YKUXMB&amp;T=3DE&amp;U=
+=3Dhttps%3A%2F%2Fimages-eu.ssl-images-amazon.com%2Fimages%2FG%2F01%2Fnav%2F=
+transp.gif&amp;H=3DRWMICRYYTQYCHSYNOWROKLNKQWEA&amp;ref_=3Dpe_112168041_111=
+1392281_open"></body></html>=
+
+------=_Part_179942_631733343.REDACTED_PHONE--

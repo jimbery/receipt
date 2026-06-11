@@ -237,6 +237,94 @@ If an independent reviewer cold-clones the branch and re-runs `make evaluate-gat
 
 ---
 
+## Phase 1 ingestion — spec fidelity protocol
+
+> **Lesson (Phase 1 validation v1):** Claiming six milestones in one PR, evaluating a self-authored template corpus, and committing `gate-results.json` with moat=1.0 and no volunteers is a protocol violation — even when `go test ./...` is green.
+
+### Before claiming any M1.x milestone done
+
+1. **Read the milestone exit criteria verbatim** — deliverables *and* exit criteria are separate checklists. A stub that compiles is not a deliverable.
+2. **One milestone per PR** where possible. Later milestones must not claim pass while earlier seams are skeletons.
+3. **Never strip `[SET: Jay]` markers** from threshold tables. Ratify in writing (commit + ADR/milestone amendment) or keep the markers.
+4. **Phase 1 gate output** lives at `test/testdata/ingest/fixture-smoke-results.json` — not under `docs/milestones/`. Moat metrics are Phase 2.
+
+### Fixture-lab gate (M1.6)
+
+| Artifact | Path | What it measures | CI? |
+|---|---|---|---|
+| **Fixture-lab gate** | `test/testdata/ingest/fixture-smoke-results.json` | Classifier precision/recall on frozen synthetic corpus; `requires_ocr` count | `make evaluate-ingest-smoke` |
+| **Hold-out classifier** | `test/testdata/email/holdout/` | Four on-disk messages **not** from `LoadFrozenCorpus` | `TestHoldoutFixtures_Classifier` |
+| **Scrubbed `.eml` accuracy** | `test/testdata/email/merchants/*/*.eml` | Supplier + total; manifest hash lock | `TestMerchantEMLFixtures_FieldAccuracy` + `TestFixtureManifest_SignedOffEMLs` |
+| **Fixture PII audit** | all under `test/testdata/email/` | Pattern-based (postcodes, names, order refs) | `TestScrubber_NoPIIInCommittedFixtures` |
+| **Field accuracy** | merchant `.txt` fixtures | Supplier + total ≥ 98% | `merchant_field_accuracy_test` |
+| **Dedup table** | M1.5 fixtures | Declared merge/split outcomes | table + integration tests |
+
+Cohort weights in `test/testdata/cohort_weights.json` inform corpus prioritisation; they are not inputs to the Phase 1 gate.
+
+### Corpus obligations (M1.2)
+
+The frozen corpus must have **≥ 500 structurally distinct messages**, not duplicated template strings:
+
+- Real HTML bodies (tables, nested markup), not plain-text stand-ins for HTML merchants
+- JSON-LD `application/ld+json` blocks where schema.org is claimed
+- MIME multipart and PDF attachments (text-layer and image-only cases)
+- Hard negatives as realistic specimens (multi-paragraph marketing HTML, dispatch without totals)
+- Unique body content per message (vary refs, dates, amounts in the HTML itself)
+
+Loader: `iharness.LoadFrozenCorpus()`. Corpus hash is embedded in smoke output.
+
+### Parser obligations (M1.3)
+
+| Fallback | Must use | Must not use |
+|---|---|---|
+| schema.org | `encoding/json` on JSON-LD script blocks | Regex on `"price"` strings alone |
+| HTML | Table row/cell extraction | Regex over stripped plain text only |
+| PDF | Text-layer stream extraction | Empty-bytes → `requires_ocr` for all PDFs |
+| Money | `ParsePoundsToMinor` (integer paths) | `strconv.ParseFloat` in money paths |
+
+Required tests:
+
+- Grade rubric table tests
+- Malformed fixture set (truncated HTML, encrypted PDF, image-only PDF) with declared outcomes
+- Fuzz: `FuzzParsePoundsToMinor_NoPanic`, `FuzzParseJSONLDTotal_NoPanic`, `FuzzExtractPDFText_NoPanic`
+- MIME fuzz in `internal/mail/`
+
+### Merchant extractor obligations (M1.4)
+
+Each priority merchant needs scrubbed fixtures under `test/testdata/email/merchants/<name>/` covering:
+
+- Normal receipt
+- At least one `partial`-grade case
+- At least one family-dedup case
+- Edge forms named in the milestone (refund/credit, partial shipment, VAT-exempt)
+
+Pluggability test: register a **novel** extractor via `NewRegistryWith` and assert routing — not “Amazon message extracts as Amazon”.
+
+### PII scrubber (M1.1)
+
+- Pattern audit: UK postcodes, greeting lines, addresses, order refs (`internal/scrub/patterns.go`)
+- Property test: walk `test/testdata/email/**` and assert `AuditFixture` passes (not dictionary-only)
+- `.eml` fixtures: hash-locked in `test/testdata/email/manifest.json` with human sign-off
+- Re-scrub from gitignored `emls/` via `make scrub-emls`; **never commit raw mail**
+
+### Per-milestone PR checklist
+
+Copy into PR description:
+
+- [ ] Milestone ID claimed matches what this PR actually completes
+- [ ] Exit criteria translated to failing-then-passing tests (not just CLI smoke)
+- [ ] Phase 1 gate output is `fixture-smoke-results.json`, not a moat `gate-results.json`
+- [ ] `[SET: Jay]` thresholds unchanged or ratified in this PR
+- [ ] Independent validator can cold-clone and reproduce smoke/gate commands documented below
+- [ ] Milestone status table updated honestly (Partial / In progress / Done)
+
+```bash
+# Phase 1 fixture-lab gate (CI)
+make test && make lint && make evaluate-ingest-smoke
+```
+
+---
+
 ## Matcher-specific invariants (Phase 0) — enforcement map
 
 | Invariant | Enforced by |

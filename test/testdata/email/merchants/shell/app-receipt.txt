@@ -1,0 +1,10 @@
+From: receipts@shell.com
+To: REDACTED_EMAIL@example.com
+Subject: Shell app payment receipt
+Date: Tue, 11 Mar 2026 08:00:00 +0000
+Content-Type: text/plain
+
+Site 5102
+Total paid: £48.50
+Fuel £40.42
+VAT £8.08
