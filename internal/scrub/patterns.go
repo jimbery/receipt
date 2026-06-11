@@ -37,9 +37,6 @@ var (
 	encodedNameDashPattern = regexp.MustCompile(
 		`\b[A-Z][a-z]+\s*=E2=80=93\s*[A-Za-z=]+`,
 	)
-	collectionAreaPattern = regexp.MustCompile(
-		`(?i)\bKings Heath\b`,
-	)
 	toolstationOrderPattern = regexp.MustCompile(`(?i)\bYWW\d+\b`)
 	screwfixOrderPattern    = regexp.MustCompile(`(?i)\bA\d{8,}\b`)
 	amazonOrderIDPattern    = regexp.MustCompile(`(?i)orderID=3D?[A-Z0-9]{8,}`)
@@ -49,7 +46,7 @@ var (
 )
 
 // DetectPIIViolations reports pattern-based PII still present after scrubbing.
-func DetectPIIViolations(content string) []string {
+func DetectPIIViolations(content string, pilot PilotBlocklist) []string {
 	var out []string
 	check := func(label string, re *regexp.Regexp) {
 		if re.FindStringIndex(content) != nil {
@@ -63,7 +60,7 @@ func DetectPIIViolations(content string) []string {
 	check("name_dash_city", nameDashCityPattern)
 	check("street_address", streetAddressPattern)
 	check("encoded_name_dash", encodedNameDashPattern)
-	check("collection_area", collectionAreaPattern)
+	out = append(out, pilot.detectAreaViolations(content)...)
 	check("toolstation_order", toolstationOrderPattern)
 	check("screwfix_order", screwfixOrderPattern)
 	for _, m := range amazonOrderIDPattern.FindAllString(content, -1) {
@@ -72,7 +69,7 @@ func DetectPIIViolations(content string) []string {
 			break
 		}
 	}
-	for _, p := range blockedFixturePatterns() {
+	for _, p := range blockedFixturePatterns(pilot) {
 		if strings.Contains(strings.ToLower(content), strings.ToLower(p)) {
 			out = append(out, "blocked:"+p)
 		}
@@ -83,7 +80,7 @@ func DetectPIIViolations(content string) []string {
 	return out
 }
 
-func scrubPatternPII(input string) string {
+func scrubPatternPII(input string, pilot PilotBlocklist) string {
 	out := input
 	out = dearNamePattern.ReplaceAllString(out, "Dear "+redactedName)
 	out = hiNamePattern.ReplaceAllString(out, "Hi, "+redactedName)
@@ -91,7 +88,7 @@ func scrubPatternPII(input string) string {
 	out = nameDashCityPattern.ReplaceAllString(out, redactedName+" – REDACTED_CITY")
 	out = streetAddressPattern.ReplaceAllString(out, redactedAddress)
 	out = encodedNameDashPattern.ReplaceAllString(out, redactedName+" =E2=80=93 REDACTED_CITY")
-	out = collectionAreaPattern.ReplaceAllString(out, redactedArea)
+	out = pilot.scrubAreas(out)
 	out = ukPostcodePattern.ReplaceAllString(out, redactedPostcode)
 	out = toolstationOrderPattern.ReplaceAllString(out, redactedOrder)
 	out = screwfixOrderPattern.ReplaceAllString(out, redactedOrder)
@@ -102,7 +99,7 @@ func scrubPatternPII(input string) string {
 
 // AuditFixture reports whether scrubbed content is safe to commit under test/testdata/email/.
 func AuditFixture(content string) error {
-	if violations := DetectPIIViolations(content); len(violations) > 0 {
+	if violations := DetectPIIViolations(content, PilotBlocklist{}); len(violations) > 0 {
 		return fmt.Errorf("PII patterns remain: %s", strings.Join(violations, ", "))
 	}
 	return nil

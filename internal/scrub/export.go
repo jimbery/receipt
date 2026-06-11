@@ -16,19 +16,9 @@ var (
 	orderSlugStripper = regexp.MustCompile(`(?i)(?:yww\d+|a\d{8,}|confirmation-of-your-order-a\d+)`)
 )
 
-func blockedFixturePatterns() []string {
-	return []string{
-		"jayimbery",
-		"jay imbery",
-		"@hotmail.com",
-		"@outlook.com",
-		"@live.com",
-	}
-}
-
 // ContainsPII reports whether dictionary literals or pattern PII remain.
 func ContainsPII(content string) bool {
-	return len(DetectPIIViolations(content)) > 0
+	return len(DetectPIIViolations(content, PilotBlocklist{})) > 0
 }
 
 // MerchantFromEML guesses the merchant folder name from RFC822 content.

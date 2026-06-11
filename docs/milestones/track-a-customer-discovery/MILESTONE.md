@@ -11,7 +11,7 @@ Find and retain pilot volunteers whose real purchase patterns represent the MTD 
 
 - Volunteer shortlist and outreach log (out of repo — PII)
 - Frozen cohort weights committed in `test/testdata/cohort_weights.json`
-- Recruitment process documented in [phase-01 volunteer-recruitment.md](../phase-01-email-injestion/volunteer-recruitment.md)
+- Recruitment process documented in [phase-01 volunteer-recruitment.md](../phase-01-email-ingestion/volunteer-recruitment.md)
 
 ## Exit criteria
 

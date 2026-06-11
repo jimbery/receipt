@@ -80,19 +80,21 @@ Arithmetic mismatch **demotes** `itemised` → `partial` (never fabricate fields
 
 ### D6 — Ingestion harness
 
-**Fixture-lab gate** (`ingest-fixture-smoke-v2`): classifier precision/recall on frozen corpus, `requires_ocr` count, extractor/classifier hashes. Enforced in CI.
+**Fixture-lab gate** (`ingest-fixture-smoke-v2`): classifier precision/recall on frozen corpus, `requires_ocr` count, extractor/classifier hashes. Enforced in CI. **Phase 1 exit criterion** as ratified 2026-06-11.
 
-**Volunteer moat gate (M1.6 exit):** cohort-weighted purchase coverage, paper-gap quantification, kill/pivot decision tree — requires ≥8 volunteer mailboxes per milestone protocol. **Pending** unless Jay records formal deferral ([validation-response-gate-deferral.md](../milestones/phase-01-email-injestion/validation-response-gate-deferral.md)).
+**Moat gate (transferred to Phase 2):** cohort-weighted purchase coverage, paper-gap quantification, kill/pivot decision tree — originally M1.6 exit; relocated per [2026-06-11 ratification](../validation/phase-01/2026-06-11-ratification-gate-deferral.md).
 
 Per-merchant field accuracy and dedup correctness are enforced by table tests (M1.4–M1.5).
 
-### D7 — Moat metric (M1.6 target)
+### D7 — Moat metric (Phase 2 target; transferred from M1.6)
 
 **Cohort-weighted purchase coverage** = Σ(weight_m × itemised_purchases_m) / Σ(weight_m × confirmed_purchases_m).
 
-Decision tree (after M1.6 volunteer gate):
+Originally the M1.6 exit gate; **transferred to Phase 2** per [2026-06-11 ratification](../validation/phase-01/2026-06-11-ratification-gate-deferral.md). Thresholds (≥70% combined, ≥80% email-channel) remain committed; measurement deferred until volunteer mailboxes and Open Banking ingestion exist.
 
-1. Email-channel coverage OK **and** combined projection OK → Phase 2.
+Decision tree (Phase 2 moat gate):
+
+1. Email-channel coverage OK **and** combined projection OK → proceed Phase 3 normalisation.
 2. Email OK, combined low, paper-gap ≥40% of misses → accelerate Phase 4 OCR.
 3. Email-channel low → extraction diagnosis; one tuning cycle; else pivot.
 
@@ -128,11 +130,17 @@ Jay Imbery ratified Phase 1 fixture-lab thresholds and the provisional MTD cohor
 | Dedup false merges | 0 | M1.5 fixture table |
 | Cohort weights (corpus prioritisation) | Screwfix 0.18, Toolstation 0.12, B&Q 0.10, Amazon 0.15, Shell 0.08, BP 0.05 | `test/testdata/cohort_weights.json` |
 
-Moat thresholds (≥70% combined, ≥80% email-channel) remain committed for **M1.6 volunteer gate** — not yet measured.
+Moat thresholds (≥70% combined, ≥80% email-channel) remain committed for **Phase 2 moat gate** — not measured in Phase 1.
 
-Gate deferral pending Jay decision: [validation-response-gate-deferral.md](../milestones/phase-01-email-injestion/validation-response-gate-deferral.md).
+Gate deferral ratified 2026-06-11: [2026-06-11-ratification-gate-deferral.md](../validation/phase-01/2026-06-11-ratification-gate-deferral.md).
 
 Full ratification: [docs/validation/phase-01/2026-06-10-ratification-thresholds.md](../validation/phase-01/2026-06-10-ratification-thresholds.md).
+
+## Amendment 2026-06-11 — Moat gate transferred to Phase 2 (ratified)
+
+Jay Imbery ratified formal deferral of the volunteer moat gate from Phase 1 M1.6 to Phase 2. Phase 1 closes on fixture-lab CI evidence only. Accepted cost: kill/pivot decision tree and paper-gap measurement fire later, after Open Banking ingestion begins.
+
+See [2026-06-11-ratification-gate-deferral.md](../validation/phase-01/2026-06-11-ratification-gate-deferral.md).
 
 ## Alternatives considered
 

@@ -1,6 +1,6 @@
-# Phase 1 — gate deferral (pending decision)
+# Phase 1 — gate deferral (ratified)
 
-**Date:** 2026-06-10  
+**Date:** 2026-06-10 (raised); **2026-06-11 (decided)**  
 **Raised by:** validation v2 (F2)  
 **Decider:** Jay Imbery (ADR-002)
 
@@ -8,7 +8,7 @@
 
 Commit `3b27128` redefined M1.6 from the volunteer moat gate (≥8 mailboxes, cohort-weighted coverage, kill/pivot decision tree) to a fixture-lab gate only, and marked all milestones **Done**. The ratification document was updated in the same commit series attributing the deferral to Jay Imbery.
 
-**That deferral was proposed by the implementing agent during delivery pressure, not confirmed in this document by Jay before merge.**
+**That deferral was proposed by the implementing agent during delivery pressure, not confirmed in this document by Jay before merge.** Validation v2 blocked merge; v3 verified remediation pending this closure commit.
 
 ## Options (validator's framing)
 
@@ -19,13 +19,15 @@ Commit `3b27128` redefined M1.6 from the volunteer moat gate (≥8 mailboxes, co
 
 | Field | Value |
 |---|---|
-| **Decision** | **PENDING** — Jay to record choice here |
-| **Effective date** | — |
-| **M1.6 status if (1)** | Partial until volunteer gate |
-| **M1.6 status if (2)** | Done (fixture-lab only); new Phase 2 milestone owns moat |
+| **Decision** | **Option 2 — formal deferral** |
+| **Effective date** | 2026-06-11 |
+| **M1.6 status** | **Done** (fixture-lab scope only) |
+| **Moat gate** | Transferred to Phase 2 |
+
+**Ratification record:** [docs/validation/phase-01/2026-06-11-ratification-gate-deferral.md](../../validation/phase-01/2026-06-11-ratification-gate-deferral.md)
 
 ## What is already true regardless
 
 - Fixture-lab thresholds are enforced in CI.
-- Engineering remediation from validation v1 is substantively complete.
-- The volunteer moat gate protocol in ADR-002 D6/D7 remains the **intended** M1.6 exit unless option (2) is ratified here.
+- Engineering remediation from validation v1–v3 is substantively complete.
+- Moat measurement (cohort-weighted purchase coverage, paper-gap, kill/pivot tree) is **Phase 2 scope** as of 2026-06-11.

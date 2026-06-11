@@ -17,13 +17,19 @@ func main() {
 	dryRun := flag.Bool("dry-run", false, "scrub and audit only; do not write")
 	flag.Parse()
 
+	pilot, pilotErr := scrub.LoadPilotBlocklist(filepath.Join(*inDir, "pilot-blocklist.json"))
+	if pilotErr != nil {
+		fmt.Fprintf(os.Stderr, "pilot blocklist: %v\n", pilotErr)
+		os.Exit(1)
+	}
+
 	entries, err := os.ReadDir(*inDir)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "read input: %v\n", err)
 		os.Exit(1)
 	}
 
-	s := scrub.New(nil)
+	s := scrub.NewWithPilotBlocklist(nil, pilot)
 	usedBasenames := map[string]int{}
 	var written int
 	for _, e := range entries {

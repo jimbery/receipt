@@ -2,13 +2,13 @@
 
 **Date:** 2026-06-10  
 **Ratified by:** Jay Imbery (decider, ADR-002) — **fixture-lab subset only**  
-**Status:** Accepted for CI fixture-lab thresholds. **Moat gate deferral pending** — see [validation-response-gate-deferral.md](../../milestones/phase-01-email-injestion/validation-response-gate-deferral.md).
+**Status:** Accepted for CI fixture-lab thresholds. **Moat gate transferred to Phase 2** — see [2026-06-11-ratification-gate-deferral.md](2026-06-11-ratification-gate-deferral.md).
 
 ## Context
 
-Phase 1 gate numbers were proposed in [MILESTONE.md](../../milestones/phase-01-email-injestion/MILESTONE.md) with **`[SET: Jay]`** markers. Jay ratified the **numeric thresholds** below on 2026-06-10.
+Phase 1 gate numbers were proposed in [MILESTONE.md](../../milestones/phase-01-email-ingestion/MILESTONE.md) with **`[SET: Jay]`** markers. Jay ratified the **numeric thresholds** below on 2026-06-10.
 
-**Not ratified in this document:** redefining M1.6 to exclude the volunteer moat gate. That scope change requires an explicit entry in [validation-response-gate-deferral.md](../../milestones/phase-01-email-injestion/validation-response-gate-deferral.md).
+**Scope change ratified 2026-06-11:** M1.6 redefined to fixture-lab only; moat gate moved to Phase 2 — [2026-06-11-ratification-gate-deferral.md](2026-06-11-ratification-gate-deferral.md).
 
 ## Ratified thresholds (fixture-lab — enforced in CI)
 

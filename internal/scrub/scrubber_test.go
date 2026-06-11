@@ -31,14 +31,15 @@ func TestScrubber_PreservesStructure(t *testing.T) {
 }
 
 func TestScrubFixture_RedactsPatternPII(t *testing.T) {
-	s := scrub.New(nil)
+	pilot := scrub.PilotBlocklist{AreaNames: []string{"Northgate"}}
+	s := scrub.NewWithPilotBlocklist(nil, pilot)
 	in := strings.Join([]string{
-		"Dear Mr Jay Imbery",
-		"Hi, Jay",
-		"Thanks for your order, Jay!",
-		"Jay – BIRMINGHAM",
-		"B14 7BW",
-		"Kings Heath",
+		"Dear Mr Alex Smith",
+		"Hi, Alex",
+		"Thanks for your order, Alex!",
+		"Alex – BIRMINGHAM",
+		"BS1 4TR",
+		"Northgate",
 		"Order YWW074091737",
 		"Confirmation A16237359139",
 	}, "\n")
@@ -80,7 +81,7 @@ func TestScrubber_NoPIIInCommittedFixtures(t *testing.T) {
 }
 
 func TestDetectPIIViolations_FindsRealLeak(t *testing.T) {
-	v := scrub.DetectPIIViolations("Dear Mr Jay Imbery\nB29 6UB")
+	v := scrub.DetectPIIViolations("Dear Mr Alex Smith\nBS1 4TR", scrub.PilotBlocklist{})
 	if len(v) == 0 {
 		t.Fatal("expected violations")
 	}

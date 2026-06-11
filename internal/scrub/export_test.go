@@ -10,12 +10,14 @@ import (
 )
 
 func TestExportEML_ScrubsVolunteerEmail(t *testing.T) {
-	raw := []byte("From: noreply@toolstation.com\r\nTo: jayimbery@hotmail.com\r\n\r\nOrder total £12.99\r\n")
-	out, err := scrub.ExportEML(raw, nil)
+	pilot := scrub.PilotBlocklist{EmailLocalParts: []string{"pilotuser"}}
+	s := scrub.NewWithPilotBlocklist(nil, pilot)
+	raw := []byte("From: noreply@toolstation.com\r\nTo: pilotuser@hotmail.com\r\n\r\nOrder total £12.99\r\n")
+	out, err := scrub.ExportEML(raw, s)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if strings.Contains(strings.ToLower(string(out)), "jayimbery") {
+	if strings.Contains(strings.ToLower(string(out)), "pilotuser") {
 		t.Fatalf("volunteer email remains: %s", out)
 	}
 	if !strings.Contains(string(out), "REDACTED_EMAIL@example.com") {
